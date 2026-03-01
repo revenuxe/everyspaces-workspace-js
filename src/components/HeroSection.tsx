@@ -34,18 +34,12 @@ const HeroSection = () => {
             className="w-full h-[200px] sm:h-[300px] md:h-[500px] object-cover"
           />
         </div>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
+        <div className="mt-6 sm:mt-8">
           <a
             href="#contact"
-            className="flex-1 text-center bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-4 sm:py-5 rounded-2xl hover:opacity-90 transition-opacity"
+            className="block text-center bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-4 sm:py-5 rounded-2xl hover:opacity-90 transition-opacity"
           >
             Book Strategy Call
-          </a>
-          <a
-            href="#service"
-            className="flex-1 text-center border-2 border-primary text-primary font-semibold text-base sm:text-lg py-4 sm:py-5 rounded-2xl hover:bg-primary hover:text-primary-foreground transition-colors"
-          >
-            Get Curated Options
           </a>
         </div>
       </div>
