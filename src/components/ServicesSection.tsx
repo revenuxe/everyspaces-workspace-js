@@ -41,7 +41,7 @@ const services = [
 
 const variantClasses = {
   default: "bg-card border border-border",
-  lime: "bg-lime",
+  lime: "bg-lime text-foreground",
   orange: "bg-accent text-accent-foreground",
 };
 
@@ -65,21 +65,20 @@ const ServicesSection = () => {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`rounded-2xl p-6 flex flex-col justify-between min-h-[260px] ${variantClasses[service.variant]}`}
+              className={`rounded-[4px] p-7 flex flex-col justify-between min-h-[280px] ${variantClasses[service.variant]}`}
             >
-              <div className="w-14 h-14 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center mb-6">
-                <service.icon size={24} />
+              <div className="w-16 h-16 rounded-full bg-background/40 flex items-center justify-center mb-8">
+                <service.icon size={26} className={service.variant === "orange" ? "text-accent-foreground" : "text-foreground"} />
               </div>
               <div>
-                <h3 className="text-lg font-bold font-sans mb-2">{service.title}</h3>
-                <p className="text-sm opacity-80 mb-4">{service.desc}</p>
-                {service.variant !== "orange" && (
-                  <button className="text-sm font-medium border border-current rounded-full px-4 py-1.5 hover:bg-foreground hover:text-primary-foreground transition-colors">
+                <h3 className="text-xl font-bold font-sans mb-2">{service.title}</h3>
+                <p className="text-sm opacity-70 leading-relaxed mb-5">{service.desc}</p>
+                {service.variant === "orange" ? (
+                  <button className="text-sm font-medium border border-accent-foreground rounded-[4px] px-5 py-2 hover:bg-accent-foreground hover:text-accent transition-colors">
                     Learn More
                   </button>
-                )}
-                {service.variant === "orange" && (
-                  <button className="text-sm font-medium border border-accent-foreground rounded-full px-4 py-1.5 hover:bg-accent-foreground hover:text-accent transition-colors">
+                ) : (
+                  <button className="text-sm font-medium border border-current rounded-[4px] px-5 py-2 hover:bg-foreground hover:text-primary-foreground transition-colors">
                     Learn More
                   </button>
                 )}
