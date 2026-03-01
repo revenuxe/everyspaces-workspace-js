@@ -40,9 +40,9 @@ const services = [
 ];
 
 const variantClasses = {
-  default: "bg-card border border-border",
-  lime: "bg-lime text-foreground",
-  orange: "bg-accent text-accent-foreground",
+  default: "bg-card border border-border shadow-md",
+  lime: "bg-lime text-foreground shadow-md",
+  orange: "bg-accent text-accent-foreground shadow-md",
 };
 
 const ServicesSection = () => {
@@ -65,7 +65,7 @@ const ServicesSection = () => {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`rounded-none p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]}`}
+              className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]}`}
             >
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-background/40 flex items-center justify-center mb-6 sm:mb-8">
                 <service.icon size={24} className={service.variant === "orange" ? "text-accent-foreground" : "text-foreground"} />

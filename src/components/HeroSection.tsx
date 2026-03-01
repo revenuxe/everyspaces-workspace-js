@@ -17,7 +17,7 @@ const HeroSection = () => {
           </svg>
         </div>
         <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.15] sm:leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] sm:leading-tight">
             Your Trusted Partner <span className="italic font-normal">in</span>
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>Workspace Solutions
