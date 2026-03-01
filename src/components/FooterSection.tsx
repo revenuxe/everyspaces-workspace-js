@@ -8,15 +8,15 @@ const FooterSection = () => {
   return (
     <footer id="contact" className="bg-secondary">
       {/* CTA area */}
-      <div className="py-16 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
+      <div className="py-10 md:py-16 px-4 sm:px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8 md:gap-12">
           <div className="max-w-lg">
-            <h2 className="text-3xl md:text-4xl font-serif leading-snug mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif leading-snug mb-6 md:mb-8">
               <span className="italic">Find</span> your perfect workspace today. Contact us for expert guidance!
             </h2>
             <a
               href="#"
-              className="inline-block bg-accent text-accent-foreground font-semibold px-8 py-4 rounded-full hover:scale-105 transition-transform text-sm"
+              className="inline-block bg-accent text-accent-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:scale-105 transition-transform text-sm"
             >
               Get Started Now
             </a>
@@ -40,9 +40,9 @@ const FooterSection = () => {
       </div>
 
       {/* Footer links */}
-      <div className="border-t border-border py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
-          <div className="md:col-span-2">
+      <div className="border-t border-border py-8 md:py-12 px-4 sm:px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+          <div className="col-span-2">
             <p className="text-sm text-muted-foreground max-w-xs mb-6">
               EverySpaces provides expert workspace services, offering tailored solutions and premium coworking experiences.
             </p>
@@ -60,7 +60,7 @@ const FooterSection = () => {
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-bold text-sm mb-4">{title}</h4>
+              <h4 className="font-bold text-sm mb-3 md:mb-4">{title}</h4>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
@@ -76,8 +76,8 @@ const FooterSection = () => {
       </div>
 
       {/* Copyright */}
-      <div className="bg-lime-strong py-4 px-6 text-center">
-        <p className="text-sm text-foreground">© 2024 EverySpaces. All Rights Reserved.</p>
+      <div className="bg-lime-strong py-4 px-4 sm:px-6 text-center">
+        <p className="text-xs sm:text-sm text-foreground">© 2024 EverySpaces. All Rights Reserved.</p>
       </div>
     </footer>
   );
