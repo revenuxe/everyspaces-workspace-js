@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import serviceConsulting from "@/assets/service-consulting.png";
 import serviceSearch from "@/assets/service-search.png";
-import servicePortfolio from "@/assets/service-portfolio.png";
+import serviceInterior from "@/assets/service-interior.png";
 import serviceResearch from "@/assets/service-research.png";
 import serviceManagement from "@/assets/service-management.png";
 import serviceStrategy from "@/assets/service-strategy.png";
@@ -20,9 +20,9 @@ const services = [
     variant: "default" as const,
   },
   {
-    image: servicePortfolio,
-    title: "Portfolio Optimization & Growth",
-    desc: "Maximize returns with tailored strategies for portfolio optimization and sustainable growth in workspace real estate.",
+    image: serviceInterior,
+    title: "Office Interior Design",
+    desc: "End-to-end office interior solutions — from concept ideation to final execution — creating inspiring workspaces that boost productivity.",
     variant: "orange" as const,
   },
   {

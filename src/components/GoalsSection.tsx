@@ -1,19 +1,19 @@
-import { Flower2, CircleDot, Asterisk } from "lucide-react";
+import { Target, TrendingUp, Shield } from "lucide-react";
 
 const goals = [
   {
-    icon: Flower2,
-    title: "Maximize Return on Investments",
+    icon: Target,
+    title: "Reduce Real Estate Costs by Up to 40%",
     color: "text-lime",
   },
   {
-    icon: CircleDot,
-    title: "Simplify Workspace Decisions Effectively",
+    icon: TrendingUp,
+    title: "Boost Team Productivity with Smarter Spaces",
     color: "text-accent",
   },
   {
-    icon: Asterisk,
-    title: "Build Long-Term Growth Strategically",
+    icon: Shield,
+    title: "Future-Proof Your Workspace Strategy",
     color: "text-primary-foreground",
   },
 ];
@@ -23,9 +23,9 @@ const GoalsSection = () => {
     <section id="goals" className="py-12 md:py-20 px-4 sm:px-6 lg:px-12 bg-dark-green">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-primary-foreground mb-8 md:mb-12">
-          <span className="italic">Achieve</span> Your Ambitions
+          <span className="italic">Why</span> Businesses Choose Us
           <br />
-          Goal Setting for Success
+          Results That Speak for Themselves
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
