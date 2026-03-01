@@ -1,8 +1,8 @@
 const stats = [
-  { number: "1,200+", label: "Successful Projects" },
-  { number: "2,500+", label: "Happy Members" },
-  { number: "1,800+", label: "Spaces Managed" },
-  { number: "150+", label: "Workspace Solutions" },
+  { number: "92%", label: "Client Retention Rate" },
+  { number: "3.5x", label: "Avg. Productivity Boost" },
+  { number: "40%", label: "Cost Savings Achieved" },
+  { number: "48hrs", label: "Avg. Turnaround Time" },
 ];
 
 const StatsSection = () => {
