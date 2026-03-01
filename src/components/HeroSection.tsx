@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import heroImg from "@/assets/hero-workspace.png";
 
 const HeroSection = () => {
@@ -37,9 +38,12 @@ const HeroSection = () => {
         <div className="mt-6 sm:mt-8">
           <a
             href="#contact"
-            className="block text-center bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-4 sm:py-5 rounded-2xl hover:opacity-90 transition-opacity"
+            className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-3 sm:py-4 pl-6 sm:pl-8 pr-3 sm:pr-4 rounded-full hover:opacity-90 transition-opacity"
           >
-            Book Strategy Call
+            <span>Book Strategy Call</span>
+            <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-primary-foreground/30 flex items-center justify-center ml-4">
+              <ArrowUpRight size={20} />
+            </span>
           </a>
         </div>
       </div>
