@@ -37,7 +37,7 @@ const HeroSection = () => {
         </div>
         <div className="mt-6 sm:mt-8">
           <a
-            href="#contact"
+            href="#contact-form"
             className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-3 sm:py-4 pl-6 sm:pl-8 pr-3 sm:pr-4 rounded-full hover:opacity-90 transition-opacity"
           >
             <span>Book Strategy Call</span>

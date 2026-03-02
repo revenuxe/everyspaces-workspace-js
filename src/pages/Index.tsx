@@ -4,6 +4,7 @@ import StatsSection from "@/components/StatsSection";
 import ServicesSection from "@/components/ServicesSection";
 import GoalsSection from "@/components/GoalsSection";
 import TestimonialSection from "@/components/TestimonialSection";
+import ContactForm from "@/components/ContactForm";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -25,6 +26,9 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <TestimonialSection />
+      </AnimatedSection>
+      <AnimatedSection delay={0.1}>
+        <ContactForm />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <FooterSection />
