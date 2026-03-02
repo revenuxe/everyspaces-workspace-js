@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { serviceSlugMap } from "@/data/serviceDetails";
 import serviceConsulting from "@/assets/service-consulting.png";
 import serviceSearch from "@/assets/service-search.png";
 import serviceInterior from "@/assets/service-interior.png";
@@ -80,13 +82,13 @@ const ServicesSection = () => {
                 <h3 className="text-lg sm:text-xl font-bold font-sans mb-2">{service.title}</h3>
                 <p className="text-sm opacity-70 leading-relaxed mb-4 sm:mb-5">{service.desc}</p>
                 {service.variant === "orange" ? (
-                  <button className="text-sm font-medium border border-accent-foreground rounded-full px-5 py-2 hover:bg-accent-foreground hover:text-accent transition-colors">
+                  <Link to={`/service/${serviceSlugMap[service.title]}`} className="text-sm font-medium border border-accent-foreground rounded-full px-5 py-2 hover:bg-accent-foreground hover:text-accent transition-colors inline-block">
                     Learn More
-                  </button>
+                  </Link>
                 ) : (
-                  <button className="text-sm font-medium border border-current rounded-full px-5 py-2 hover:bg-foreground hover:text-primary-foreground transition-colors">
+                  <Link to={`/service/${serviceSlugMap[service.title]}`} className="text-sm font-medium border border-current rounded-full px-5 py-2 hover:bg-foreground hover:text-primary-foreground transition-colors inline-block">
                     Learn More
-                  </button>
+                  </Link>
                 )}
               </div>
             </div>
