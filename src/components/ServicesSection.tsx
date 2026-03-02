@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, CheckCircle2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
@@ -57,12 +57,31 @@ const variantClasses = {
 const ServicesSection = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
+  const sectionRef = useRef<HTMLElement>(null);
+
   const handleToggle = (i: number) => {
     setExpandedIndex(expandedIndex === i ? null : i);
   };
 
+  // Auto-collapse when scrolling away from the section
+  useEffect(() => {
+    if (expandedIndex === null) return;
+
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      // Collapse if section is mostly out of view
+      if (rect.bottom < 100 || rect.top > window.innerHeight - 100) {
+        setExpandedIndex(null);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [expandedIndex]);
+
   return (
-    <section id="service" className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
+    <section id="service" ref={sectionRef} className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start justify-between mb-8 md:mb-12 gap-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif max-w-xl">
