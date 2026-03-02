@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { ArrowUpRight, CheckCircle2, X } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, X, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
 import serviceConsulting from "@/assets/service-consulting.png";
@@ -105,7 +105,8 @@ const ServicesSection = () => {
                           : "border-current hover:bg-foreground hover:text-primary-foreground"
                       }`}
                     >
-                      {isExpanded ? "Close" : "Learn More"}
+                      <Plus size={16} className={`transition-transform duration-300 ${isExpanded ? "rotate-45" : ""}`} />
+                      {isExpanded ? "Close" : "Expand"}
                     </button>
                   </div>
                 </motion.div>
