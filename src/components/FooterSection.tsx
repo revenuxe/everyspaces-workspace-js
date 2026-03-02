@@ -1,6 +1,7 @@
+import { Linkedin, Instagram } from "lucide-react";
+
 const footerLinks = {
   "About Us": ["Our Story", "Mission & Vision", "Our Values", "Leadership Team"],
-  Career: ["Job Opportunities", "Internship Programs", "Employee Benefits", "Join Our Team"],
   Blog: ["Latest Articles", "Market Trends", "Workspace Tips", "Community Stories"],
 };
 
@@ -51,14 +52,12 @@ const FooterSection = () => {
             </p>
             <p className="text-xs text-muted-foreground mb-2">Visit us on:</p>
             <div className="flex gap-3">
-              {["X", "IG", "TH", "TK"].map((s) => (
-                <div
-                  key={s}
-                  className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center text-xs font-bold hover:bg-foreground hover:text-primary-foreground transition-colors cursor-pointer"
-                >
-                  {s}
-                </div>
-              ))}
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors">
+                <Linkedin size={16} />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors">
+                <Instagram size={16} />
+              </a>
             </div>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
