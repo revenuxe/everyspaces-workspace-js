@@ -3,7 +3,7 @@ import { Target, TrendingUp, Shield } from "lucide-react";
 const goals = [
   {
     icon: Target,
-    title: "Reduce Real Estate Costs by Up to 40%",
+    title: "Stop Wasting Weeks Searching — Find Your Ideal Office in 48 Hours",
     color: "text-lime",
   },
   {
