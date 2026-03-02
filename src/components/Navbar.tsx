@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 
 const navLinks = ["Home", "Service", "Insight", "Goals", "Spaces", "Pricing", "Testimonial"];
@@ -10,9 +11,9 @@ const Navbar = () => {
   return (
     <header className="w-full bg-primary py-4 px-6 lg:px-12 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="EverySpaces logo" className="h-10 w-auto brightness-0 invert" />
-        </div>
+        </Link>
 
         <nav className="hidden lg:flex items-center bg-primary-foreground/10 backdrop-blur-sm rounded-full px-2 py-1 border border-primary-foreground/20">
           {navLinks.map((link, i) => (
