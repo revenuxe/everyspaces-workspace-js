@@ -2,7 +2,7 @@ const stats = [
   { number: "92%", label: "Client Retention Rate" },
   { number: "3.5x", label: "Avg. Productivity Boost" },
   { number: "40%", label: "Cost Savings Achieved" },
-  { number: "48hrs", label: "Avg. Turnaround Time" },
+  { number: "200+", label: "Spaces Delivered" },
 ];
 
 const StatsSection = () => {
