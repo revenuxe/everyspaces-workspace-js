@@ -3,7 +3,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 
-const navLinks = ["Home", "Service", "Insight", "Goals", "Spaces", "Pricing", "Testimonial"];
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About Us", href: "#service" },
+  { label: "Contact Us", href: "#contact-form" },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,15 +22,15 @@ const Navbar = () => {
         <nav className="hidden lg:flex items-center bg-primary-foreground/10 backdrop-blur-sm rounded-full px-2 py-1 border border-primary-foreground/20">
           {navLinks.map((link, i) => (
             <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
+              key={link.label}
+              href={link.href}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                 i === 0
                   ? "bg-primary-foreground text-primary"
                   : "text-primary-foreground/80 hover:text-primary-foreground"
               }`}
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </nav>
@@ -50,12 +54,12 @@ const Navbar = () => {
         <nav className="lg:hidden mt-4 flex flex-col gap-2 bg-primary rounded-xl p-4">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
+              key={link.label}
+              href={link.href}
               className="text-primary-foreground/80 hover:text-primary-foreground py-2 px-4 rounded-lg text-sm font-medium"
               onClick={() => setMobileOpen(false)}
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </nav>
