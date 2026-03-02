@@ -28,15 +28,15 @@ const TestimonialSection = () => {
                 </div>
               </div>
               <p className="text-foreground text-sm sm:text-base leading-relaxed mb-6">
-                "EverySpaces made my workspace search seamless. Their expert guidance and personalized approach helped me secure the perfect office space!"
+                "EverySpaces helped us find the ideal office in Koramangala within a week. Their local expertise in Bangalore's commercial market is unmatched — we couldn't have done it without them!"
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-foreground font-bold text-sm">
-                  MT
+                  RK
                 </div>
                 <div>
-                  <p className="font-bold text-sm text-foreground">Maria Torres</p>
-                  <p className="text-muted-foreground text-xs">Startup Founder</p>
+                  <p className="font-bold text-sm text-foreground">Rahul Krishnan</p>
+                  <p className="text-muted-foreground text-xs">CEO, TechNova Solutions · Bangalore</p>
                 </div>
               </div>
             </div>
