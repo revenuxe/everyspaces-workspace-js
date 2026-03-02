@@ -136,39 +136,46 @@ const ServicesSection = () => {
                           </button>
                         </div>
 
-                        {/* Steps */}
-                        <div className="space-y-0 mb-8">
-                          {detail.steps.map((step, si) => (
-                            <motion.div
-                              key={si}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.45, delay: 0.08 + si * 0.12 }}
-                              className="flex gap-3 sm:gap-4"
-                            >
-                              <div className="flex flex-col items-center">
-                                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs sm:text-sm font-serif shrink-0">
-                                  {step.number}
-                                </div>
-                                {si < detail.steps.length - 1 && (
-                                  <div className="w-[2px] flex-1 bg-border my-1.5" />
-                                )}
-                              </div>
-                              <div className="pb-6 sm:pb-8 pt-0.5">
-                                <h5 className="text-sm sm:text-base font-bold font-sans mb-1">{step.title}</h5>
-                                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                                  {step.description}
-                                </p>
-                              </div>
-                            </motion.div>
-                          ))}
+                        <div className="flex flex-col md:flex-row md:gap-8">
+                          {/* Steps */}
+                          <div className="flex-1 mb-8 md:mb-0">
+                            <div className="flex flex-col md:flex-row md:gap-4">
+                              {detail.steps.map((step, si) => (
+                                <motion.div
+                                  key={si}
+                                  initial={{ opacity: 0, y: 15 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.45, delay: 0.08 + si * 0.12 }}
+                                  className="flex gap-3 sm:gap-4 md:flex-col md:flex-1 md:text-center md:items-center"
+                                >
+                                  <div className="flex flex-col items-center md:flex-row md:w-full">
+                                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs sm:text-sm font-serif shrink-0">
+                                      {step.number}
+                                    </div>
+                                    {si < detail.steps.length - 1 && (
+                                      <>
+                                        <div className="w-[2px] flex-1 bg-border my-1.5 md:hidden" />
+                                        <div className="hidden md:block h-[2px] flex-1 bg-border mx-2" />
+                                      </>
+                                    )}
+                                  </div>
+                                  <div className="pb-6 sm:pb-8 md:pb-0 pt-0.5 md:pt-2">
+                                    <h5 className="text-sm sm:text-base font-bold font-sans mb-1">{step.title}</h5>
+                                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                                      {step.description}
+                                    </p>
+                                  </div>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
 
                         {/* Deliverables */}
-                        <div>
+                        <div className="mt-6">
                           <span className="text-accent font-semibold text-xs uppercase tracking-wider">What You Get</span>
                           <h4 className="text-lg sm:text-xl font-serif font-bold mt-1 mb-4">Key Deliverables</h4>
-                          <div className="grid grid-cols-1 gap-2.5">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                             {detail.deliverables.map((item, di) => (
                               <motion.div
                                 key={di}
@@ -187,7 +194,7 @@ const ServicesSection = () => {
                         {/* CTA */}
                         <a
                           href="#contact"
-                          className="mt-6 flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity"
+                          className="mt-6 flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity md:w-fit md:gap-4"
                         >
                           <span>Book Strategy Call</span>
                           <span className="w-8 h-8 rounded-full border-2 border-primary-foreground/30 flex items-center justify-center ml-3">
