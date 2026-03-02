@@ -1,6 +1,7 @@
-import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import { serviceSlugMap } from "@/data/serviceDetails";
+import { useState } from "react";
+import { ArrowUpRight, CheckCircle2, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
 import serviceConsulting from "@/assets/service-consulting.png";
 import serviceSearch from "@/assets/service-search.png";
 import serviceInterior from "@/assets/service-interior.png";
@@ -54,6 +55,12 @@ const variantClasses = {
 };
 
 const ServicesSection = () => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const handleToggle = (i: number) => {
+    setExpandedIndex(expandedIndex === i ? null : i);
+  };
+
   return (
     <section id="service" className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
@@ -70,29 +77,126 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-          {services.map((service, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]}`}
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
-                <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+          {services.map((service, i) => {
+            const slug = serviceSlugMap[service.title];
+            const detail = slug ? serviceDetails[slug] : null;
+            const isExpanded = expandedIndex === i;
+
+            return (
+              <div key={i} className="flex flex-col">
+                {/* Card */}
+                <div
+                  className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]} ${isExpanded ? "rounded-b-none" : ""}`}
+                >
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
+                    <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold font-sans mb-2">{service.title}</h3>
+                    <p className="text-sm opacity-70 leading-relaxed mb-4 sm:mb-5">{service.desc}</p>
+                    <button
+                      onClick={() => handleToggle(i)}
+                      className={`text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
+                        service.variant === "orange"
+                          ? "border-accent-foreground hover:bg-accent-foreground hover:text-accent"
+                          : "border-current hover:bg-foreground hover:text-primary-foreground"
+                      }`}
+                    >
+                      {isExpanded ? "Close" : "Learn More"}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Expandable How We Work */}
+                <AnimatePresence>
+                  {isExpanded && detail && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="bg-card border border-t-0 border-border rounded-b-2xl shadow-md p-5 sm:p-7">
+                        {/* Close button */}
+                        <div className="flex items-center justify-between mb-6">
+                          <div>
+                            <span className="text-accent font-semibold text-xs uppercase tracking-wider">Our Process</span>
+                            <h4 className="text-xl sm:text-2xl font-serif font-bold mt-1">How We Work</h4>
+                          </div>
+                          <button
+                            onClick={() => setExpandedIndex(null)}
+                            className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                          >
+                            <X size={16} />
+                          </button>
+                        </div>
+
+                        {/* Steps */}
+                        <div className="space-y-0 mb-8">
+                          {detail.steps.map((step, si) => (
+                            <motion.div
+                              key={si}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.3, delay: si * 0.1 }}
+                              className="flex gap-3 sm:gap-4"
+                            >
+                              <div className="flex flex-col items-center">
+                                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs sm:text-sm font-serif shrink-0">
+                                  {step.number}
+                                </div>
+                                {si < detail.steps.length - 1 && (
+                                  <div className="w-[2px] flex-1 bg-border my-1.5" />
+                                )}
+                              </div>
+                              <div className="pb-6 sm:pb-8 pt-0.5">
+                                <h5 className="text-sm sm:text-base font-bold font-sans mb-1">{step.title}</h5>
+                                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                                  {step.description}
+                                </p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        {/* Deliverables */}
+                        <div>
+                          <span className="text-accent font-semibold text-xs uppercase tracking-wider">What You Get</span>
+                          <h4 className="text-lg sm:text-xl font-serif font-bold mt-1 mb-4">Key Deliverables</h4>
+                          <div className="grid grid-cols-1 gap-2.5">
+                            {detail.deliverables.map((item, di) => (
+                              <motion.div
+                                key={di}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: 0.4 + di * 0.08 }}
+                                className="flex items-center gap-3 bg-muted rounded-xl p-3 sm:p-4"
+                              >
+                                <CheckCircle2 size={18} className="text-accent shrink-0" />
+                                <p className="text-foreground text-sm font-medium">{item}</p>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* CTA */}
+                        <a
+                          href="#contact"
+                          className="mt-6 flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity"
+                        >
+                          <span>Book Strategy Call</span>
+                          <span className="w-8 h-8 rounded-full border-2 border-primary-foreground/30 flex items-center justify-center ml-3">
+                            <ArrowUpRight size={14} />
+                          </span>
+                        </a>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold font-sans mb-2">{service.title}</h3>
-                <p className="text-sm opacity-70 leading-relaxed mb-4 sm:mb-5">{service.desc}</p>
-                {service.variant === "orange" ? (
-                  <Link to={`/service/${serviceSlugMap[service.title]}`} className="text-sm font-medium border border-accent-foreground rounded-full px-5 py-2 hover:bg-accent-foreground hover:text-accent transition-colors inline-block">
-                    Learn More
-                  </Link>
-                ) : (
-                  <Link to={`/service/${serviceSlugMap[service.title]}`} className="text-sm font-medium border border-current rounded-full px-5 py-2 hover:bg-foreground hover:text-primary-foreground transition-colors inline-block">
-                    Learn More
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
