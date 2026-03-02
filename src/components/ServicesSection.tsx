@@ -60,6 +60,8 @@ const ServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const expandTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const pendingIndexRef = useRef<number | null>(null);
 
   const clearExpandTimer = useCallback(() => {
     if (expandTimerRef.current) {
@@ -68,70 +70,81 @@ const ServicesSection = () => {
     }
   }, []);
 
-  // When a card becomes visible, highlight it first, then expand after a delay
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+  const getClosestCardIndex = useCallback(() => {
+    const triggerLine = window.innerHeight * 0.28;
+    let closestIndex: number | null = null;
+    let closestDistance = Number.POSITIVE_INFINITY;
 
     cardRefs.current.forEach((card, i) => {
       if (!card) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            // First: show which card we're on (visual highlight)
-            setVisibleIndex(i);
-            
-            // Clear any pending expand
-            clearExpandTimer();
+      const rect = card.getBoundingClientRect();
 
-            // Collapse previous card immediately
-            setExpandedIndex(null);
+      // Consider only cards currently in viewport
+      if (rect.bottom < 80 || rect.top > window.innerHeight - 80) return;
 
-            // After a short pause, expand this card
-            expandTimerRef.current = setTimeout(() => {
-              setExpandedIndex(i);
-              // Smooth scroll card into better view
-              if (card) {
-                card.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }, 600);
-          }
-        },
-        {
-          threshold: 0.5,
-          rootMargin: "-20% 0px -40% 0px",
-        }
-      );
-      observer.observe(card);
-      observers.push(observer);
+      const distance = Math.abs(rect.top - triggerLine);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = i;
+      }
     });
 
-    return () => {
-      observers.forEach((o) => o.disconnect());
-      clearExpandTimer();
-    };
-  }, [clearExpandTimer]);
+    return closestIndex;
+  }, []);
 
-  // Auto-collapse when scrolling away from the entire section
+  // Smooth auto-detect current card while scrolling
   useEffect(() => {
-    if (expandedIndex === null && visibleIndex === null) return;
-
-    const handleScroll = () => {
+    const updateFromScroll = () => {
       if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      if (rect.bottom < 100 || rect.top > window.innerHeight - 100) {
-        setExpandedIndex(null);
+
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const isSectionVisible = sectionRect.top < window.innerHeight - 80 && sectionRect.bottom > 100;
+
+      if (!isSectionVisible) {
         setVisibleIndex(null);
+        setExpandedIndex(null);
+        pendingIndexRef.current = null;
         clearExpandTimer();
+        return;
+      }
+
+      const nextIndex = getClosestCardIndex();
+      if (nextIndex === null) return;
+
+      setVisibleIndex(nextIndex);
+
+      // Only queue expansion when card target actually changes
+      if (pendingIndexRef.current !== nextIndex) {
+        pendingIndexRef.current = nextIndex;
+        clearExpandTimer();
+        expandTimerRef.current = setTimeout(() => {
+          setExpandedIndex(nextIndex);
+        }, 320);
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [expandedIndex, visibleIndex, clearExpandTimer]);
+    const onScroll = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(updateFromScroll);
+    };
+
+    updateFromScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      clearExpandTimer();
+    };
+  }, [getClosestCardIndex, clearExpandTimer]);
 
   const handleToggle = (i: number) => {
     clearExpandTimer();
-    setExpandedIndex(expandedIndex === i ? null : i);
+    pendingIndexRef.current = i;
+    setVisibleIndex(i);
+    setExpandedIndex((prev) => (prev === i ? null : i));
   };
 
   return (
@@ -159,13 +172,14 @@ const ServicesSection = () => {
               <div key={i} ref={(el) => { cardRefs.current[i] = el; }} className="flex flex-col scroll-mt-24">
                 {/* Card */}
                 <motion.div
+                  layout
                   animate={{
-                    scale: visibleIndex === i ? 1.02 : 1,
+                    scale: visibleIndex === i ? 1.015 : 1,
                     boxShadow: visibleIndex === i
-                      ? "0 8px 30px -8px hsl(var(--primary) / 0.2)"
-                      : "0 1px 3px 0 rgb(0 0 0 / 0.1)",
+                      ? "0 12px 32px -14px hsl(var(--primary) / 0.28)"
+                      : "0 6px 16px -14px hsl(var(--foreground) / 0.25)",
                   }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]} ${isExpanded ? "rounded-b-none" : ""}`}
                 >
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
@@ -188,13 +202,13 @@ const ServicesSection = () => {
                 </motion.div>
 
                 {/* Expandable How We Work */}
-                <AnimatePresence>
+                <AnimatePresence mode="wait" initial={false}>
                   {isExpanded && detail && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                      transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
                       <div className="bg-card border border-t-0 border-border rounded-b-2xl shadow-md p-5 sm:p-7">
@@ -219,7 +233,7 @@ const ServicesSection = () => {
                               key={si}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.3, delay: si * 0.1 }}
+                              transition={{ duration: 0.45, delay: 0.08 + si * 0.12 }}
                               className="flex gap-3 sm:gap-4"
                             >
                               <div className="flex flex-col items-center">
@@ -250,7 +264,7 @@ const ServicesSection = () => {
                                 key={di}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: 0.4 + di * 0.08 }}
+                                transition={{ duration: 0.4, delay: 0.5 + di * 0.1 }}
                                 className="flex items-center gap-3 bg-muted rounded-xl p-3 sm:p-4"
                               >
                                 <CheckCircle2 size={18} className="text-accent shrink-0" />
