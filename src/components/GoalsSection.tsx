@@ -3,7 +3,7 @@ import { Target, TrendingUp, Shield } from "lucide-react";
 const goals = [
   {
     icon: Target,
-    title: "Stop Wasting Weeks Searching — Find Your Ideal Office in 48 Hours",
+    title: "Stop Wasting Weeks Searching — Find Your Ideal Office in Minutes",
     color: "text-lime",
   },
   {
