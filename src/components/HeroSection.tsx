@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import heroImg from "@/assets/hero-workspace.png";
+import heroImg from "@/assets/hero-workspace.png?format=webp";
 
 const HeroSection = () => {
   return (
