@@ -2,12 +2,12 @@ import { useState } from "react";
 import { ArrowUpRight, CheckCircle2, X, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
-import serviceConsulting from "@/assets/service-consulting.png";
-import serviceSearch from "@/assets/service-search.png";
-import serviceInterior from "@/assets/service-interior.png";
-import serviceResearch from "@/assets/service-research.png";
-import serviceManagement from "@/assets/service-management.png";
-import serviceStrategy from "@/assets/service-strategy.png";
+import serviceConsulting from "@/assets/service-consulting.png?format=webp";
+import serviceSearch from "@/assets/service-search.png?format=webp";
+import serviceInterior from "@/assets/service-interior.png?format=webp";
+import serviceResearch from "@/assets/service-research.png?format=webp";
+import serviceManagement from "@/assets/service-management.png?format=webp";
+import serviceStrategy from "@/assets/service-strategy.png?format=webp";
 
 const services = [
   {
