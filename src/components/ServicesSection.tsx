@@ -56,21 +56,40 @@ const variantClasses = {
 
 const ServicesSection = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
   const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const handleToggle = (i: number) => {
-    setExpandedIndex(expandedIndex === i ? null : i);
-  };
+  // Auto-expand card when it's centered in viewport, auto-collapse when leaving
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
 
-  // Auto-collapse when scrolling away from the section
+    cardRefs.current.forEach((card, i) => {
+      if (!card) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setExpandedIndex(i);
+          }
+        },
+        {
+          threshold: 0.6,
+          rootMargin: "-10% 0px -30% 0px",
+        }
+      );
+      observer.observe(card);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  // Auto-collapse when scrolling away from the entire section
   useEffect(() => {
     if (expandedIndex === null) return;
 
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
-      // Collapse if section is mostly out of view
       if (rect.bottom < 100 || rect.top > window.innerHeight - 100) {
         setExpandedIndex(null);
       }
@@ -79,6 +98,10 @@ const ServicesSection = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [expandedIndex]);
+
+  const handleToggle = (i: number) => {
+    setExpandedIndex(expandedIndex === i ? null : i);
+  };
 
   return (
     <section id="service" ref={sectionRef} className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
@@ -102,7 +125,7 @@ const ServicesSection = () => {
             const isExpanded = expandedIndex === i;
 
             return (
-              <div key={i} className="flex flex-col">
+              <div key={i} ref={(el) => { cardRefs.current[i] = el; }} className="flex flex-col">
                 {/* Card */}
                 <div
                   className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]} ${isExpanded ? "rounded-b-none" : ""}`}
