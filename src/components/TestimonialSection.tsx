@@ -36,7 +36,7 @@ const TestimonialSection = () => {
                 </div>
                 <div>
                   <p className="font-bold text-sm text-foreground">Rahul Krishnan</p>
-                  <p className="text-muted-foreground text-xs">CEO, TechNova Solutions · Bangalore</p>
+                  <p className="text-muted-foreground text-xs">Bangalore</p>
                 </div>
               </div>
             </div>
