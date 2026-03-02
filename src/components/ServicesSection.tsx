@@ -99,7 +99,7 @@ const ServicesSection = () => {
                     <p className="text-sm opacity-70 leading-relaxed mb-4 sm:mb-5">{service.desc}</p>
                     <button
                       onClick={() => handleToggle(i)}
-                      className={`text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
+                      className={`flex items-center gap-1.5 text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
                         service.variant === "orange"
                           ? "border-accent-foreground hover:bg-accent-foreground hover:text-accent"
                           : "border-current hover:bg-foreground hover:text-primary-foreground"
