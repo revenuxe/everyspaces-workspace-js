@@ -26,14 +26,17 @@ const FooterSection = () => {
               <h4 className="font-bold text-sm mb-1">Address</h4>
               <p className="text-sm text-muted-foreground">
                 EverySpaces HQ<br />
-                123 Business Avenue,<br />
-                Tech District,<br />
-                San Francisco, CA
+                HBR Layout,<br />
+                Bangalore, India
               </p>
             </div>
             <div>
+              <h4 className="font-bold text-sm mb-1">Phone</h4>
+              <p className="text-sm text-muted-foreground">+91 98862 85028</p>
+            </div>
+            <div>
               <h4 className="font-bold text-sm mb-1">Email</h4>
-              <p className="text-sm text-muted-foreground">contact@everyspaces.com</p>
+              <p className="text-sm text-muted-foreground">everyspaces.com@gmail.com</p>
             </div>
           </div>
         </div>
