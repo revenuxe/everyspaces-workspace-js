@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 import { ArrowUpRight, CheckCircle2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
@@ -56,94 +56,9 @@ const variantClasses = {
 
 const ServicesSection = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const [visibleIndex, setVisibleIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const expandTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const rafRef = useRef<number | null>(null);
-  const pendingIndexRef = useRef<number | null>(null);
-
-  const clearExpandTimer = useCallback(() => {
-    if (expandTimerRef.current) {
-      clearTimeout(expandTimerRef.current);
-      expandTimerRef.current = null;
-    }
-  }, []);
-
-  const getClosestCardIndex = useCallback(() => {
-    const triggerLine = window.innerHeight * 0.28;
-    let closestIndex: number | null = null;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    cardRefs.current.forEach((card, i) => {
-      if (!card) return;
-      const rect = card.getBoundingClientRect();
-
-      // Consider only cards currently in viewport
-      if (rect.bottom < 80 || rect.top > window.innerHeight - 80) return;
-
-      const distance = Math.abs(rect.top - triggerLine);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = i;
-      }
-    });
-
-    return closestIndex;
-  }, []);
-
-  // Smooth auto-detect current card while scrolling
-  useEffect(() => {
-    const updateFromScroll = () => {
-      if (!sectionRef.current) return;
-
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const isSectionVisible = sectionRect.top < window.innerHeight - 80 && sectionRect.bottom > 100;
-
-      if (!isSectionVisible) {
-        setVisibleIndex(null);
-        setExpandedIndex(null);
-        pendingIndexRef.current = null;
-        clearExpandTimer();
-        return;
-      }
-
-      const nextIndex = getClosestCardIndex();
-      if (nextIndex === null) return;
-
-      setVisibleIndex(nextIndex);
-
-      // Only queue expansion when card target actually changes
-      if (pendingIndexRef.current !== nextIndex) {
-        pendingIndexRef.current = nextIndex;
-        clearExpandTimer();
-        expandTimerRef.current = setTimeout(() => {
-          setExpandedIndex(nextIndex);
-        }, 320);
-      }
-    };
-
-    const onScroll = () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(updateFromScroll);
-    };
-
-    updateFromScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      clearExpandTimer();
-    };
-  }, [getClosestCardIndex, clearExpandTimer]);
 
   const handleToggle = (i: number) => {
-    clearExpandTimer();
-    pendingIndexRef.current = i;
-    setVisibleIndex(i);
     setExpandedIndex((prev) => (prev === i ? null : i));
   };
 
@@ -169,17 +84,11 @@ const ServicesSection = () => {
             const isExpanded = expandedIndex === i;
 
             return (
-              <div key={i} ref={(el) => { cardRefs.current[i] = el; }} className="flex flex-col scroll-mt-24">
+              <div key={i} className="flex flex-col scroll-mt-24">
                 {/* Card */}
                 <motion.div
                   layout
-                  animate={{
-                    scale: visibleIndex === i ? 1.015 : 1,
-                    boxShadow: visibleIndex === i
-                      ? "0 12px 32px -14px hsl(var(--primary) / 0.28)"
-                      : "0 6px 16px -14px hsl(var(--foreground) / 0.25)",
-                  }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] ${variantClasses[service.variant]} ${isExpanded ? "rounded-b-none" : ""}`}
                 >
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
