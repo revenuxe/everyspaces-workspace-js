@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import heroImg from "@/assets/hero-workspace.png";
 
 const teamSizeOptions = ["1–5", "6–15", "16–30", "31–50", "50+"];
 const timelineOptions = [
@@ -13,7 +14,7 @@ const timelineOptions = [
 
 const ContactForm = () => {
   const [fullName, setFullName] = useState("");
-  const [workEmail, setWorkEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [teamSize, setTeamSize] = useState("");
   const [location, setLocation] = useState("");
@@ -22,13 +23,30 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log({ fullName, workEmail, phone, teamSize, location, business, timeline });
+    console.log({ fullName, email, phone, teamSize, location, business, timeline });
   };
 
+  const inputClass =
+    "w-full px-4 py-3.5 rounded-xl border border-white/20 bg-white/10 text-primary-foreground text-base placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 backdrop-blur-sm transition-all";
+
+  const labelClass = "block text-sm font-medium text-primary-foreground/90 mb-1.5";
+
   return (
-    <section id="contact-form" className="py-16 md:py-24 px-4 sm:px-6 lg:px-12 bg-background">
-      <div className="max-w-xl mx-auto">
+    <section
+      id="contact-form"
+      className="relative py-16 md:py-24 px-4 sm:px-6 lg:px-12 overflow-hidden"
+    >
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImg}
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/85" />
+      </div>
+
+      <div className="max-w-xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,167 +55,165 @@ const ContactForm = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 md:mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-snug mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-snug mb-4 text-primary-foreground">
             <span className="italic">Find</span> Your Ideal Workspace
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-md mx-auto">
+          <p className="text-primary-foreground/70 text-base sm:text-lg max-w-md mx-auto">
             Tell us your requirements — we'll curate the best office options for your team.
           </p>
         </motion.div>
 
-        {/* Form */}
-        <motion.form
-          onSubmit={handleSubmit}
+        {/* Glassmorphism Card */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="space-y-6"
+          className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl shadow-black/20"
         >
-          {/* Full Name */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Full Name
-            </label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="John Mathew"
-              required
-              className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-            />
-          </div>
-
-          {/* Work Email */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Work Email
-            </label>
-            <input
-              type="email"
-              value={workEmail}
-              onChange={(e) => setWorkEmail(e.target.value)}
-              placeholder="john@company.com"
-              required
-              className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-            />
-          </div>
-
-          {/* Phone Number */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Phone Number <span className="text-muted-foreground font-normal">(optional)</span>
-            </label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="+91 98765 43210"
-              className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-            />
-          </div>
-
-          {/* Team Size */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Team Size
-            </label>
-            <div className="relative">
-              <select
-                value={teamSize}
-                onChange={(e) => setTeamSize(e.target.value)}
-                required
-                className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
-              >
-                <option value="" disabled>Select team size</option>
-                {teamSizeOptions.map((opt) => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
-              </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" className="text-muted-foreground">
-                  <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          {/* Preferred Location */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Preferred Location
-            </label>
-            <div className="relative">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Full Name */}
+            <div>
+              <label className={labelClass}>Full Name</label>
               <input
                 type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="HSR Layout, Koramangala, Whitefield…"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="John Mathew"
                 required
-                className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all pr-10"
+                className={inputClass}
               />
-              {location && (
-                <button
-                  type="button"
-                  onClick={() => setLocation("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-primary flex items-center justify-center hover:bg-primary/80 transition-colors"
-                >
-                  <X size={12} className="text-primary-foreground" />
-                </button>
-              )}
             </div>
-          </div>
 
-          {/* Nature of Business */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Nature of Business
-            </label>
-            <input
-              type="text"
-              value={business}
-              onChange={(e) => setBusiness(e.target.value)}
-              placeholder="IT Consulting, Marketing Agency…"
-              className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-            />
-          </div>
-
-          {/* Planned Occupancy Timeline */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-foreground">
-              Planned Occupancy Timeline
-            </label>
-            <div className="relative">
-              <select
-                value={timeline}
-                onChange={(e) => setTimeline(e.target.value)}
+            {/* Email */}
+            <div>
+              <label className={labelClass}>Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="john@company.com"
                 required
-                className="w-full px-4 py-3.5 rounded-xl border border-input bg-card text-foreground text-base appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
-              >
-                <option value="" disabled>Select timeline</option>
-                {timelineOptions.map((opt) => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
-              </select>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" className="text-muted-foreground">
-                  <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                className={inputClass}
+              />
+            </div>
+
+            {/* Phone Number */}
+            <div>
+              <label className={labelClass}>
+                Phone Number{" "}
+                <span className="text-primary-foreground/50 font-normal">(optional)</span>
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+91 98765 43210"
+                className={inputClass}
+              />
+            </div>
+
+            {/* Team Size */}
+            <div>
+              <label className={labelClass}>Team Size</label>
+              <div className="relative">
+                <select
+                  value={teamSize}
+                  onChange={(e) => setTeamSize(e.target.value)}
+                  required
+                  className={`${inputClass} appearance-none cursor-pointer`}
+                >
+                  <option value="" disabled className="text-foreground bg-card">
+                    Select team size
+                  </option>
+                  {teamSizeOptions.map((opt) => (
+                    <option key={opt} value={opt} className="text-foreground bg-card">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" className="text-primary-foreground/50">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Submit Button */}
-          <div className="pt-4">
-            <button
-              type="submit"
-              className="w-full bg-accent text-accent-foreground font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform"
-            >
-              Start My Office Search
-            </button>
-          </div>
-        </motion.form>
+            {/* Preferred Location */}
+            <div>
+              <label className={labelClass}>Preferred Location</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="HSR Layout, Koramangala, Whitefield…"
+                  required
+                  className={`${inputClass} pr-10`}
+                />
+                {location && (
+                  <button
+                    type="button"
+                    onClick={() => setLocation("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/30 transition-colors backdrop-blur-sm"
+                  >
+                    <X size={12} className="text-primary-foreground" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Nature of Business */}
+            <div>
+              <label className={labelClass}>Nature of Business</label>
+              <input
+                type="text"
+                value={business}
+                onChange={(e) => setBusiness(e.target.value)}
+                placeholder="IT Consulting, Marketing Agency…"
+                className={inputClass}
+              />
+            </div>
+
+            {/* Planned Occupancy Timeline */}
+            <div>
+              <label className={labelClass}>Planned Occupancy Timeline</label>
+              <div className="relative">
+                <select
+                  value={timeline}
+                  onChange={(e) => setTimeline(e.target.value)}
+                  required
+                  className={`${inputClass} appearance-none cursor-pointer`}
+                >
+                  <option value="" disabled className="text-foreground bg-card">
+                    Select timeline
+                  </option>
+                  {timelineOptions.map((opt) => (
+                    <option key={opt} value={opt} className="text-foreground bg-card">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" className="text-primary-foreground/50">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="pt-3">
+              <button
+                type="submit"
+                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10"
+              >
+                Start My Office Search
+              </button>
+            </div>
+          </form>
+        </motion.div>
       </div>
     </section>
   );
