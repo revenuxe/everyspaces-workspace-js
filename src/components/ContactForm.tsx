@@ -124,15 +124,13 @@ const ContactForm = () => {
 
             {/* Phone Number */}
             <div>
-              <label className={labelClass}>
-                Phone Number{" "}
-                <span className="text-primary-foreground/50 font-normal">(optional)</span>
-              </label>
+              <label className={labelClass}>Phone Number</label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
+                required
                 className={inputClass}
               />
             </div>
