@@ -117,7 +117,7 @@ const ContactForm = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="john@company.com"
+                placeholder="rahul@company.com"
                 required
                 className={inputClass}
               />
