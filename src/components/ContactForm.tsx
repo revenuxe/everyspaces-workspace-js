@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import heroImg from "@/assets/hero-workspace.png?format=webp";
@@ -24,6 +25,7 @@ const ContactForm = () => {
   const [timeline, setTimeline] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,8 +48,7 @@ const ContactForm = () => {
       return;
     }
 
-    toast({ title: "Request submitted!", description: "We'll get back to you shortly." });
-    setFullName(""); setEmail(""); setPhone(""); setTeamSize(""); setLocation(""); setBusiness(""); setTimeline("");
+    navigate("/thank-you");
   };
 
   const inputClass =
@@ -232,7 +233,14 @@ const ContactForm = () => {
                 disabled={submitting}
                 className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60"
               >
-                {submitting ? "Submitting…" : "Start My Office Search"}
+                {submitting ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Finding your space…
+                  </span>
+                ) : (
+                  "Start My Office Search"
+                )}
               </button>
             </div>
           </form>
