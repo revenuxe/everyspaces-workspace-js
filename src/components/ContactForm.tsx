@@ -124,15 +124,13 @@ const ContactForm = () => {
 
             {/* Phone Number */}
             <div>
-              <label className={labelClass}>
-                Phone Number{" "}
-                <span className="text-primary-foreground/50 font-normal">(optional)</span>
-              </label>
+              <label className={labelClass}>Phone Number</label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
+                required
                 className={inputClass}
               />
             </div>
@@ -231,9 +229,10 @@ const ContactForm = () => {
             <div className="pt-3">
               <button
                 type="submit"
-                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10"
+                disabled={submitting}
+                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60"
               >
-                Start My Office Search
+                {submitting ? "Submitting…" : "Start My Office Search"}
               </button>
             </div>
           </form>
