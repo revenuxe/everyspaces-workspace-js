@@ -229,7 +229,7 @@ const ServicesSection = () => {
             <span className="font-bold">Expert</span> Workspace Solutions for Maximum Productivity
           </h2>
           <a
-            href="#contact"
+            href="/contact"
             className="hidden md:flex w-12 h-12 rounded-full border-2 border-foreground items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors shrink-0"
           >
             <ArrowUpRight size={20} />
