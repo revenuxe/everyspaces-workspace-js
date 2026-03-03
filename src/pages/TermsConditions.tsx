@@ -70,9 +70,30 @@ const TermsConditions = () => {
               Our Services may involve interactions with third-party workspace providers, property owners, or service vendors. EverySpaces is not a party to any agreement you enter into with third parties and is not responsible for their actions, services, or policies. Any links to third-party websites are provided for convenience only and do not constitute endorsement.
             </p>
 
-            <h2 className="text-xl sm:text-2xl font-serif mb-4">8. Payment & Fees</h2>
+            <h2 className="text-xl sm:text-2xl font-serif mb-4">8. Service Fees & Payment</h2>
+            <h3 className="text-lg font-serif mb-2">8.1 Our Fee Structure</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              EverySpaces charges a <strong>one-time brokerage fee equivalent to one (1) month's rent</strong> of the rented office space. This fee is payable upon successful completion of the workspace deal — i.e., when the lease or rental agreement is signed between the client and the property owner/provider.
+            </p>
+            <h3 className="text-lg font-serif mb-2">8.2 When Payment Is Due</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              The brokerage fee becomes due immediately upon signing of the lease/rental agreement. Payment must be completed within <strong>7 business days</strong> of the agreement date unless otherwise agreed in writing.
+            </p>
+            <h3 className="text-lg font-serif mb-2">8.3 Accepted Payment Methods</h3>
+            <ul className="list-disc pl-5 text-muted-foreground text-sm leading-relaxed mb-4 space-y-1">
+              <li><strong>Bank Transfer (NEFT/RTGS/IMPS):</strong> Direct transfer to EverySpaces' designated bank account</li>
+              <li><strong>UPI:</strong> Payment via Google Pay, PhonePe, Paytm, or any UPI-enabled app</li>
+              <li><strong>Cheque:</strong> Demand draft or account payee cheque in favour of EverySpaces</li>
+              <li><strong>Online Payment:</strong> Via payment link shared by EverySpaces (credit/debit card supported)</li>
+              <li><strong>Cash:</strong> Accepted in exceptional cases with a proper receipt issued by EverySpaces</li>
+            </ul>
+            <h3 className="text-lg font-serif mb-2">8.4 Invoicing & GST</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              A proper tax invoice including applicable GST will be issued for all service fees. Clients are responsible for any additional taxes or charges imposed by regulatory authorities.
+            </p>
+            <h3 className="text-lg font-serif mb-2">8.5 Refund Policy</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Certain services may involve fees, which will be communicated to you in advance. All fees are non-refundable unless otherwise stated in writing. EverySpaces reserves the right to modify pricing with reasonable notice. Payment terms and methods will be agreed upon before any paid engagement begins.
+              The brokerage fee is <strong>non-refundable</strong> once the lease/rental agreement has been signed. If a deal falls through before signing due to reasons attributable to EverySpaces, a full refund of any advance payment will be provided. EverySpaces reserves the right to modify its fee structure with reasonable prior notice for future engagements.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">9. Confidentiality</h2>
