@@ -42,7 +42,7 @@ const Navbar = () => {
         </nav>
 
         <a
-          href="#contact-form"
+          href="/contact"
           className="hidden lg:flex w-11 h-11 rounded-full bg-accent items-center justify-center text-accent-foreground hover:scale-105 transition-transform"
         >
           <ArrowUpRight size={20} />
