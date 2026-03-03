@@ -104,7 +104,7 @@ const ContactForm = () => {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                placeholder="John Mathew"
+                placeholder="Rahul Sharma"
                 required
                 className={inputClass}
               />
