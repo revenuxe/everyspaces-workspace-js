@@ -42,14 +42,32 @@ const ContactForm = () => {
     e.preventDefault();
     setSubmitting(true);
 
+    const result = leadSchema.safeParse({
+      full_name: fullName,
+      email: email,
+      phone: phone,
+      team_size: teamSize,
+      preferred_location: location,
+      nature_of_business: business,
+      planned_timeline: timeline,
+    });
+
+    if (!result.success) {
+      const firstError = result.error.errors[0]?.message || "Invalid input";
+      toast({ title: "Validation Error", description: firstError, variant: "destructive" });
+      setSubmitting(false);
+      return;
+    }
+
+    const validated = result.data;
     const { error } = await supabase.from("leads").insert({
-      full_name: fullName.trim(),
-      email: email.trim(),
-      phone: phone.trim() || null,
-      team_size: teamSize || null,
-      preferred_location: location.trim() || null,
-      nature_of_business: business.trim() || null,
-      planned_timeline: timeline || null,
+      full_name: validated.full_name,
+      email: validated.email,
+      phone: validated.phone || null,
+      team_size: validated.team_size || null,
+      preferred_location: validated.preferred_location || null,
+      nature_of_business: validated.nature_of_business || null,
+      planned_timeline: validated.planned_timeline || null,
     });
 
     setSubmitting(false);
