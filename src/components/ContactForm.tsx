@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import heroImg from "@/assets/hero-workspace.png?format=webp";
 
 const teamSizeOptions = ["1–5", "6–15", "16–30", "31–50", "50+"];
