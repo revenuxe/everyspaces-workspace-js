@@ -17,7 +17,7 @@ const SEOHead = ({
   ogType = "website",
   noIndex = false,
 }: SEOHeadProps) => {
-  const baseUrl = "https://design-curator-ai.lovable.app";
+  const baseUrl = "https://everyspaces.com";
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : undefined;
 
   return (

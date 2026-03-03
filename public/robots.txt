@@ -17,4 +17,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /thank-you
 
-Sitemap: https://design-curator-ai.lovable.app/sitemap.xml
+Sitemap: https://everyspaces.com/sitemap.xml
