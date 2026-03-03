@@ -233,7 +233,14 @@ const ContactForm = () => {
                 disabled={submitting}
                 className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60"
               >
-                {submitting ? "Submitting…" : "Start My Office Search"}
+                {submitting ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Finding your space…
+                  </span>
+                ) : (
+                  "Start My Office Search"
+                )}
               </button>
             </div>
           </form>
