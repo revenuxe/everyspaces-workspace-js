@@ -130,6 +130,7 @@ const ContactForm = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
+                required
                 className={inputClass}
               />
             </div>
