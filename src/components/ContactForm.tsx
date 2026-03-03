@@ -231,10 +231,9 @@ const ContactForm = () => {
             <div className="pt-3">
               <button
                 type="submit"
-                disabled={submitting}
-                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60"
+                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10"
               >
-                {submitting ? "Submitting…" : "Start My Office Search"}
+                Start My Office Search
               </button>
             </div>
           </form>
