@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
 
-interface SEOHeadProps {
+export interface SEOHeadProps {
   title: string;
   description: string;
   canonical?: string;
   keywords?: string;
   ogType?: string;
+  noIndex?: boolean;
 }
 
 const SEOHead = ({
