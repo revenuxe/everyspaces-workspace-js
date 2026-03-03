@@ -24,7 +24,7 @@ const FooterSection = () => {
               <span className="italic">Find</span> your perfect workspace today. Contact us for expert guidance!
             </h2>
             <a
-              href="#contact-form"
+              href="/contact"
               className="inline-block bg-accent text-accent-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:scale-105 transition-transform text-sm"
             >
               Get Started Now

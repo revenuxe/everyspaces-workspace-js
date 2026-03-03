@@ -193,7 +193,7 @@ const ExpandedPanel = ({
           </div>
 
           <a
-            href="#contact"
+            href="/contact"
             className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity md:w-fit md:gap-4 shrink-0"
           >
             <span>Book Strategy Call</span>
@@ -229,7 +229,7 @@ const ServicesSection = () => {
             <span className="font-bold">Expert</span> Workspace Solutions for Maximum Productivity
           </h2>
           <a
-            href="#contact"
+            href="/contact"
             className="hidden md:flex w-12 h-12 rounded-full border-2 border-foreground items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors shrink-0"
           >
             <ArrowUpRight size={20} />
