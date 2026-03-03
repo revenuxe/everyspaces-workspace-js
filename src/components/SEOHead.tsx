@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
 
-interface SEOHeadProps {
+export interface SEOHeadProps {
   title: string;
   description: string;
   canonical?: string;
   keywords?: string;
   ogType?: string;
+  noIndex?: boolean;
 }
 
 const SEOHead = ({
@@ -14,6 +15,7 @@ const SEOHead = ({
   canonical,
   keywords,
   ogType = "website",
+  noIndex = false,
 }: SEOHeadProps) => {
   const baseUrl = "https://design-curator-ai.lovable.app";
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : undefined;
@@ -23,6 +25,7 @@ const SEOHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
       {fullCanonical && <link rel="canonical" href={fullCanonical} />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import heroImg from "@/assets/hero-workspace.png?format=webp";
 
 const teamSizeOptions = ["1–5", "6–15", "16–30", "31–50", "50+"];
@@ -20,10 +22,32 @@ const ContactForm = () => {
   const [location, setLocation] = useState("");
   const [business, setBusiness] = useState("");
   const [timeline, setTimeline] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ fullName, email, phone, teamSize, location, business, timeline });
+    setSubmitting(true);
+
+    const { error } = await supabase.from("leads").insert({
+      full_name: fullName.trim(),
+      email: email.trim(),
+      phone: phone.trim() || null,
+      team_size: teamSize || null,
+      preferred_location: location.trim() || null,
+      nature_of_business: business.trim() || null,
+      planned_timeline: timeline || null,
+    });
+
+    setSubmitting(false);
+
+    if (error) {
+      toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
+      return;
+    }
+
+    toast({ title: "Request submitted!", description: "We'll get back to you shortly." });
+    setFullName(""); setEmail(""); setPhone(""); setTeamSize(""); setLocation(""); setBusiness(""); setTimeline("");
   };
 
   const inputClass =
@@ -207,9 +231,10 @@ const ContactForm = () => {
             <div className="pt-3">
               <button
                 type="submit"
-                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10"
+                disabled={submitting}
+                className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60"
               >
-                Start My Office Search
+                {submitting ? "Submitting…" : "Start My Office Search"}
               </button>
             </div>
           </form>
