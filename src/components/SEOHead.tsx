@@ -15,6 +15,7 @@ const SEOHead = ({
   canonical,
   keywords,
   ogType = "website",
+  noIndex = false,
 }: SEOHeadProps) => {
   const baseUrl = "https://design-curator-ai.lovable.app";
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : undefined;
