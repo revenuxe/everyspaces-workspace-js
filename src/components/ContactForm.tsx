@@ -48,8 +48,7 @@ const ContactForm = () => {
       return;
     }
 
-    toast({ title: "Request submitted!", description: "We'll get back to you shortly." });
-    setFullName(""); setEmail(""); setPhone(""); setTeamSize(""); setLocation(""); setBusiness(""); setTimeline("");
+    navigate("/thank-you");
   };
 
   const inputClass =
