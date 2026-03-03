@@ -1,12 +1,19 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEOHead from "@/components/SEOHead";
 
 const lastUpdated = "March 1, 2025";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Privacy Policy – EverySpaces | How We Protect Your Data"
+        description="Read EverySpaces' privacy policy to understand how we collect, use, and protect your personal information. Your data security is our priority."
+        canonical="/privacy-policy"
+        keywords="EverySpaces privacy policy, data protection, personal information security, workspace consulting privacy"
+      />
       <Navbar />
       <AnimatedSection>
         <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-12 bg-primary text-primary-foreground">

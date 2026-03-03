@@ -60,10 +60,10 @@ const FooterSection = () => {
             </p>
             <p className="text-xs text-muted-foreground mb-2">Visit us on:</p>
             <div className="flex gap-3">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors">
+              <a href="https://www.linkedin.com/company/everyspaces" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors">
                 <Linkedin size={16} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors">
+              <a href="https://www.instagram.com/every.spaces/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors">
                 <Instagram size={16} />
               </a>
             </div>

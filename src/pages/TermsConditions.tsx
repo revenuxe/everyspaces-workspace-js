@@ -1,12 +1,19 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEOHead from "@/components/SEOHead";
 
 const lastUpdated = "March 1, 2025";
 
 const TermsConditions = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Terms & Conditions – EverySpaces | Service Agreement & Policies"
+        description="Review EverySpaces' terms and conditions covering service fees, payment methods, liability, and workspace consulting policies. Transparent terms for all clients."
+        canonical="/terms-and-conditions"
+        keywords="EverySpaces terms and conditions, service agreement, office brokerage fees, workspace consulting terms, payment policy"
+      />
       <Navbar />
       <AnimatedSection>
         <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-12 bg-primary text-primary-foreground">
