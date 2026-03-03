@@ -6,7 +6,7 @@ import logo from "@/assets/logo.webp";
 const navLinks = [
   { label: "Home", href: "/", isRoute: true },
   { label: "About Us", href: "/about", isRoute: true },
-  { label: "Contact Us", href: "#contact-form", isRoute: false },
+  { label: "Contact Us", href: "/contact", isRoute: true },
 ];
 
 const Navbar = () => {
@@ -79,6 +79,14 @@ const Navbar = () => {
               </a>
             )
           )}
+          <Link
+            to="/contact"
+            className="flex items-center justify-center gap-2 bg-accent text-accent-foreground font-semibold py-3 px-6 rounded-full mt-2 hover:scale-105 transition-transform text-sm"
+            onClick={() => setMobileOpen(false)}
+          >
+            <span>Book Strategy Call</span>
+            <ArrowUpRight size={16} />
+          </Link>
         </nav>
       )}
     </header>
