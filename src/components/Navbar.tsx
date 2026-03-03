@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.webp";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#service" },
-  { label: "Contact Us", href: "#contact-form" },
+  { label: "Home", href: "/", isRoute: true },
+  { label: "About Us", href: "/about", isRoute: true },
+  { label: "Contact Us", href: "#contact-form", isRoute: false },
 ];
 
 const Navbar = () => {
@@ -20,19 +20,25 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden lg:flex items-center bg-primary-foreground/10 backdrop-blur-sm rounded-full px-2 py-1 border border-primary-foreground/20">
-          {navLinks.map((link, i) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-                i === 0
-                  ? "bg-primary-foreground text-primary"
-                  : "text-primary-foreground/80 hover:text-primary-foreground"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.isRoute ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="px-5 py-2 rounded-full text-sm font-medium transition-colors text-primary-foreground/80 hover:text-primary-foreground"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="px-5 py-2 rounded-full text-sm font-medium transition-colors text-primary-foreground/80 hover:text-primary-foreground"
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </nav>
 
         <a
@@ -52,16 +58,27 @@ const Navbar = () => {
 
       {mobileOpen && (
         <nav className="lg:hidden mt-4 flex flex-col gap-2 bg-primary rounded-xl p-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-primary-foreground/80 hover:text-primary-foreground py-2 px-4 rounded-lg text-sm font-medium"
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.isRoute ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="text-primary-foreground/80 hover:text-primary-foreground py-2 px-4 rounded-lg text-sm font-medium"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-primary-foreground/80 hover:text-primary-foreground py-2 px-4 rounded-lg text-sm font-medium"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </nav>
       )}
     </header>
