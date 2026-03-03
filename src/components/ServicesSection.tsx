@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { ArrowUpRight, CheckCircle2, X, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
@@ -208,12 +209,13 @@ const ExpandedPanel = ({
 
 const ServicesSection = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const isMobile = useIsMobile();
 
   const handleToggle = (i: number) => {
     setExpandedIndex((prev) => (prev === i ? null : i));
   };
 
-  // Group cards into rows of 3 (desktop), inserting expanded panel after the row containing the active card
+  // Group cards into rows of 3 for desktop
   const rows: number[][] = [];
   for (let i = 0; i < services.length; i += 3) {
     rows.push(services.slice(i, i + 3).map((_, j) => i + j));
@@ -234,33 +236,60 @@ const ServicesSection = () => {
           </a>
         </div>
 
-        <div className="space-y-4 md:space-y-5">
-          {rows.map((row, rowIdx) => (
-            <div key={rowIdx}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-                {row.map((i) => (
-                  <ServiceCard
-                    key={i}
-                    service={services[i]}
-                    index={i}
-                    isExpanded={expandedIndex === i}
-                    onToggle={() => handleToggle(i)}
-                  />
-                ))}
+        {isMobile ? (
+          /* Mobile: each card followed by its own expand panel */
+          <div className="space-y-4">
+            {services.map((service, i) => (
+              <div key={i}>
+                <ServiceCard
+                  service={service}
+                  index={i}
+                  isExpanded={expandedIndex === i}
+                  onToggle={() => handleToggle(i)}
+                />
+                <AnimatePresence mode="wait" initial={false}>
+                  {expandedIndex === i && (
+                    <div className="mt-4">
+                      <ExpandedPanel
+                        service={services[i]}
+                        onClose={() => setExpandedIndex(null)}
+                      />
+                    </div>
+                  )}
+                </AnimatePresence>
               </div>
-              <AnimatePresence mode="wait" initial={false}>
-                {expandedIndex !== null && row.includes(expandedIndex) && (
-                  <div className="mt-4 md:mt-5">
-                    <ExpandedPanel
-                      service={services[expandedIndex]}
-                      onClose={() => setExpandedIndex(null)}
+            ))}
+          </div>
+        ) : (
+          /* Desktop: cards in rows of 3, panel after the row */
+          <div className="space-y-5">
+            {rows.map((row, rowIdx) => (
+              <div key={rowIdx}>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                  {row.map((i) => (
+                    <ServiceCard
+                      key={i}
+                      service={services[i]}
+                      index={i}
+                      isExpanded={expandedIndex === i}
+                      onToggle={() => handleToggle(i)}
                     />
-                  </div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
+                  ))}
+                </div>
+                <AnimatePresence mode="wait" initial={false}>
+                  {expandedIndex !== null && row.includes(expandedIndex) && (
+                    <div className="mt-5">
+                      <ExpandedPanel
+                        service={services[expandedIndex]}
+                        onClose={() => setExpandedIndex(null)}
+                      />
+                    </div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
