@@ -111,7 +111,7 @@ const AdminLogin = () => {
               </div>
 
               {error && (
-                <p className="text-red-300 text-xs text-center bg-red-500/10 rounded-lg py-2">
+                <p className="text-destructive-foreground text-xs text-center bg-destructive/20 rounded-lg py-2">
                   {error}
                 </p>
               )}

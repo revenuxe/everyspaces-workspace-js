@@ -25,6 +25,7 @@ const SEOHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
       {fullCanonical && <link rel="canonical" href={fullCanonical} />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
