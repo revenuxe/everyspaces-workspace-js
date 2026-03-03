@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEOHead from "@/components/SEOHead";
 import { Quote, Building2, Home, Wifi, Users, Heart, Rocket } from "lucide-react";
 
 const quotes = [
@@ -53,6 +54,12 @@ const homeSetupTips = [
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="About EverySpaces – Bangalore's Trusted Workspace Consulting Firm | Est. 2025"
+        description="Learn about EverySpaces, Bangalore's expert workspace consultants founded in 2025. We help startups & enterprises find coworking spaces, private offices & remote work solutions across Bangalore."
+        canonical="/about"
+        keywords="about EverySpaces, workspace consulting Bangalore, office space advisor, coworking consultant India, remote work solutions Bangalore, commercial real estate Bangalore, workspace strategy"
+      />
       <Navbar />
 
       {/* Hero */}
