@@ -12,6 +12,7 @@ import TermsConditions from "./pages/TermsConditions";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import ThankYou from "./pages/ThankYou";
 
 const queryClient = new QueryClient();
 
