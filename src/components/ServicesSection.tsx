@@ -193,7 +193,7 @@ const ExpandedPanel = ({
           </div>
 
           <a
-            href="#contact"
+            href="/contact"
             className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity md:w-fit md:gap-4 shrink-0"
           >
             <span>Book Strategy Call</span>
