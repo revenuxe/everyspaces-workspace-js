@@ -2,9 +2,20 @@ import { useState } from "react";
 import { X, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import heroImg from "@/assets/hero-workspace.png?format=webp";
+
+const leadSchema = z.object({
+  full_name: z.string().trim().min(1, "Name is required").max(200, "Name is too long"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email is too long"),
+  phone: z.string().trim().max(30, "Phone number is too long").optional().or(z.literal("")),
+  team_size: z.string().max(20).optional().or(z.literal("")),
+  preferred_location: z.string().trim().max(300, "Location is too long").optional().or(z.literal("")),
+  nature_of_business: z.string().trim().max(300, "Business description is too long").optional().or(z.literal("")),
+  planned_timeline: z.string().max(50).optional().or(z.literal("")),
+});
 
 const teamSizeOptions = ["1–5", "6–15", "16–30", "31–50", "50+"];
 const timelineOptions = [
