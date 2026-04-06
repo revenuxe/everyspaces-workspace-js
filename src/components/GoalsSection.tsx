@@ -3,7 +3,7 @@ import { Target, TrendingUp, Shield } from "lucide-react";
 const goals = [
   {
     icon: Target,
-    title: "Stop Wasting Weeks Searching — Find Your Ideal Office in Minutes",
+    title: "Stop Wasting Weeks Searching — Find Your Ideal Office in Bangalore or Hyderabad in Minutes",
     color: "text-lime",
   },
   {
@@ -23,7 +23,7 @@ const GoalsSection = () => {
     <section id="goals" className="py-12 md:py-20 px-4 sm:px-6 lg:px-12 bg-dark-green">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-primary-foreground mb-8 md:mb-12">
-          <span className="italic">Why</span> Businesses Choose Us
+          <span className="italic">Why</span> Businesses in Bangalore &amp; Hyderabad Choose Us
           <br />
           Results That Speak for Themselves
         </h2>

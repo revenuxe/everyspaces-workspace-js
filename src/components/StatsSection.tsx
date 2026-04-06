@@ -12,10 +12,10 @@ const StatsSection = () => {
         <div className="grid md:grid-cols-2 gap-6 md:gap-12 mb-10 md:mb-16">
           <div>
             <h3 className="text-lg sm:text-xl font-semibold font-sans mb-3">
-              Together, we make workspaces thrive with expert management strategies
+              Together, we make workspaces thrive across Bangalore &amp; Hyderabad
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              We unlock workspace potential with expert strategies, delivering exceptional results and ensuring client satisfaction in every project.
+              From Koramangala to HITEC City, we unlock workspace potential with expert strategies — delivering exceptional results for startups, enterprises, and growing teams across South India.
             </p>
           </div>
           <div>

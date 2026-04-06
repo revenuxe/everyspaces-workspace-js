@@ -7,6 +7,7 @@ import TestimonialSection from "@/components/TestimonialSection";
 import ContactForm from "@/components/ContactForm";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import AreasWeServe from "@/components/AreasWeServe";
 import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
@@ -33,6 +34,9 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <TestimonialSection />
+      </AnimatedSection>
+      <AnimatedSection delay={0.1}>
+        <AreasWeServe />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <ContactForm />
