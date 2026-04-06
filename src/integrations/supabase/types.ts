@@ -21,8 +21,12 @@ export type Database = {
           full_name: string
           id: string
           message: string | null
+          nature_of_business: string | null
           phone: string | null
+          planned_timeline: string | null
+          preferred_location: string | null
           service: string | null
+          team_size: string | null
         }
         Insert: {
           created_at?: string
@@ -30,8 +34,12 @@ export type Database = {
           full_name: string
           id?: string
           message?: string | null
+          nature_of_business?: string | null
           phone?: string | null
+          planned_timeline?: string | null
+          preferred_location?: string | null
           service?: string | null
+          team_size?: string | null
         }
         Update: {
           created_at?: string
@@ -39,8 +47,12 @@ export type Database = {
           full_name?: string
           id?: string
           message?: string | null
+          nature_of_business?: string | null
           phone?: string | null
+          planned_timeline?: string | null
+          preferred_location?: string | null
           service?: string | null
+          team_size?: string | null
         }
         Relationships: []
       }
