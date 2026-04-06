@@ -11,20 +11,58 @@ export interface Area {
   whyTitle: string;
   whyPoints: string[];
   popularFor: string[];
+  statsHeading: string;
+  servicesHeading: string;
+  goalsHeading: string;
+  testimonial: {
+    quote: string;
+    name: string;
+    initials: string;
+    location: string;
+  };
 }
 
+const makeArea = (
+  name: string,
+  slug: string,
+  city: string,
+  citySlug: string,
+  shortDesc: string,
+  overrides: Partial<Area>
+): Area => ({
+  name,
+  slug,
+  city,
+  citySlug,
+  shortDesc,
+  metaTitle: `Coworking & Office Space in ${name}, ${city} | EverySpaces`,
+  metaDescription: `Find affordable coworking spaces & office space for rent in ${name}, ${city}. Premium managed offices, hot desks & private cabins. EverySpaces workspace solutions.`,
+  heroHeading: `Office Space & Coworking in ${name}`,
+  heroSubheading: `Find the perfect coworking desk, private office, or managed workspace in ${name}, ${city}. EverySpaces helps startups, enterprises & growing teams find their ideal workspace.`,
+  whyTitle: `Why ${name} for Your Office?`,
+  whyPoints: [
+    `Prime location in ${city}'s business ecosystem`,
+    "Excellent connectivity via metro & road networks",
+    "Competitive rental rates with flexible lease terms",
+    `Growing community of startups & enterprises in ${name}`,
+  ],
+  popularFor: ["Tech Startups", "IT Companies", "Freelancers", "SMEs"],
+  statsHeading: `Trusted by teams across ${name}`,
+  servicesHeading: `Workspace Solutions in ${name}, ${city}`,
+  goalsHeading: `Why Teams in ${name} Choose EverySpaces`,
+  testimonial: {
+    quote: `EverySpaces helped us find the ideal office in ${name} within a week. Their local expertise in ${city}'s commercial market is unmatched!`,
+    name: "Happy Client",
+    initials: "HC",
+    location: name,
+  },
+  ...overrides,
+});
+
 const bangaloreAreas: Area[] = [
-  {
-    name: "Koramangala",
-    slug: "koramangala",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Startup hub with vibrant coworking culture",
-    metaTitle: "Coworking & Office Space in Koramangala, Bangalore | EverySpaces",
-    metaDescription: "Find affordable coworking spaces & office space for rent in Koramangala, Bangalore. Premium managed offices, hot desks & private cabins near Koramangala 4th Block, 5th Block & 8th Block.",
-    heroHeading: "Office Space & Coworking in Koramangala",
+  makeArea("Koramangala", "koramangala", "Bangalore", "bangalore", "Startup hub with vibrant coworking culture", {
+    metaDescription: "Find affordable coworking spaces & office space for rent in Koramangala, Bangalore. Premium managed offices near 4th Block, 5th Block & 8th Block.",
     heroSubheading: "Koramangala is Bangalore's startup capital — home to hundreds of tech companies, venture capital firms, and buzzing cafés. Find your ideal workspace in one of India's most dynamic business neighborhoods.",
-    whyTitle: "Why Koramangala for Your Office?",
     whyPoints: [
       "India's #1 startup neighborhood with 500+ funded startups",
       "Excellent connectivity via Outer Ring Road and upcoming metro",
@@ -32,18 +70,10 @@ const bangaloreAreas: Area[] = [
       "Proximity to HSR Layout, Indiranagar & BTM Layout talent pools",
     ],
     popularFor: ["Tech Startups", "VC & Angel Investors", "SaaS Companies", "Digital Agencies"],
-  },
-  {
-    name: "HSR Layout",
-    slug: "hsr-layout",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Affordable offices near Outer Ring Road",
-    metaTitle: "Office Space & Coworking in HSR Layout, Bangalore | EverySpaces",
-    metaDescription: "Discover coworking desks, managed offices & private office space for rent in HSR Layout, Bangalore. Affordable workspace solutions near Outer Ring Road tech corridor.",
-    heroHeading: "Coworking & Office Space in HSR Layout",
+    testimonial: { quote: "EverySpaces helped us find the ideal office in Koramangala within a week. Their local expertise in Bangalore's commercial market is unmatched — we couldn't have done it without them!", name: "Rahul Krishnan", initials: "RK", location: "Koramangala" },
+  }),
+  makeArea("HSR Layout", "hsr-layout", "Bangalore", "bangalore", "Affordable offices near Outer Ring Road", {
     heroSubheading: "HSR Layout offers the perfect blend of affordability and accessibility, sitting right next to the Outer Ring Road tech corridor. Ideal for startups and growing teams looking for value-driven workspaces.",
-    whyTitle: "Why HSR Layout for Your Office?",
     whyPoints: [
       "Strategic location along the Outer Ring Road IT corridor",
       "30–40% more affordable than Koramangala & Indiranagar",
@@ -51,37 +81,19 @@ const bangaloreAreas: Area[] = [
       "Growing ecosystem of freelancers, startups & SMEs",
     ],
     popularFor: ["Bootstrap Startups", "Freelancers", "SMEs", "Remote Teams"],
-  },
-  {
-    name: "Whitefield",
-    slug: "whitefield",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Major IT hub with enterprise-grade offices",
-    metaTitle: "Office Space & Coworking in Whitefield, Bangalore | EverySpaces",
-    metaDescription: "Premium coworking spaces & managed offices in Whitefield, Bangalore. Enterprise-grade office space near ITPL, Prestige Shantiniketan & Whitefield Main Road.",
-    heroHeading: "Office Space & Coworking in Whitefield",
-    heroSubheading: "Whitefield is Bangalore's largest IT hub, home to ITPL and major tech parks housing global enterprises. Find enterprise-grade offices and flexible coworking spaces in this thriving business district.",
-    whyTitle: "Why Whitefield for Your Office?",
+  }),
+  makeArea("Whitefield", "whitefield", "Bangalore", "bangalore", "Major IT hub with enterprise-grade offices", {
+    heroSubheading: "Whitefield is Bangalore's largest IT hub, home to ITPL and major tech parks housing global enterprises. Find enterprise-grade offices and flexible coworking spaces.",
     whyPoints: [
       "Home to ITPL and 200+ multinational companies",
-      "Purple Line metro connectivity (Whitefield station operational)",
+      "Purple Line metro connectivity (Whitefield station)",
       "Abundant Grade-A commercial office stock",
       "Excellent social infrastructure — malls, hospitals & schools",
     ],
     popularFor: ["IT Companies", "MNCs", "BPO/KPO", "Enterprise Teams"],
-  },
-  {
-    name: "Indiranagar",
-    slug: "indiranagar",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Premium locale with metro connectivity",
-    metaTitle: "Office Space & Coworking in Indiranagar, Bangalore | EverySpaces",
-    metaDescription: "Find premium coworking spaces & boutique offices in Indiranagar, Bangalore. Office space for rent on 100 Feet Road, 12th Main & CMH Road with metro access.",
-    heroHeading: "Office Space & Coworking in Indiranagar",
+  }),
+  makeArea("Indiranagar", "indiranagar", "Bangalore", "bangalore", "Premium locale with metro connectivity", {
     heroSubheading: "Indiranagar is Bangalore's most upscale commercial-residential neighborhood. With direct metro connectivity and a premium vibe, it's the top choice for brands, design studios, and consulting firms.",
-    whyTitle: "Why Indiranagar for Your Office?",
     whyPoints: [
       "Direct Purple Line metro connectivity (Indiranagar station)",
       "Premium brand presence — ideal for client-facing businesses",
@@ -89,18 +101,9 @@ const bangaloreAreas: Area[] = [
       "Close to MG Road, Koramangala & Domlur business districts",
     ],
     popularFor: ["Design Studios", "Consulting Firms", "Creative Agencies", "Premium Brands"],
-  },
-  {
-    name: "MG Road",
-    slug: "mg-road",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "CBD location with premium address",
-    metaTitle: "Office Space & Coworking on MG Road, Bangalore | EverySpaces",
-    metaDescription: "Premium office space & coworking on MG Road, Bangalore CBD. Prestigious business address with metro connectivity, ideal for corporates & consulting firms.",
-    heroHeading: "Office Space & Coworking on MG Road",
+  }),
+  makeArea("MG Road", "mg-road", "Bangalore", "bangalore", "CBD with prestigious business address", {
     heroSubheading: "MG Road is Bangalore's central business district — the city's most prestigious commercial address. Perfect for businesses that need a premium location with unmatched connectivity.",
-    whyTitle: "Why MG Road for Your Office?",
     whyPoints: [
       "Bangalore's most prestigious business address",
       "Dual metro line connectivity (Purple & Green lines)",
@@ -108,18 +111,9 @@ const bangaloreAreas: Area[] = [
       "Ideal for client meetings, corporate events & networking",
     ],
     popularFor: ["Corporate Offices", "Law Firms", "Financial Services", "Consulting"],
-  },
-  {
-    name: "Electronic City",
-    slug: "electronic-city",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "IT corridor with cost-effective spaces",
-    metaTitle: "Office Space & Coworking in Electronic City, Bangalore | EverySpaces",
-    metaDescription: "Affordable coworking & managed office space in Electronic City, Bangalore. Cost-effective workspaces near Infosys, Wipro & major IT parks on Hosur Road.",
-    heroHeading: "Office Space & Coworking in Electronic City",
+  }),
+  makeArea("Electronic City", "electronic-city", "Bangalore", "bangalore", "IT corridor with cost-effective spaces", {
     heroSubheading: "Electronic City is one of India's oldest and largest IT parks, home to Infosys, Wipro, and TCS campuses. Get cost-effective office solutions in this well-established tech corridor.",
-    whyTitle: "Why Electronic City for Your Office?",
     whyPoints: [
       "Home to Infosys, Wipro, TCS & 150+ tech companies",
       "Elevated expressway for quick access to central Bangalore",
@@ -127,18 +121,8 @@ const bangaloreAreas: Area[] = [
       "Dedicated bus rapid transit & upcoming metro extension",
     ],
     popularFor: ["IT Services", "GCCs", "Tech Startups", "BPO Centers"],
-  },
-  {
-    name: "Marathahalli",
-    slug: "marathahalli",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "ORR hub connecting key IT corridors",
-    metaTitle: "Office Space & Coworking in Marathahalli, Bangalore | EverySpaces",
-    metaDescription: "Find coworking spaces & office space for rent in Marathahalli, Bangalore. Strategic ORR location between Whitefield & Koramangala with flexible workspace options.",
-    heroHeading: "Office Space & Coworking in Marathahalli",
-    heroSubheading: "Marathahalli sits at the heart of Bangalore's Outer Ring Road, connecting Whitefield to Koramangala. Its central location makes it a popular choice for mid-size companies and growing teams.",
-    whyTitle: "Why Marathahalli for Your Office?",
+  }),
+  makeArea("Marathahalli", "marathahalli", "Bangalore", "bangalore", "ORR hub connecting key IT corridors", {
     whyPoints: [
       "Central ORR location connecting major IT hubs",
       "Competitive rental rates compared to Whitefield & Koramangala",
@@ -146,18 +130,8 @@ const bangaloreAreas: Area[] = [
       "Easy access to Varthur, Bellandur & Sarjapur tech clusters",
     ],
     popularFor: ["Mid-size IT Firms", "Staffing Companies", "EdTech", "E-commerce"],
-  },
-  {
-    name: "JP Nagar",
-    slug: "jp-nagar",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Well-connected South Bangalore locale",
-    metaTitle: "Office Space & Coworking in JP Nagar, Bangalore | EverySpaces",
-    metaDescription: "Affordable coworking & office space in JP Nagar, Bangalore. Well-connected South Bangalore location with flexible desk solutions for startups & small businesses.",
-    heroHeading: "Office Space & Coworking in JP Nagar",
-    heroSubheading: "JP Nagar is a well-established South Bangalore neighborhood with excellent road connectivity and a growing commercial ecosystem. Ideal for businesses seeking a quieter, well-connected locale.",
-    whyTitle: "Why JP Nagar for Your Office?",
+  }),
+  makeArea("JP Nagar", "jp-nagar", "Bangalore", "bangalore", "Well-connected South Bangalore locale", {
     whyPoints: [
       "Well-established residential area with excellent amenities",
       "Connected to Bannerghatta Road & Outer Ring Road",
@@ -165,18 +139,8 @@ const bangaloreAreas: Area[] = [
       "Growing demand from healthcare, education & services sectors",
     ],
     popularFor: ["Healthcare Firms", "Education Companies", "Professional Services", "SMEs"],
-  },
-  {
-    name: "Bannerghatta Road",
-    slug: "bannerghatta-road",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Emerging tech corridor in South Bangalore",
-    metaTitle: "Office Space & Coworking on Bannerghatta Road, Bangalore | EverySpaces",
-    metaDescription: "Discover coworking spaces & managed offices on Bannerghatta Road, Bangalore. Emerging South Bangalore tech corridor with affordable office solutions.",
-    heroHeading: "Office Space & Coworking on Bannerghatta Road",
-    heroSubheading: "Bannerghatta Road is South Bangalore's emerging commercial corridor, with new-age office spaces and tech parks transforming the landscape. Great value for growing businesses.",
-    whyTitle: "Why Bannerghatta Road for Your Office?",
+  }),
+  makeArea("Bannerghatta Road", "bannerghatta-road", "Bangalore", "bangalore", "Emerging tech corridor in South Bangalore", {
     whyPoints: [
       "Rapidly developing commercial corridor with modern office stock",
       "Proximity to JP Nagar, BTM Layout & Jayanagar talent base",
@@ -184,18 +148,8 @@ const bangaloreAreas: Area[] = [
       "Improved connectivity with road widening projects underway",
     ],
     popularFor: ["SaaS Startups", "Fintech", "Consulting Firms", "Research Labs"],
-  },
-  {
-    name: "BTM Layout",
-    slug: "btm-layout",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Budget-friendly hub for small teams",
-    metaTitle: "Office Space & Coworking in BTM Layout, Bangalore | EverySpaces",
-    metaDescription: "Affordable coworking desks & small office spaces in BTM Layout, Bangalore. Budget-friendly workspace solutions perfect for freelancers, startups & small teams.",
-    heroHeading: "Office Space & Coworking in BTM Layout",
-    heroSubheading: "BTM Layout is one of Bangalore's most affordable commercial neighborhoods, popular with bootstrapped startups and freelancers. Get premium coworking at budget-friendly prices.",
-    whyTitle: "Why BTM Layout for Your Office?",
+  }),
+  makeArea("BTM Layout", "btm-layout", "Bangalore", "bangalore", "Budget-friendly hub for small teams", {
     whyPoints: [
       "Among the most affordable locations in central Bangalore",
       "Large freelancer & startup community for networking",
@@ -203,18 +157,8 @@ const bangaloreAreas: Area[] = [
       "Abundant food options & co-living spaces for teams",
     ],
     popularFor: ["Freelancers", "Solo Founders", "Small Teams", "Content Creators"],
-  },
-  {
-    name: "Hebbal",
-    slug: "hebbal",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "North Bangalore gateway with new developments",
-    metaTitle: "Office Space & Coworking in Hebbal, Bangalore | EverySpaces",
-    metaDescription: "Modern coworking & office space in Hebbal, Bangalore. North Bangalore's premium business destination near Manyata Tech Park & Kempegowda International Airport.",
-    heroHeading: "Office Space & Coworking in Hebbal",
-    heroSubheading: "Hebbal is North Bangalore's premium commercial hub, close to Manyata Tech Park and with quick airport access. Ideal for businesses with national and international travel needs.",
-    whyTitle: "Why Hebbal for Your Office?",
+  }),
+  makeArea("Hebbal", "hebbal", "Bangalore", "bangalore", "North Bangalore gateway near Manyata Tech Park", {
     whyPoints: [
       "Gateway to Kempegowda International Airport (25 min drive)",
       "Adjacent to Manyata Tech Park — Bangalore's largest business campus",
@@ -222,18 +166,8 @@ const bangaloreAreas: Area[] = [
       "Premium residential neighborhoods attracting top talent",
     ],
     popularFor: ["MNCs", "GCCs", "Travel & Logistics", "Biotech Firms"],
-  },
-  {
-    name: "HBR Layout",
-    slug: "hbr-layout",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "EverySpaces HQ — emerging coworking destination",
-    metaTitle: "Office Space & Coworking in HBR Layout, Bangalore | EverySpaces",
-    metaDescription: "Coworking & office space in HBR Layout, Bangalore. Affordable workspace solutions in North-East Bangalore, home to EverySpaces headquarters.",
-    heroHeading: "Office Space & Coworking in HBR Layout",
-    heroSubheading: "HBR Layout is a rapidly developing commercial area in North-East Bangalore and the home of EverySpaces HQ. Discover affordable yet modern workspaces in this well-connected neighborhood.",
-    whyTitle: "Why HBR Layout for Your Office?",
+  }),
+  makeArea("HBR Layout", "hbr-layout", "Bangalore", "bangalore", "EverySpaces HQ — emerging coworking destination", {
     whyPoints: [
       "Affordable rents with excellent value for money",
       "Good connectivity to Hebbal, Kalyan Nagar & Outer Ring Road",
@@ -241,18 +175,8 @@ const bangaloreAreas: Area[] = [
       "Residential neighborhood ensuring easy commute for teams",
     ],
     popularFor: ["Startups", "Small Businesses", "Freelancers", "Professional Services"],
-  },
-  {
-    name: "Rajajinagar",
-    slug: "rajajinagar",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "West Bangalore with metro connectivity",
-    metaTitle: "Office Space & Coworking in Rajajinagar, Bangalore | EverySpaces",
-    metaDescription: "Find coworking spaces & office space for rent in Rajajinagar, Bangalore. West Bangalore location with Green Line metro access & proximity to Malleshwaram.",
-    heroHeading: "Office Space & Coworking in Rajajinagar",
-    heroSubheading: "Rajajinagar is West Bangalore's established commercial district with excellent Green Line metro connectivity. A great option for businesses serving clients across the city.",
-    whyTitle: "Why Rajajinagar for Your Office?",
+  }),
+  makeArea("Rajajinagar", "rajajinagar", "Bangalore", "bangalore", "West Bangalore with metro connectivity", {
     whyPoints: [
       "Green Line metro connectivity (Rajajinagar station)",
       "Proximity to Malleshwaram, Yeshwanthpur & Peenya industrial area",
@@ -260,18 +184,8 @@ const bangaloreAreas: Area[] = [
       "Competitive rental rates for well-connected premium location",
     ],
     popularFor: ["Manufacturing HQs", "Trading Companies", "Legal Firms", "Retail Brands"],
-  },
-  {
-    name: "Yelahanka",
-    slug: "yelahanka",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Airport-adjacent with growing infrastructure",
-    metaTitle: "Office Space & Coworking in Yelahanka, Bangalore | EverySpaces",
-    metaDescription: "Affordable coworking & office space in Yelahanka, Bangalore. Airport-adjacent location with modern workspaces for businesses needing frequent air connectivity.",
-    heroHeading: "Office Space & Coworking in Yelahanka",
-    heroSubheading: "Yelahanka offers airport-adjacent office spaces at competitive prices. With rapid infrastructure development and growing commercial activity, it's North Bangalore's next big office destination.",
-    whyTitle: "Why Yelahanka for Your Office?",
+  }),
+  makeArea("Yelahanka", "yelahanka", "Bangalore", "bangalore", "Airport-adjacent with growing infrastructure", {
     whyPoints: [
       "Closest commercial area to Kempegowda International Airport",
       "Rapidly developing infrastructure with NH-44 connectivity",
@@ -279,18 +193,8 @@ const bangaloreAreas: Area[] = [
       "Growing aerospace & defense industry ecosystem",
     ],
     popularFor: ["Aerospace Companies", "Defense Contractors", "Logistics Firms", "Import-Export"],
-  },
-  {
-    name: "Jayanagar",
-    slug: "jayanagar",
-    city: "Bangalore",
-    citySlug: "bangalore",
-    shortDesc: "Heritage neighborhood with metro access",
-    metaTitle: "Office Space & Coworking in Jayanagar, Bangalore | EverySpaces",
-    metaDescription: "Premium coworking & office space in Jayanagar, Bangalore. Heritage South Bangalore neighborhood with Green Line metro access & established business community.",
-    heroHeading: "Office Space & Coworking in Jayanagar",
-    heroSubheading: "Jayanagar is one of Bangalore's most well-planned neighborhoods with excellent infrastructure, Green Line metro access, and a strong local business community. A trusted address for established firms.",
-    whyTitle: "Why Jayanagar for Your Office?",
+  }),
+  makeArea("Jayanagar", "jayanagar", "Bangalore", "bangalore", "Heritage neighborhood with metro access", {
     whyPoints: [
       "Green Line metro connectivity (Jayanagar station)",
       "One of Bangalore's most well-planned & prestigious localities",
@@ -298,21 +202,59 @@ const bangaloreAreas: Area[] = [
       "Excellent social amenities — shopping complexes, parks & hospitals",
     ],
     popularFor: ["CA & CS Firms", "Medical Practices", "Educational Institutes", "Retail HQs"],
-  },
+  }),
+  // Additional Bangalore areas
+  makeArea("Sarjapur Road", "sarjapur-road", "Bangalore", "bangalore", "Fast-growing IT corridor near ORR", {
+    whyPoints: [
+      "Rapidly developing IT corridor between ORR and Sarjapur",
+      "Home to major tech parks including Wipro's campus",
+      "New-age office spaces with modern amenities",
+      "Growing residential ecosystem attracting young professionals",
+    ],
+    popularFor: ["IT Companies", "Tech Startups", "Product Companies", "GCCs"],
+  }),
+  makeArea("Bellandur", "bellandur", "Bangalore", "bangalore", "Central ORR location near major tech parks", {
+    whyPoints: [
+      "Located on the Outer Ring Road IT corridor",
+      "Between Marathahalli & HSR Layout — central access",
+      "Home to several mid-rise commercial complexes",
+      "Large talent pool from surrounding residential areas",
+    ],
+    popularFor: ["IT Services", "SaaS Companies", "Mid-size Firms", "Consulting"],
+  }),
+  makeArea("Domlur", "domlur", "Bangalore", "bangalore", "Central Bangalore near MakeMyTrip & Flipkart offices", {
+    whyPoints: [
+      "Central location between Indiranagar & Koramangala",
+      "Home to major unicorn company offices",
+      "Excellent road connectivity via 100 Feet Road & HAL Road",
+      "Premium yet competitive rental rates",
+    ],
+    popularFor: ["Unicorn Startups", "Product Companies", "VC Firms", "Media Companies"],
+  }),
+  makeArea("Kalyan Nagar", "kalyan-nagar", "Bangalore", "bangalore", "North-East hub with vibrant community", {
+    whyPoints: [
+      "Well-connected to Hebbal, HBR Layout & Outer Ring Road",
+      "Growing commercial ecosystem with modern coworking spaces",
+      "Vibrant food and lifestyle scene for work-life balance",
+      "Affordable rents with good infrastructure",
+    ],
+    popularFor: ["Startups", "Freelancers", "Creative Agencies", "Tech Teams"],
+  }),
+  makeArea("Sadashivanagar", "sadashivanagar", "Bangalore", "bangalore", "Premium North Bangalore address", {
+    whyPoints: [
+      "One of Bangalore's most upscale neighborhoods",
+      "Close to Palace Grounds & CBD",
+      "Premium address for client-facing businesses",
+      "Quiet, tree-lined environment for focused work",
+    ],
+    popularFor: ["Consulting Firms", "Legal Offices", "Architecture Studios", "Wealth Management"],
+  }),
 ];
 
 const hyderabadAreas: Area[] = [
-  {
-    name: "HITEC City",
-    slug: "hitec-city",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Hyderabad's premier IT & business hub",
-    metaTitle: "Office Space & Coworking in HITEC City, Hyderabad | EverySpaces",
+  makeArea("HITEC City", "hitec-city", "Hyderabad", "hyderabad", "Hyderabad's premier IT & business hub", {
     metaDescription: "Premium coworking & office space in HITEC City, Hyderabad. India's top IT hub with enterprise-grade workspaces near Cyber Towers, Mindspace & Raheja IT Park.",
-    heroHeading: "Office Space & Coworking in HITEC City",
     heroSubheading: "HITEC City is Hyderabad's iconic IT corridor, home to Microsoft, Google, Amazon, and hundreds of tech companies. Find world-class office spaces in India's leading technology business district.",
-    whyTitle: "Why HITEC City for Your Office?",
     whyPoints: [
       "India's #1 IT hub — home to Microsoft, Google, Amazon & Facebook",
       "MMTS & Metro Rail connectivity (HITEC City station)",
@@ -320,18 +262,10 @@ const hyderabadAreas: Area[] = [
       "Proximity to Gachibowli, Madhapur & Kondapur tech clusters",
     ],
     popularFor: ["Global Tech Companies", "GCCs", "IT Services", "SaaS Startups"],
-  },
-  {
-    name: "Gachibowli",
-    slug: "gachibowli",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Financial district with world-class infrastructure",
-    metaTitle: "Office Space & Coworking in Gachibowli, Hyderabad | EverySpaces",
-    metaDescription: "Find premium coworking & managed office space in Gachibowli, Hyderabad. Financial district location near DLF Cyber City, ISB & University of Hyderabad campus.",
-    heroHeading: "Office Space & Coworking in Gachibowli",
-    heroSubheading: "Gachibowli is Hyderabad's financial district and tech powerhouse, home to DLF Cyber City and the ISB campus. Premium office spaces with world-class infrastructure await your business.",
-    whyTitle: "Why Gachibowli for Your Office?",
+    testimonial: { quote: "We found our dream office in HITEC City through EverySpaces in just 3 days. The team understood exactly what a growing SaaS company needs!", name: "Priya Reddy", initials: "PR", location: "HITEC City" },
+  }),
+  makeArea("Gachibowli", "gachibowli", "Hyderabad", "hyderabad", "Financial district with world-class infrastructure", {
+    heroSubheading: "Gachibowli is Hyderabad's financial district and tech powerhouse, home to DLF Cyber City and the ISB campus. Premium office spaces with world-class infrastructure.",
     whyPoints: [
       "Hyderabad's financial district with premium commercial spaces",
       "Home to DLF Cyber City, ISB & major pharma companies",
@@ -339,18 +273,9 @@ const hyderabadAreas: Area[] = [
       "Thriving ecosystem of fintech, pharma & deep tech companies",
     ],
     popularFor: ["Financial Services", "Pharma Companies", "Deep Tech", "Research Labs"],
-  },
-  {
-    name: "Madhapur",
-    slug: "madhapur",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Startup-friendly area near HITEC City",
-    metaTitle: "Office Space & Coworking in Madhapur, Hyderabad | EverySpaces",
-    metaDescription: "Affordable coworking & office space in Madhapur, Hyderabad. Startup-friendly workspaces near HITEC City, Cyber Towers & Durgam Cheruvu with flexible plans.",
-    heroHeading: "Office Space & Coworking in Madhapur",
+  }),
+  makeArea("Madhapur", "madhapur", "Hyderabad", "hyderabad", "Startup-friendly area near HITEC City", {
     heroSubheading: "Madhapur bridges HITEC City and the residential neighborhoods, offering startup-friendly coworking spaces at competitive prices. The go-to area for young companies and agile teams.",
-    whyTitle: "Why Madhapur for Your Office?",
     whyPoints: [
       "Adjacent to HITEC City with lower rental rates",
       "Vibrant startup ecosystem with networking opportunities",
@@ -358,18 +283,8 @@ const hyderabadAreas: Area[] = [
       "Metro connectivity and easy access to ORR",
     ],
     popularFor: ["Tech Startups", "Digital Agencies", "E-commerce", "Content Companies"],
-  },
-  {
-    name: "Jubilee Hills",
-    slug: "jubilee-hills",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Premium address for upscale businesses",
-    metaTitle: "Office Space & Coworking in Jubilee Hills, Hyderabad | EverySpaces",
-    metaDescription: "Premium office space & boutique coworking in Jubilee Hills, Hyderabad. Upscale business address for consulting firms, media houses & luxury brands.",
-    heroHeading: "Office Space & Coworking in Jubilee Hills",
-    heroSubheading: "Jubilee Hills is Hyderabad's most prestigious address — home to film studios, luxury brands, and high-net-worth businesses. Perfect for companies seeking an upscale, client-facing office.",
-    whyTitle: "Why Jubilee Hills for Your Office?",
+  }),
+  makeArea("Jubilee Hills", "jubilee-hills", "Hyderabad", "hyderabad", "Premium address for upscale businesses", {
     whyPoints: [
       "Hyderabad's most prestigious & upscale business address",
       "Home to media houses, film production & entertainment industry",
@@ -377,18 +292,8 @@ const hyderabadAreas: Area[] = [
       "Excellent connectivity to Banjara Hills, HITEC City & Secunderabad",
     ],
     popularFor: ["Media Houses", "Luxury Brands", "Consulting Firms", "Architecture Studios"],
-  },
-  {
-    name: "Banjara Hills",
-    slug: "banjara-hills",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Central upscale area with diverse businesses",
-    metaTitle: "Office Space & Coworking in Banjara Hills, Hyderabad | EverySpaces",
-    metaDescription: "Find boutique office space & coworking in Banjara Hills, Hyderabad. Central location with premium address for corporate offices, clinics & creative studios.",
-    heroHeading: "Office Space & Coworking in Banjara Hills",
-    heroSubheading: "Banjara Hills is Hyderabad's central upscale neighborhood, offering premium office spaces near Road No. 1–14. An ideal address for businesses that value prestige and accessibility.",
-    whyTitle: "Why Banjara Hills for Your Office?",
+  }),
+  makeArea("Banjara Hills", "banjara-hills", "Hyderabad", "hyderabad", "Central upscale area with diverse businesses", {
     whyPoints: [
       "Central location with proximity to all major areas",
       "Premium address enhancing brand perception",
@@ -396,18 +301,8 @@ const hyderabadAreas: Area[] = [
       "Iconic dining, shopping & cultural landmarks nearby",
     ],
     popularFor: ["Healthcare Clinics", "Legal Firms", "Creative Studios", "Corporate Offices"],
-  },
-  {
-    name: "Kondapur",
-    slug: "kondapur",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Affordable offices near IT corridor",
-    metaTitle: "Office Space & Coworking in Kondapur, Hyderabad | EverySpaces",
-    metaDescription: "Affordable coworking & office space in Kondapur, Hyderabad. Budget-friendly workspaces near HITEC City & Gachibowli with excellent metro connectivity.",
-    heroHeading: "Office Space & Coworking in Kondapur",
-    heroSubheading: "Kondapur offers the best of both worlds — proximity to HITEC City and Gachibowli at significantly lower rental rates. Smart choice for cost-conscious teams that need IT corridor access.",
-    whyTitle: "Why Kondapur for Your Office?",
+  }),
+  makeArea("Kondapur", "kondapur", "Hyderabad", "hyderabad", "Affordable offices near IT corridor", {
     whyPoints: [
       "30–40% more affordable than HITEC City & Gachibowli",
       "Excellent metro connectivity (Kondapur station)",
@@ -415,18 +310,8 @@ const hyderabadAreas: Area[] = [
       "Growing commercial infrastructure with modern office buildings",
     ],
     popularFor: ["IT Startups", "Staffing Firms", "EdTech", "SMEs"],
-  },
-  {
-    name: "Kukatpally",
-    slug: "kukatpally",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Budget-friendly with metro access",
-    metaTitle: "Office Space & Coworking in Kukatpally, Hyderabad | EverySpaces",
-    metaDescription: "Budget-friendly coworking & office space in Kukatpally, Hyderabad. Well-connected location with metro access, ideal for small businesses & growing teams.",
-    heroHeading: "Office Space & Coworking in Kukatpally",
-    heroSubheading: "Kukatpally is a well-established commercial and residential area with direct metro connectivity. An excellent budget-friendly option for businesses looking for accessible office spaces.",
-    whyTitle: "Why Kukatpally for Your Office?",
+  }),
+  makeArea("Kukatpally", "kukatpally", "Hyderabad", "hyderabad", "Budget-friendly with metro access", {
     whyPoints: [
       "Direct metro connectivity (KPHB Colony station)",
       "Affordable rental rates with good commercial infrastructure",
@@ -434,18 +319,8 @@ const hyderabadAreas: Area[] = [
       "Well-established residential area with all amenities",
     ],
     popularFor: ["Small Businesses", "Coaching Centers", "Retail Companies", "Freelancers"],
-  },
-  {
-    name: "Begumpet",
-    slug: "begumpet",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Central business area near old airport",
-    metaTitle: "Office Space & Coworking in Begumpet, Hyderabad | EverySpaces",
-    metaDescription: "Coworking & office space in Begumpet, Hyderabad. Central business area with excellent connectivity to Secunderabad, Ameerpet & Jubilee Hills.",
-    heroHeading: "Office Space & Coworking in Begumpet",
-    heroSubheading: "Begumpet is a centrally located commercial area with excellent road and rail connectivity. Its proximity to Secunderabad station and multiple business districts makes it a strategic office choice.",
-    whyTitle: "Why Begumpet for Your Office?",
+  }),
+  makeArea("Begumpet", "begumpet", "Hyderabad", "hyderabad", "Central business area near old airport", {
     whyPoints: [
       "Central location with connectivity to all parts of Hyderabad",
       "Proximity to Secunderabad Railway Station & Begumpet Airport Road",
@@ -453,18 +328,8 @@ const hyderabadAreas: Area[] = [
       "Competitive pricing for premium central location",
     ],
     popularFor: ["Government Contractors", "Trading Firms", "Event Companies", "PR Agencies"],
-  },
-  {
-    name: "Ameerpet",
-    slug: "ameerpet",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Major metro junction with training hub",
-    metaTitle: "Office Space & Coworking in Ameerpet, Hyderabad | EverySpaces",
-    metaDescription: "Affordable office space & coworking in Ameerpet, Hyderabad. Major metro interchange hub with budget-friendly workspaces for training institutes & small businesses.",
-    heroHeading: "Office Space & Coworking in Ameerpet",
-    heroSubheading: "Ameerpet is Hyderabad's major metro interchange and one of the city's busiest commercial areas. Known for its training institutes and small businesses, it offers high-footfall office spaces at affordable rates.",
-    whyTitle: "Why Ameerpet for Your Office?",
+  }),
+  makeArea("Ameerpet", "ameerpet", "Hyderabad", "hyderabad", "Major metro junction with training hub", {
     whyPoints: [
       "Major metro interchange — Blue & Red line junction",
       "Highest footfall area — excellent for training & coaching businesses",
@@ -472,18 +337,8 @@ const hyderabadAreas: Area[] = [
       "Proximity to SR Nagar, Punjagutta & Somajiguda business areas",
     ],
     popularFor: ["Training Institutes", "Coaching Centers", "Small Businesses", "IT Training"],
-  },
-  {
-    name: "Secunderabad",
-    slug: "secunderabad",
-    city: "Hyderabad",
-    citySlug: "hyderabad",
-    shortDesc: "Twin city with railway connectivity",
-    metaTitle: "Office Space & Coworking in Secunderabad, Hyderabad | EverySpaces",
-    metaDescription: "Office space & coworking in Secunderabad, Hyderabad. Twin city location with major railway station, ideal for businesses needing pan-India connectivity.",
-    heroHeading: "Office Space & Coworking in Secunderabad",
-    heroSubheading: "Secunderabad, Hyderabad's twin city, offers established commercial infrastructure and India's busiest railway junction. Ideal for businesses with pan-India operations and logistics needs.",
-    whyTitle: "Why Secunderabad for Your Office?",
+  }),
+  makeArea("Secunderabad", "secunderabad", "Hyderabad", "hyderabad", "Twin city with railway connectivity", {
     whyPoints: [
       "Home to Secunderabad Junction — one of India's busiest railway stations",
       "Established cantonment area with premium commercial spaces",
@@ -491,7 +346,53 @@ const hyderabadAreas: Area[] = [
       "Diverse business ecosystem — defense, logistics, retail & services",
     ],
     popularFor: ["Logistics Companies", "Defense Suppliers", "Retail Chains", "Service Companies"],
-  },
+  }),
+  // Additional Hyderabad areas
+  makeArea("Uppal", "uppal", "Hyderabad", "hyderabad", "Eastern Hyderabad with affordable workspaces", {
+    whyPoints: [
+      "Affordable commercial spaces on the eastern corridor",
+      "Metro connectivity (Uppal station — terminal)",
+      "Growing IT presence with Infosys & other tech companies",
+      "Well-connected to Secunderabad & LB Nagar via metro",
+    ],
+    popularFor: ["IT Companies", "Manufacturing", "Logistics", "SMEs"],
+  }),
+  makeArea("Miyapur", "miyapur", "Hyderabad", "hyderabad", "Western metro terminal with growing offices", {
+    whyPoints: [
+      "Metro terminal station — excellent connectivity",
+      "Affordable rents with modern commercial developments",
+      "Close proximity to HITEC City & financial district",
+      "Rapidly developing residential & commercial infrastructure",
+    ],
+    popularFor: ["Startups", "Small Businesses", "Freelancers", "Training Centers"],
+  }),
+  makeArea("Somajiguda", "somajiguda", "Hyderabad", "hyderabad", "Central Hyderabad with premium offices", {
+    whyPoints: [
+      "Central location near Raj Bhavan & Secretariat",
+      "Premium office buildings with corporate presence",
+      "Excellent connectivity to Ameerpet, Begumpet & Banjara Hills",
+      "Government & diplomatic area — ideal for consulting firms",
+    ],
+    popularFor: ["Corporate Offices", "Consulting Firms", "Legal Offices", "Government Relations"],
+  }),
+  makeArea("Manikonda", "manikonda", "Hyderabad", "hyderabad", "Affordable alternative near HITEC City", {
+    whyPoints: [
+      "Adjacent to HITEC City at 40–50% lower rental rates",
+      "Rapidly developing commercial infrastructure",
+      "Well-connected via ORR to all IT hubs",
+      "Growing residential population ensuring talent availability",
+    ],
+    popularFor: ["IT Startups", "BPO", "EdTech", "E-commerce"],
+  }),
+  makeArea("Nanakramguda", "nanakramguda", "Hyderabad", "hyderabad", "Financial district extension with new-age offices", {
+    whyPoints: [
+      "Extension of the Gachibowli financial district",
+      "Home to Telangana state government's new Secretariat",
+      "Premium Grade-A office spaces & tech parks",
+      "Excellent ORR connectivity to all western Hyderabad hubs",
+    ],
+    popularFor: ["GCCs", "Financial Services", "Government IT", "Large Enterprises"],
+  }),
 ];
 
 export const allAreas: Area[] = [...bangaloreAreas, ...hyderabadAreas];

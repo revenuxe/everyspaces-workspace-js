@@ -12,10 +12,10 @@ const StatsSection = () => {
         <div className="grid md:grid-cols-2 gap-6 md:gap-12 mb-10 md:mb-16">
           <div>
             <h3 className="text-lg sm:text-xl font-semibold font-sans mb-3">
-              Together, we make workspaces thrive across Bangalore &amp; Hyderabad
+              Helping teams find the best coworking space, managed office &amp; flexible workspace near you
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              From Koramangala to HITEC City, we unlock workspace potential with expert strategies — delivering exceptional results for startups, enterprises, and growing teams across South India.
+              Whether you need a private office for rent, shared desk, or a fully managed workspace — we match you with the right space in top business locations across India's leading tech cities.
             </p>
           </div>
           <div>
