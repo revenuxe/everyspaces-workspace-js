@@ -226,7 +226,7 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start justify-between mb-8 md:mb-12 gap-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif max-w-xl">
-            <span className="font-bold">Expert</span> Workspace Solutions Across Bangalore &amp; Hyderabad
+            <span className="font-bold">Expert</span> Office Space &amp; Coworking Solutions for Growing Teams
           </h2>
           <a
             href="/contact"
