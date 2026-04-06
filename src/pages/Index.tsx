@@ -7,6 +7,7 @@ import TestimonialSection from "@/components/TestimonialSection";
 import ContactForm from "@/components/ContactForm";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
+import AreasWeServe from "@/components/AreasWeServe";
 import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
@@ -14,9 +15,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="EverySpaces – Best Coworking & Office Space in Bangalore | Workspace Solutions"
-        description="Find affordable coworking spaces, private offices & managed workspaces in Bangalore. EverySpaces offers expert workspace consulting, office space for rent & flexible desk solutions for startups & enterprises."
+        description="Find affordable coworking spaces, private offices & managed workspaces in Bangalore & Hyderabad. EverySpaces offers expert workspace consulting, office space for rent & flexible desk solutions for startups & enterprises."
         canonical="/"
-        keywords="coworking space Bangalore, office space for rent Bangalore, managed office Bangalore, shared office space, flexible workspace Bangalore, commercial office space, workspace solutions, coworking near me, office on rent Bangalore, HBR Layout office"
+        keywords="coworking space Bangalore, office space for rent Bangalore, coworking space Hyderabad, managed office Hyderabad, shared office space, flexible workspace Bangalore, commercial office space, workspace solutions, coworking near me, office on rent Bangalore, HITEC City office, Koramangala coworking"
       />
       <Navbar />
       <AnimatedSection>
@@ -33,6 +34,9 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <TestimonialSection />
+      </AnimatedSection>
+      <AnimatedSection delay={0.1}>
+        <AreasWeServe />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <ContactForm />

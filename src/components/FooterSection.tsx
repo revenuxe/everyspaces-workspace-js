@@ -7,6 +7,18 @@ const footerLinks = {
     { label: "About Us", href: "/about", isRoute: true },
     { label: "Contact Us", href: "#contact-form", isRoute: false },
   ],
+  "Bangalore": [
+    { label: "Koramangala", href: "/office-space/bangalore/koramangala", isRoute: true },
+    { label: "HSR Layout", href: "/office-space/bangalore/hsr-layout", isRoute: true },
+    { label: "Whitefield", href: "/office-space/bangalore/whitefield", isRoute: true },
+    { label: "Indiranagar", href: "/office-space/bangalore/indiranagar", isRoute: true },
+  ],
+  "Hyderabad": [
+    { label: "HITEC City", href: "/office-space/hyderabad/hitec-city", isRoute: true },
+    { label: "Gachibowli", href: "/office-space/hyderabad/gachibowli", isRoute: true },
+    { label: "Madhapur", href: "/office-space/hyderabad/madhapur", isRoute: true },
+    { label: "Kondapur", href: "/office-space/hyderabad/kondapur", isRoute: true },
+  ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy-policy", isRoute: true },
     { label: "Terms & Conditions", href: "/terms-and-conditions", isRoute: true },
@@ -53,10 +65,10 @@ const FooterSection = () => {
 
       {/* Footer links */}
       <div className="border-t border-border py-8 md:py-12 px-4 sm:px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8">
           <div className="col-span-2">
             <p className="text-sm text-muted-foreground max-w-xs mb-6">
-              EverySpaces provides expert workspace services, offering tailored solutions and premium coworking experiences.
+              EverySpaces provides expert workspace consulting, coworking &amp; office space solutions in Bangalore and Hyderabad.
             </p>
             <p className="text-xs text-muted-foreground mb-2">Visit us on:</p>
             <div className="flex gap-3">
