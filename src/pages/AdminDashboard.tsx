@@ -185,7 +185,7 @@ const PropertiesTab = () => {
 };
 
 /* =================== Generic CRUD Tab =================== */
-const CrudTab = ({ table, label, fields }: { table: string; label: string; fields: string[] }) => {
+const CrudTab = ({ table, label, fields }: { table: "property_types" | "amenities" | "locations"; label: string; fields: string[] }) => {
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -203,9 +203,9 @@ const CrudTab = ({ table, label, fields }: { table: string; label: string; field
 
   const handleSave = async () => {
     if (editingId) {
-      await supabase.from(table).update(formData).eq("id", editingId);
+      await supabase.from(table).update(formData as any).eq("id", editingId);
     } else {
-      await supabase.from(table).insert(formData);
+      await supabase.from(table).insert(formData as any);
     }
     setShowForm(false);
     setEditingId(null);
