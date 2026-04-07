@@ -12,9 +12,14 @@ import TermsConditions from "./pages/TermsConditions";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminLeads from "./pages/AdminLeads";
+import AdminPropertyForm from "./pages/AdminPropertyForm";
 import ThankYou from "./pages/ThankYou";
 import AreaPage from "./pages/AreaPage";
 import AreasWeServePage from "./pages/AreasWeServePage";
+import CityLandingPage from "./pages/CityLandingPage";
+import ListingsPage from "./pages/ListingsPage";
+import PropertyDetailPage from "./pages/PropertyDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -41,9 +46,14 @@ const App = () => (
           <Route path="/terms-and-conditions" element={<TermsConditions />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/areas-we-serve" element={<AreasWeServePage />} />
+          <Route path="/listings" element={<ListingsPage />} />
+          <Route path="/listings/:slug" element={<PropertyDetailPage />} />
+          <Route path="/office-space/:citySlug" element={<CityLandingPage />} />
           <Route path="/office-space/:citySlug/:areaSlug" element={<AreaPage />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/leads" element={<AdminLeads />} />
+          <Route path="/admin/property/:propertyId" element={<AdminPropertyForm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
