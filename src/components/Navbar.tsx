@@ -5,6 +5,7 @@ import logo from "@/assets/logo.webp";
 
 const navLinks = [
   { label: "Home", href: "/", isRoute: true },
+  { label: "Listings", href: "/listings", isRoute: true },
   { label: "About Us", href: "/about", isRoute: true },
   { label: "Contact Us", href: "/contact", isRoute: true },
 ];
