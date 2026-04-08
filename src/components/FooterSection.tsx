@@ -1,7 +1,9 @@
 import { Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const footerLinks = {
+type FooterLink = { label?: string; href?: string; isRoute?: boolean; titleLink?: string };
+
+const footerLinks: Record<string, FooterLink[]> = {
   "Quick Links": [
     { label: "Home", href: "/", isRoute: true },
     { label: "About Us", href: "/about", isRoute: true },
@@ -82,26 +84,38 @@ const FooterSection = () => {
               </a>
             </div>
           </div>
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="font-bold text-sm mb-3 md:mb-4">{title}</h4>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    {link.isRoute ? (
-                      <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                        {link.label}
-                      </Link>
-                    ) : (
-                      <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                        {link.label}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {Object.entries(footerLinks).map(([title, links]) => {
+            const titleLinkItem = links.find((l) => l.titleLink);
+            const displayLinks = links.filter((l) => l.label);
+            return (
+              <div key={title}>
+                <h4 className="font-bold text-sm mb-3 md:mb-4">
+                  {titleLinkItem ? (
+                    <Link to={titleLinkItem.titleLink!} className="hover:text-accent transition-colors">
+                      {title}
+                    </Link>
+                  ) : (
+                    title
+                  )}
+                </h4>
+                <ul className="space-y-2">
+                  {displayLinks.map((link) => (
+                    <li key={link.label}>
+                      {link.isRoute ? (
+                        <Link to={link.href!} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
 
