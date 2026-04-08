@@ -34,7 +34,6 @@ const ListingsPage = () => {
   const [loading, setLoading] = useState(true);
   const [propertyTypes, setPropertyTypes] = useState<{ id: string; name: string }[]>([]);
   const [amenitiesList, setAmenitiesList] = useState<{ id: string; name: string }[]>([]);
-  const [locations, setLocations] = useState<{ id: string; city: string; area: string }[]>([]);
 
   // Search & Filter state
   const [searchLocation, setSearchLocation] = useState("");
@@ -49,7 +48,7 @@ const ListingsPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const [propRes, typesRes, amenRes, locRes] = await Promise.all([
+      const [propRes, typesRes, amenRes] = await Promise.all([
         supabase.from("properties").select(`
           id, name, slug, city, area, address, price, seating_capacity, 
           short_description, furnishing_type, featured_image, is_featured,
@@ -58,7 +57,6 @@ const ListingsPage = () => {
         `).eq("status", "active").order("is_featured", { ascending: false }).order("created_at", { ascending: false }),
         supabase.from("property_types").select("id, name").order("name"),
         supabase.from("amenities").select("id, name").order("name"),
-        supabase.from("locations").select("id, city, area").order("city").order("area"),
       ]);
 
       const mapped = (propRes.data || []).map((p: any) => ({
@@ -69,11 +67,17 @@ const ListingsPage = () => {
       setProperties(mapped);
       setPropertyTypes(typesRes.data || []);
       setAmenitiesList(amenRes.data || []);
-      setLocations(locRes.data || []);
       setLoading(false);
     };
     fetchData();
   }, []);
+
+  const activeFilterCount = [
+    filterTypes.length > 0,
+    filterAmenities.length > 0,
+    filterFurnishing !== "",
+    filterPriceRange[0] > 0 || filterPriceRange[1] < 500000,
+  ].filter(Boolean).length;
 
   const filtered = useMemo(() => {
     return properties.filter((p) => {
@@ -98,7 +102,16 @@ const ListingsPage = () => {
     });
   }, [properties, searchLocation, searchType, searchBudget, searchCapacity, filterPriceRange, filterTypes, filterAmenities, filterFurnishing]);
 
-  const uniqueCities = [...new Set(locations.map((l) => `${l.city} - ${l.area}`))];
+  const clearAllFilters = () => {
+    setFilterTypes([]);
+    setFilterAmenities([]);
+    setFilterFurnishing("");
+    setFilterPriceRange([0, 500000]);
+    setSearchLocation("");
+    setSearchType("");
+    setSearchBudget("");
+    setSearchCapacity("");
+  };
 
   const formatPrice = (price: number) => {
     if (price >= 100000) return `₹${(price / 100000).toFixed(1)}L`;
@@ -139,14 +152,16 @@ const ListingsPage = () => {
           {/* Search Bar */}
           <div className="bg-card border border-border rounded-2xl p-3 sm:p-4 shadow-lg">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+              {/* Location - text search */}
               <div className="relative">
                 <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <select value={searchLocation} onChange={(e) => setSearchLocation(e.target.value)} className="w-full pl-9 pr-3 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent appearance-none">
-                  <option value="">All Locations</option>
-                  {uniqueCities.map((loc) => (
-                    <option key={loc} value={loc.split(" - ")[1]}>{loc}</option>
-                  ))}
-                </select>
+                <input
+                  type="text"
+                  value={searchLocation}
+                  onChange={(e) => setSearchLocation(e.target.value)}
+                  placeholder="Search location..."
+                  className="w-full pl-9 pr-3 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                />
               </div>
               <div className="relative">
                 <select value={searchType} onChange={(e) => setSearchType(e.target.value)} className="w-full px-3 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent appearance-none">
@@ -155,6 +170,7 @@ const ListingsPage = () => {
                     <option key={t.id} value={t.name}>{t.name}</option>
                   ))}
                 </select>
+                <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
               </div>
               <div>
                 <input type="number" placeholder="Max Budget (₹)" value={searchBudget} onChange={(e) => setSearchBudget(e.target.value)} className="w-full px-3 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent" />
@@ -163,11 +179,14 @@ const ListingsPage = () => {
                 <input type="number" placeholder="Min Seats" value={searchCapacity} onChange={(e) => setSearchCapacity(e.target.value)} className="w-full px-3 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent" />
               </div>
               <div className="flex gap-2">
-                <button onClick={() => {}} className="flex-1 bg-primary text-primary-foreground rounded-xl py-3 font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                <button className="flex-1 bg-primary text-primary-foreground rounded-xl py-3 font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
                   <Search size={16} /> Search
                 </button>
-                <button onClick={() => setShowFilters(!showFilters)} className="w-12 rounded-xl border border-border bg-background flex items-center justify-center hover:bg-muted transition-colors">
+                <button onClick={() => setShowFilters(!showFilters)} className={`w-12 rounded-xl border flex items-center justify-center transition-colors relative ${showFilters ? "bg-primary text-primary-foreground border-primary" : "border-border bg-background hover:bg-muted"}`}>
                   <SlidersHorizontal size={16} />
+                  {activeFilterCount > 0 && (
+                    <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-accent text-accent-foreground text-[9px] font-bold rounded-full flex items-center justify-center">{activeFilterCount}</span>
+                  )}
                 </button>
               </div>
             </div>
@@ -175,53 +194,68 @@ const ListingsPage = () => {
         </div>
       </section>
 
-      {/* Filters */}
+      {/* Filters Panel */}
       <AnimatePresence>
         {showFilters && (
-          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-b border-border">
+          <motion.section initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden border-b border-border bg-card/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-sm">Filters</h3>
-                <button onClick={() => { setFilterTypes([]); setFilterAmenities([]); setFilterFurnishing(""); setFilterPriceRange([0, 500000]); }} className="text-xs text-accent hover:underline">Clear All</button>
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <h3 className="font-semibold text-sm">Filters</h3>
+                  {activeFilterCount > 0 && (
+                    <span className="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded-full font-medium">{activeFilterCount} active</span>
+                  )}
+                </div>
+                <button onClick={clearAllFilters} className="text-xs text-destructive hover:underline font-medium">Clear All</button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+              <div className="space-y-6">
                 {/* Price Range */}
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-2 block">Price Range (₹/month)</label>
-                  <div className="flex items-center gap-2">
-                    <input type="number" value={filterPriceRange[0]} onChange={(e) => setFilterPriceRange([parseInt(e.target.value) || 0, filterPriceRange[1]])} className="w-full px-2 py-2 rounded-lg border border-border bg-background text-xs" placeholder="Min" />
-                    <span className="text-muted-foreground text-xs">to</span>
-                    <input type="number" value={filterPriceRange[1]} onChange={(e) => setFilterPriceRange([filterPriceRange[0], parseInt(e.target.value) || 500000])} className="w-full px-2 py-2 rounded-lg border border-border bg-background text-xs" placeholder="Max" />
+                  <label className="text-xs font-semibold text-foreground mb-3 block uppercase tracking-wide">Price Range (₹/month)</label>
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1">
+                      <label className="text-[10px] text-muted-foreground mb-1 block">Min</label>
+                      <input type="number" value={filterPriceRange[0]} onChange={(e) => setFilterPriceRange([parseInt(e.target.value) || 0, filterPriceRange[1]])} className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent" placeholder="₹0" />
+                    </div>
+                    <span className="text-muted-foreground text-xs mt-5">—</span>
+                    <div className="flex-1">
+                      <label className="text-[10px] text-muted-foreground mb-1 block">Max</label>
+                      <input type="number" value={filterPriceRange[1]} onChange={(e) => setFilterPriceRange([filterPriceRange[0], parseInt(e.target.value) || 500000])} className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent" placeholder="₹5,00,000" />
+                    </div>
                   </div>
                 </div>
+
                 {/* Property Type */}
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-2 block">Property Type</label>
-                  <div className="flex flex-wrap gap-1.5">
+                  <label className="text-xs font-semibold text-foreground mb-3 block uppercase tracking-wide">Property Type</label>
+                  <div className="flex flex-wrap gap-2">
                     {propertyTypes.map((t) => (
-                      <button key={t.id} onClick={() => setFilterTypes((prev) => prev.includes(t.name) ? prev.filter((n) => n !== t.name) : [...prev, t.name])} className={`text-[11px] px-2.5 py-1 rounded-full border transition-colors ${filterTypes.includes(t.name) ? "bg-primary text-primary-foreground border-primary" : "border-border hover:border-accent"}`}>
+                      <button key={t.id} onClick={() => setFilterTypes((prev) => prev.includes(t.name) ? prev.filter((n) => n !== t.name) : [...prev, t.name])} className={`text-xs px-4 py-2 rounded-full border-2 transition-all font-medium ${filterTypes.includes(t.name) ? "bg-primary text-primary-foreground border-primary shadow-sm" : "border-border hover:border-primary/40 bg-background"}`}>
                         {t.name}
                       </button>
                     ))}
                   </div>
                 </div>
+
                 {/* Furnishing */}
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-2 block">Furnishing</label>
-                  <div className="flex flex-wrap gap-1.5">
+                  <label className="text-xs font-semibold text-foreground mb-3 block uppercase tracking-wide">Furnishing</label>
+                  <div className="flex flex-wrap gap-2">
                     {["Fully Furnished", "Semi Furnished", "Unfurnished"].map((f) => (
-                      <button key={f} onClick={() => setFilterFurnishing(filterFurnishing === f ? "" : f)} className={`text-[11px] px-2.5 py-1 rounded-full border transition-colors ${filterFurnishing === f ? "bg-primary text-primary-foreground border-primary" : "border-border hover:border-accent"}`}>
+                      <button key={f} onClick={() => setFilterFurnishing(filterFurnishing === f ? "" : f)} className={`text-xs px-4 py-2 rounded-full border-2 transition-all font-medium ${filterFurnishing === f ? "bg-primary text-primary-foreground border-primary shadow-sm" : "border-border hover:border-primary/40 bg-background"}`}>
                         {f}
                       </button>
                     ))}
                   </div>
                 </div>
+
                 {/* Amenities */}
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-2 block">Amenities</label>
-                  <div className="flex flex-wrap gap-1.5">
+                  <label className="text-xs font-semibold text-foreground mb-3 block uppercase tracking-wide">Amenities</label>
+                  <div className="flex flex-wrap gap-2">
                     {amenitiesList.map((a) => (
-                      <button key={a.id} onClick={() => setFilterAmenities((prev) => prev.includes(a.name) ? prev.filter((n) => n !== a.name) : [...prev, a.name])} className={`text-[11px] px-2.5 py-1 rounded-full border transition-colors ${filterAmenities.includes(a.name) ? "bg-primary text-primary-foreground border-primary" : "border-border hover:border-accent"}`}>
+                      <button key={a.id} onClick={() => setFilterAmenities((prev) => prev.includes(a.name) ? prev.filter((n) => n !== a.name) : [...prev, a.name])} className={`text-xs px-4 py-2 rounded-full border-2 transition-all font-medium ${filterAmenities.includes(a.name) ? "bg-primary text-primary-foreground border-primary shadow-sm" : "border-border hover:border-primary/40 bg-background"}`}>
                         {a.name}
                       </button>
                     ))}
@@ -232,6 +266,29 @@ const ListingsPage = () => {
           </motion.section>
         )}
       </AnimatePresence>
+
+      {/* Active filter chips */}
+      {activeFilterCount > 0 && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-4">
+          <div className="flex flex-wrap gap-2">
+            {filterTypes.map((t) => (
+              <button key={t} onClick={() => setFilterTypes((prev) => prev.filter((n) => n !== t))} className="text-[11px] bg-primary/10 text-primary px-3 py-1 rounded-full flex items-center gap-1.5 font-medium hover:bg-primary/20 transition-colors">
+                {t} <X size={10} />
+              </button>
+            ))}
+            {filterAmenities.map((a) => (
+              <button key={a} onClick={() => setFilterAmenities((prev) => prev.filter((n) => n !== a))} className="text-[11px] bg-accent/10 text-accent px-3 py-1 rounded-full flex items-center gap-1.5 font-medium hover:bg-accent/20 transition-colors">
+                {a} <X size={10} />
+              </button>
+            ))}
+            {filterFurnishing && (
+              <button onClick={() => setFilterFurnishing("")} className="text-[11px] bg-secondary text-foreground px-3 py-1 rounded-full flex items-center gap-1.5 font-medium hover:bg-secondary/80 transition-colors">
+                {filterFurnishing} <X size={10} />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Listings Grid */}
       <section className="py-8 md:py-12 px-4 sm:px-6 lg:px-12">
@@ -246,7 +303,10 @@ const ListingsPage = () => {
             <div className="text-center py-20">
               <Search size={48} className="mx-auto mb-4 text-muted-foreground/30" />
               <h3 className="text-lg font-serif mb-2">No properties found</h3>
-              <p className="text-sm text-muted-foreground">Try adjusting your filters or search criteria.</p>
+              <p className="text-sm text-muted-foreground mb-4">Try adjusting your filters or search criteria.</p>
+              {activeFilterCount > 0 && (
+                <button onClick={clearAllFilters} className="text-sm text-accent hover:underline font-medium">Clear all filters</button>
+              )}
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
