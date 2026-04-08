@@ -12,12 +12,14 @@ const footerLinks = {
     { label: "HSR Layout", href: "/office-space/bangalore/hsr-layout", isRoute: true },
     { label: "Whitefield", href: "/office-space/bangalore/whitefield", isRoute: true },
     { label: "Indiranagar", href: "/office-space/bangalore/indiranagar", isRoute: true },
+    { titleLink: "/office-space/bangalore" },
   ],
   "Hyderabad": [
     { label: "HITEC City", href: "/office-space/hyderabad/hitec-city", isRoute: true },
     { label: "Gachibowli", href: "/office-space/hyderabad/gachibowli", isRoute: true },
     { label: "Madhapur", href: "/office-space/hyderabad/madhapur", isRoute: true },
     { label: "Kondapur", href: "/office-space/hyderabad/kondapur", isRoute: true },
+    { titleLink: "/office-space/hyderabad" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy-policy", isRoute: true },
