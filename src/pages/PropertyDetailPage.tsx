@@ -20,6 +20,13 @@ interface PropertyDetail {
   address: string | null;
   price: number | null;
   seating_capacity: number | null;
+  sqft: number | null;
+  carpet_area: number | null;
+  floor_number: string | null;
+  total_floors: number | null;
+  parking_slots: number | null;
+  availability_date: string | null;
+  lease_duration_months: number | null;
   short_description: string | null;
   full_description: string | null;
   furnishing_type: string | null;
@@ -47,6 +54,8 @@ const PropertyDetailPage = () => {
         .from("properties")
         .select(`
           id, name, slug, city, area, address, price, seating_capacity,
+          sqft, carpet_area, floor_number, total_floors, parking_slots,
+          availability_date, lease_duration_months,
           short_description, full_description, furnishing_type, phone, whatsapp,
           whatsapp_message, featured_image, meta_title, meta_description,
           property_types(name),
