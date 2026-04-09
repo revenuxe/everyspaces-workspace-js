@@ -19,6 +19,13 @@ const AdminPropertyForm = () => {
   const [area, setArea] = useState("");
   const [price, setPrice] = useState("");
   const [seatingCapacity, setSeatingCapacity] = useState("");
+  const [sqft, setSqft] = useState("");
+  const [carpetArea, setCarpetArea] = useState("");
+  const [floorNumber, setFloorNumber] = useState("");
+  const [totalFloors, setTotalFloors] = useState("");
+  const [parkingSlots, setParkingSlots] = useState("");
+  const [availabilityDate, setAvailabilityDate] = useState("");
+  const [leaseDuration, setLeaseDuration] = useState("");
   const [shortDesc, setShortDesc] = useState("");
   const [fullDesc, setFullDesc] = useState("");
   const [furnishingType, setFurnishingType] = useState("Fully Furnished");
@@ -76,6 +83,13 @@ const AdminPropertyForm = () => {
           setArea(data.area);
           setPrice(data.price?.toString() || "");
           setSeatingCapacity(data.seating_capacity?.toString() || "");
+          setSqft((data as any).sqft?.toString() || "");
+          setCarpetArea((data as any).carpet_area?.toString() || "");
+          setFloorNumber((data as any).floor_number || "");
+          setTotalFloors((data as any).total_floors?.toString() || "");
+          setParkingSlots((data as any).parking_slots?.toString() || "");
+          setAvailabilityDate((data as any).availability_date || "");
+          setLeaseDuration((data as any).lease_duration_months?.toString() || "");
           setShortDesc(data.short_description || "");
           setFullDesc(data.full_description || "");
           setFurnishingType(data.furnishing_type || "Fully Furnished");
@@ -138,7 +152,7 @@ const AdminPropertyForm = () => {
     if (!name || !slug) return;
     setSaving(true);
 
-    const payload = {
+    const payload: Record<string, any> = {
       name,
       slug,
       property_type_id: propertyTypeId || null,
@@ -148,6 +162,13 @@ const AdminPropertyForm = () => {
       area,
       price: price ? parseFloat(price) : null,
       seating_capacity: seatingCapacity ? parseInt(seatingCapacity) : null,
+      sqft: sqft ? parseInt(sqft) : null,
+      carpet_area: carpetArea ? parseInt(carpetArea) : null,
+      floor_number: floorNumber || null,
+      total_floors: totalFloors ? parseInt(totalFloors) : null,
+      parking_slots: parkingSlots ? parseInt(parkingSlots) : null,
+      availability_date: availabilityDate || null,
+      lease_duration_months: leaseDuration ? parseInt(leaseDuration) : null,
       short_description: shortDesc || null,
       full_description: fullDesc || null,
       furnishing_type: furnishingType || null,
