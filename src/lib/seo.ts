@@ -6,9 +6,9 @@ export const defaultMetadata = {
   siteUrl: "https://everyspaces.com",
   siteName: "EverySpaces",
   locale: "en_IN",
-  title: "EverySpaces - Office Space & Coworking Solutions in Bangalore",
+  title: "EverySpaces - Office Space, Coworking & Managed Workspaces",
   description:
-    "EverySpaces helps businesses find the perfect office space, coworking desks and managed workspaces in Bangalore and Hyderabad.",
+    "EverySpaces helps businesses find office space, coworking desks, managed offices, private offices and flexible workspaces with expert consulting, faster shortlisting and smarter leasing support.",
   ogImage: "https://everyspaces.com/opengraph-image",
 };
 

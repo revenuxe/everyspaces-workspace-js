@@ -4,12 +4,12 @@ import { RouteShell } from "@/components/RouteShell";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Best Coworking & Office Space in Bangalore | Workspace Solutions",
+  title: "Office Space, Coworking & Managed Workspaces | EverySpaces",
   description:
-    "Find affordable coworking spaces, private offices and managed workspaces in Bangalore and Hyderabad. EverySpaces offers expert workspace consulting, office space for rent and flexible desk solutions for startups and enterprises.",
+    "Find office space, coworking spaces, private offices, managed workspaces and flexible office solutions for startups, SMEs and enterprises. EverySpaces helps teams compare locations, shortlist faster and secure the right workspace.",
   path: "/",
   keywords:
-    "coworking space Bangalore, office space for rent Bangalore, coworking space Hyderabad, managed office Hyderabad, shared office space, flexible workspace Bangalore, commercial office space, workspace solutions, coworking near me, office on rent Bangalore, HITEC City office, Koramangala coworking",
+    "office space, coworking space, managed office, private office, flexible workspace, office space for rent, shared office space, commercial office space, office for rent, coworking near me, workspace solutions, managed workspaces",
 });
 
 export default function HomePage() {
