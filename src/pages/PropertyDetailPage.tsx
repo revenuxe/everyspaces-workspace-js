@@ -205,6 +205,36 @@ const PropertyDetailPage = () => {
                   <p className="text-xs text-muted-foreground">Seats</p>
                 </div>
               )}
+              {property.sqft && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.sqft.toLocaleString()}</p>
+                  <p className="text-xs text-muted-foreground">sq ft</p>
+                </div>
+              )}
+              {property.carpet_area && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.carpet_area.toLocaleString()}</p>
+                  <p className="text-xs text-muted-foreground">Carpet Area</p>
+                </div>
+              )}
+              {property.floor_number && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.floor_number}</p>
+                  <p className="text-xs text-muted-foreground">Floor</p>
+                </div>
+              )}
+              {property.parking_slots && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.parking_slots}</p>
+                  <p className="text-xs text-muted-foreground">Parking</p>
+                </div>
+              )}
+              {property.lease_duration_months && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.lease_duration_months}</p>
+                  <p className="text-xs text-muted-foreground">Min Months</p>
+                </div>
+              )}
             </div>
 
             {/* Description */}
