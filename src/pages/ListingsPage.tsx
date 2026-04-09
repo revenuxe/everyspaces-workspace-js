@@ -351,6 +351,9 @@ const ListingsPage = () => {
                         {prop.seating_capacity && (
                           <span className="text-[10px] bg-secondary text-foreground px-2 py-0.5 rounded-full">{prop.seating_capacity} Seats</span>
                         )}
+                        {prop.sqft && (
+                          <span className="text-[10px] bg-secondary text-foreground px-2 py-0.5 rounded-full">{prop.sqft.toLocaleString()} sq ft</span>
+                        )}
                       </div>
 
                       {/* Amenity tags */}
