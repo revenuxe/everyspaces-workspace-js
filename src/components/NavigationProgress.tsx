@@ -24,8 +24,8 @@ function NavigationLoader({ active }: { active: boolean }) {
       }`}
     >
       <div className="nav-loader-bar" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,75,92,0.06),rgba(8,75,92,0))]" />
-      <div className="absolute inset-x-0 top-0 flex justify-center pt-6 sm:pt-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(228,142,53,0.12),transparent_32%),linear-gradient(180deg,rgba(248,249,241,0.86),rgba(248,249,241,0.72))]" />
+      <div className="absolute inset-0 flex items-center justify-center">
         <div className="nav-loader-badge">
           <span className="nav-loader-spinner" />
         </div>
