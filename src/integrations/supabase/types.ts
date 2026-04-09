@@ -105,24 +105,31 @@ export type Database = {
         Row: {
           address: string | null
           area: string
+          availability_date: string | null
+          carpet_area: number | null
           city: string
           created_at: string
           featured_image: string | null
+          floor_number: string | null
           full_description: string | null
           furnishing_type: string | null
           id: string
           is_featured: boolean
+          lease_duration_months: number | null
           location_id: string | null
           meta_description: string | null
           meta_title: string | null
           name: string
+          parking_slots: number | null
           phone: string | null
           price: number | null
           property_type_id: string | null
           seating_capacity: number | null
           short_description: string | null
           slug: string
+          sqft: number | null
           status: Database["public"]["Enums"]["property_status"]
+          total_floors: number | null
           updated_at: string
           whatsapp: string | null
           whatsapp_message: string | null
@@ -130,24 +137,31 @@ export type Database = {
         Insert: {
           address?: string | null
           area?: string
+          availability_date?: string | null
+          carpet_area?: number | null
           city?: string
           created_at?: string
           featured_image?: string | null
+          floor_number?: string | null
           full_description?: string | null
           furnishing_type?: string | null
           id?: string
           is_featured?: boolean
+          lease_duration_months?: number | null
           location_id?: string | null
           meta_description?: string | null
           meta_title?: string | null
           name: string
+          parking_slots?: number | null
           phone?: string | null
           price?: number | null
           property_type_id?: string | null
           seating_capacity?: number | null
           short_description?: string | null
           slug: string
+          sqft?: number | null
           status?: Database["public"]["Enums"]["property_status"]
+          total_floors?: number | null
           updated_at?: string
           whatsapp?: string | null
           whatsapp_message?: string | null
@@ -155,24 +169,31 @@ export type Database = {
         Update: {
           address?: string | null
           area?: string
+          availability_date?: string | null
+          carpet_area?: number | null
           city?: string
           created_at?: string
           featured_image?: string | null
+          floor_number?: string | null
           full_description?: string | null
           furnishing_type?: string | null
           id?: string
           is_featured?: boolean
+          lease_duration_months?: number | null
           location_id?: string | null
           meta_description?: string | null
           meta_title?: string | null
           name?: string
+          parking_slots?: number | null
           phone?: string | null
           price?: number | null
           property_type_id?: string | null
           seating_capacity?: number | null
           short_description?: string | null
           slug?: string
+          sqft?: number | null
           status?: Database["public"]["Enums"]["property_status"]
+          total_floors?: number | null
           updated_at?: string
           whatsapp?: string | null
           whatsapp_message?: string | null
