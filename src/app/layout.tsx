@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(defaultMetadata.siteUrl),
   title: {
     default: defaultMetadata.title,
-    template: "%s | EverySpaces",
+    template: "%s",
   },
   description: defaultMetadata.description,
   applicationName: defaultMetadata.siteName,

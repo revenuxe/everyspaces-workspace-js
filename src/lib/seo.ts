@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import { allAreas } from "@/data/areas";
 import { cityContent } from "@/data/cityContent";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.everyspaces.com";
+
 export const defaultMetadata = {
-  siteUrl: "https://everyspaces.com",
+  siteUrl,
   siteName: "EverySpaces",
   locale: "en_IN",
   title: "EverySpaces - Office Space, Coworking & Managed Workspaces",
   description:
     "EverySpaces helps businesses find office space, coworking desks, managed offices, private offices and flexible workspaces with expert consulting, faster shortlisting and smarter leasing support.",
-  ogImage: "https://everyspaces.com/opengraph-image",
+  ogImage: `${siteUrl}/opengraph-image`,
 };
 
 export function absoluteUrl(path: string) {

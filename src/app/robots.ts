@@ -1,3 +1,4 @@
+import { absoluteUrl } from "@/lib/seo";
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "facebookexternalhit", allow: "/" },
       { userAgent: "*", allow: "/", disallow: ["/admin/", "/thank-you"] },
     ],
-    sitemap: "https://everyspaces.com/sitemap.xml",
+    sitemap: absoluteUrl("/sitemap.xml"),
   };
 }
