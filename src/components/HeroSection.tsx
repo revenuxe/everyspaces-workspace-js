@@ -25,6 +25,29 @@ const HeroSection = () => {
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>Workspace Solutions
           </h1>
+          <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-foreground/80 sm:text-base">
+            <p>
+              EverySpaces helps startups, SMEs, and enterprise teams find the right coworking space, private office,
+              managed office, and flexible workspace in Bangalore and Hyderabad. We combine local market knowledge,
+              faster shortlisting, and practical lease guidance so your team can move without wasting weeks on
+              fragmented office search platforms.
+            </p>
+            <p>
+              Start with our{" "}
+              <Link to="/office-space/bangalore" className="font-semibold text-foreground underline underline-offset-4">
+                Bangalore office space guide
+              </Link>
+              , compare options on the{" "}
+              <Link to="/office-space/hyderabad" className="font-semibold text-foreground underline underline-offset-4">
+                Hyderabad workspace page
+              </Link>
+              , or review live inventory on our{" "}
+              <Link to="/listings" className="font-semibold text-foreground underline underline-offset-4">
+                office listings page
+              </Link>
+              .
+            </p>
+          </div>
         </div>
       </div>
 

@@ -27,6 +27,12 @@ const GoalsSection = () => {
           <br />
           for Workspace Solutions
         </h2>
+        <p className="mx-auto mb-8 max-w-3xl text-sm leading-relaxed text-primary-foreground/75 sm:text-base">
+          Businesses choose EverySpaces when they want a partner who can balance budget, location strategy, employee
+          commute, office quality, and growth plans in one process. Instead of treating coworking, private offices,
+          and managed workspaces like interchangeable products, we help teams compare the right format for their stage
+          and operational goals.
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
           {goals.map((goal, i) => (

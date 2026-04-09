@@ -228,9 +228,29 @@ const ServicesSection = () => {
     <section id="service" className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start justify-between mb-8 md:mb-12 gap-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif max-w-xl">
-            <span className="font-bold">Expert</span> Office Space &amp; Coworking Solutions for Growing Teams
-          </h2>
+          <div className="max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif max-w-xl">
+              <span className="font-bold">Expert</span> Office Space &amp; Coworking Solutions for Growing Teams
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              We help businesses move from broad office search intent to a clear shortlist. That includes workspace
+              consulting, site selection, lease support, office interiors, market research, and post-move workspace
+              management. If you are comparing managed office space in Bangalore, coworking in Hyderabad, or private
+              offices across multiple areas, these service tracks are built to reduce friction and improve decision
+              quality.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Teams often use this section alongside our{" "}
+              <Link to="/areas-we-serve" className="font-medium text-foreground underline underline-offset-4">
+                areas we serve
+              </Link>{" "}
+              page and{" "}
+              <Link to="/listings" className="font-medium text-foreground underline underline-offset-4">
+                live workspace listings
+              </Link>{" "}
+              to understand which service and location combination makes the most sense.
+            </p>
+          </div>
           <Link
             to="/contact"
             className="hidden md:flex w-12 h-12 rounded-full border-2 border-foreground items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors shrink-0"
