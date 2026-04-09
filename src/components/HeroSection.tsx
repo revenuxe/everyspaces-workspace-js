@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import heroImg from "@/assets/hero-workspace.png?format=webp";
+import { Link } from "@/compat/react-router-dom";
+import heroImg from "@/assets/hero-workspace.png";
 
 const HeroSection = () => {
   return (
@@ -29,22 +31,24 @@ const HeroSection = () => {
       {/* Hero image */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 -mt-16 sm:-mt-20 relative z-20">
         <div className="rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl">
-          <img
+          <Image
             src={heroImg}
             alt="Modern coworking workspace with natural light and greenery"
+            priority
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
             className="w-full h-[200px] sm:h-[300px] md:h-[500px] object-cover"
           />
         </div>
         <div className="mt-6 sm:mt-8">
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-3 sm:py-4 pl-6 sm:pl-8 pr-3 sm:pr-4 rounded-full hover:opacity-90 transition-opacity"
           >
             <span>Book Strategy Call</span>
             <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-primary-foreground/30 flex items-center justify-center ml-4">
               <ArrowUpRight size={20} />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -52,3 +56,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+

@@ -1,6 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/compat/react-router-dom";
 import logo from "@/assets/logo.webp";
 
 const navLinks = [
@@ -17,7 +19,7 @@ const Navbar = () => {
     <header className="w-full bg-primary py-4 px-6 lg:px-12 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="EverySpaces logo" className="h-10 w-auto brightness-0 invert" />
+          <img src={logo.src} alt="EverySpaces logo" className="h-10 w-auto brightness-0 invert" />
         </Link>
 
         <nav className="hidden lg:flex items-center bg-primary-foreground/10 backdrop-blur-sm rounded-full px-2 py-1 border border-primary-foreground/20">
@@ -42,12 +44,12 @@ const Navbar = () => {
           )}
         </nav>
 
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="hidden lg:flex w-11 h-11 rounded-full bg-accent items-center justify-center text-accent-foreground hover:scale-105 transition-transform"
         >
           <ArrowUpRight size={20} />
-        </a>
+        </Link>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -95,3 +97,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

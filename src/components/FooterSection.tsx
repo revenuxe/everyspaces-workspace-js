@@ -1,5 +1,5 @@
 import { Linkedin, Instagram } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/compat/react-router-dom";
 
 type FooterLink = { label?: string; href?: string; isRoute?: boolean; titleLink?: string };
 
@@ -39,12 +39,12 @@ const FooterSection = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif leading-snug mb-6 md:mb-8">
               <span className="italic">Find</span> your perfect workspace today. Contact us for expert guidance!
             </h2>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-block bg-accent text-accent-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:scale-105 transition-transform text-sm"
             >
               Get Started Now
-            </a>
+            </Link>
           </div>
           <div className="space-y-4">
             <div>

@@ -1,14 +1,18 @@
+"use client";
+
+import type { StaticImageData } from "next/image";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ArrowUpRight, CheckCircle2, X, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@/compat/react-router-dom";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
-import serviceConsulting from "@/assets/service-consulting.png?format=webp";
-import serviceSearch from "@/assets/service-search.png?format=webp";
-import serviceInterior from "@/assets/service-interior.png?format=webp";
-import serviceResearch from "@/assets/service-research.png?format=webp";
-import serviceManagement from "@/assets/service-management.png?format=webp";
-import serviceStrategy from "@/assets/service-strategy.png?format=webp";
+import serviceConsulting from "@/assets/service-consulting.png";
+import serviceSearch from "@/assets/service-search.png";
+import serviceInterior from "@/assets/service-interior.png";
+import serviceResearch from "@/assets/service-research.png";
+import serviceManagement from "@/assets/service-management.png";
+import serviceStrategy from "@/assets/service-strategy.png";
 
 const variantClasses = {
   default: "bg-card border border-border shadow-md",
@@ -17,11 +21,14 @@ const variantClasses = {
 };
 
 type ServiceItem = {
-  image: string;
+  image: string | StaticImageData;
   title: string;
   desc: string;
   variant: "default" | "lime" | "orange";
 };
+
+const getImageSrc = (image: string | StaticImageData) =>
+  typeof image === "string" ? image : image.src;
 
 export const getLocationServices = (location: string) => [
   { image: serviceConsulting, title: "Workspace Consulting", desc: `Expert guidance to find and optimize the perfect workspace for your team in ${location}.`, variant: "default" as const },
@@ -40,7 +47,7 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: ServiceItem; 
     onClick={onToggle}
   >
     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
-      <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+      <img src={getImageSrc(service.image)} alt={service.title} className="w-full h-full object-cover" />
     </div>
     <div>
       <h3 className="text-lg sm:text-xl font-bold font-sans mb-2">{service.title}</h3>
@@ -78,7 +85,7 @@ const ExpandedPanel = ({ service, onClose }: { service: ServiceItem; onClose: ()
         <div className="flex items-start justify-between mb-8 md:mb-10">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-accent/30 shrink-0">
-              <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+              <img src={getImageSrc(service.image)} alt={service.title} className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="text-accent font-semibold text-xs uppercase tracking-wider">Our Process</span>
@@ -124,10 +131,10 @@ const ExpandedPanel = ({ service, onClose }: { service: ServiceItem; onClose: ()
               ))}
             </div>
           </div>
-          <a href="/contact" className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity md:w-fit md:gap-4 shrink-0">
+          <Link to="/contact" className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity md:w-fit md:gap-4 shrink-0">
             <span>Book Strategy Call</span>
             <span className="w-8 h-8 rounded-full border-2 border-primary-foreground/30 flex items-center justify-center ml-3"><ArrowUpRight size={14} /></span>
-          </a>
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -202,3 +209,6 @@ const ExpandableServicesSection = ({ heading, services }: Props) => {
 };
 
 export default ExpandableServicesSection;
+
+
+

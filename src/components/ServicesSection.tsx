@@ -1,14 +1,17 @@
+"use client";
+
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ArrowUpRight, CheckCircle2, X, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@/compat/react-router-dom";
 import { serviceDetails, serviceSlugMap } from "@/data/serviceDetails";
-import serviceConsulting from "@/assets/service-consulting.png?format=webp";
-import serviceSearch from "@/assets/service-search.png?format=webp";
-import serviceInterior from "@/assets/service-interior.png?format=webp";
-import serviceResearch from "@/assets/service-research.png?format=webp";
-import serviceManagement from "@/assets/service-management.png?format=webp";
-import serviceStrategy from "@/assets/service-strategy.png?format=webp";
+import serviceConsulting from "@/assets/service-consulting.png";
+import serviceSearch from "@/assets/service-search.png";
+import serviceInterior from "@/assets/service-interior.png";
+import serviceResearch from "@/assets/service-research.png";
+import serviceManagement from "@/assets/service-management.png";
+import serviceStrategy from "@/assets/service-strategy.png";
 
 const services = [
   {
@@ -73,7 +76,7 @@ const ServiceCard = ({
     onClick={onToggle}
   >
     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
-      <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+      <img src={service.image.src} alt={service.title} className="w-full h-full object-cover" />
     </div>
     <div>
       <h3 className="text-lg sm:text-xl font-bold font-sans mb-2">{service.title}</h3>
@@ -120,7 +123,7 @@ const ExpandedPanel = ({
         <div className="flex items-start justify-between mb-8 md:mb-10">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-accent/30 shrink-0">
-              <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+              <img src={service.image.src} alt={service.title} className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="text-accent font-semibold text-xs uppercase tracking-wider">Our Process</span>
@@ -192,15 +195,15 @@ const ExpandedPanel = ({
             </div>
           </div>
 
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:opacity-90 transition-opacity md:w-fit md:gap-4 shrink-0"
           >
             <span>Book Strategy Call</span>
             <span className="w-8 h-8 rounded-full border-2 border-primary-foreground/30 flex items-center justify-center ml-3">
               <ArrowUpRight size={14} />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -228,12 +231,12 @@ const ServicesSection = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif max-w-xl">
             <span className="font-bold">Expert</span> Office Space &amp; Coworking Solutions for Growing Teams
           </h2>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="hidden md:flex w-12 h-12 rounded-full border-2 border-foreground items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors shrink-0"
           >
             <ArrowUpRight size={20} />
-          </a>
+          </Link>
         </div>
 
         {isMobile ? (
@@ -296,3 +299,6 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+
+
+

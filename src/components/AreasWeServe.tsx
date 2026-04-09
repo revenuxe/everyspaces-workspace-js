@@ -1,5 +1,7 @@
+"use client";
+
 import { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/compat/react-router-dom";
 import { MapPin, ArrowRight } from "lucide-react";
 import { allAreas } from "@/data/areas";
 
@@ -93,3 +95,4 @@ const AreasWeServe = () => {
 };
 
 export default AreasWeServe;
+
