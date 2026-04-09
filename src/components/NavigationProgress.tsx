@@ -24,18 +24,10 @@ function NavigationLoader({ active }: { active: boolean }) {
       }`}
     >
       <div className="nav-loader-bar" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(228,142,53,0.18),transparent_40%),linear-gradient(180deg,rgba(8,75,92,0.12),rgba(8,75,92,0))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,75,92,0.06),rgba(8,75,92,0))]" />
       <div className="absolute inset-x-0 top-0 flex justify-center pt-6 sm:pt-8">
-        <div className="nav-loader-shell">
-          <div className="nav-loader-orbit">
-            <span className="nav-loader-dot nav-loader-dot-a" />
-            <span className="nav-loader-dot nav-loader-dot-b" />
-            <span className="nav-loader-core" />
-          </div>
-          <div className="nav-loader-copy">
-            <span>EverySpaces</span>
-            <span>Curating your next workspace</span>
-          </div>
+        <div className="nav-loader-badge">
+          <span className="nav-loader-spinner" />
         </div>
       </div>
     </div>
