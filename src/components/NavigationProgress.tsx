@@ -14,6 +14,7 @@ const NavigationProgressContext = createContext<NavigationProgressContextValue>(
 });
 
 const MIN_VISIBLE_MS = 420;
+const FAILSAFE_MS = 5000;
 
 function NavigationLoader({ active }: { active: boolean }) {
   return (
@@ -40,11 +41,17 @@ export function NavigationProgressProvider({ children }: { children: ReactNode }
   const [isNavigating, setIsNavigating] = useState(false);
   const startedAtRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
+  const failsafeRef = useRef<number | null>(null);
 
   const clearPendingTimer = useCallback(() => {
     if (timeoutRef.current !== null) {
       window.clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
+    }
+
+    if (failsafeRef.current !== null) {
+      window.clearTimeout(failsafeRef.current);
+      failsafeRef.current = null;
     }
   }, []);
 
@@ -61,6 +68,11 @@ export function NavigationProgressProvider({ children }: { children: ReactNode }
     clearPendingTimer();
     startedAtRef.current = performance.now();
     setIsNavigating(true);
+    failsafeRef.current = window.setTimeout(() => {
+      setIsNavigating(false);
+      startedAtRef.current = null;
+      failsafeRef.current = null;
+    }, FAILSAFE_MS);
   }, [clearPendingTimer]);
 
   const finishNavigation = useCallback(() => {
@@ -86,17 +98,10 @@ export function NavigationProgressProvider({ children }: { children: ReactNode }
   }, [pathname, searchParams, finishNavigation]);
 
   useEffect(() => {
-    const handlePopState = () => {
-      startNavigation();
-    };
-
-    window.addEventListener("popstate", handlePopState);
-
     return () => {
-      window.removeEventListener("popstate", handlePopState);
       clearPendingTimer();
     };
-  }, [clearPendingTimer, startNavigation]);
+  }, [clearPendingTimer]);
 
   const value = useMemo(
     () => ({
