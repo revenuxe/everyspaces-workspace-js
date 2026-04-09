@@ -185,9 +185,9 @@ const AdminPropertyForm = () => {
     let propId = propertyId;
 
     if (isEdit) {
-      await supabase.from("properties").update(payload).eq("id", propertyId!);
+      await (supabase.from("properties").update(payload as any) as any).eq("id", propertyId!);
     } else {
-      const { data } = await supabase.from("properties").insert(payload).select("id").single();
+      const { data } = await (supabase.from("properties").insert(payload as any) as any).select("id").single();
       propId = data?.id;
     }
 
