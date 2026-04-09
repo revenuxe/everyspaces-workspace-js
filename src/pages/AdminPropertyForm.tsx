@@ -282,6 +282,40 @@ const AdminPropertyForm = () => {
                   <input type="number" value={seatingCapacity} onChange={(e) => setSeatingCapacity(e.target.value)} className={inputClass} placeholder="50" />
                 </div>
               </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={labelClass}>Total Area (sq ft)</label>
+                  <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} className={inputClass} placeholder="5000" />
+                </div>
+                <div>
+                  <label className={labelClass}>Carpet Area (sq ft)</label>
+                  <input type="number" value={carpetArea} onChange={(e) => setCarpetArea(e.target.value)} className={inputClass} placeholder="4200" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className={labelClass}>Floor Number</label>
+                  <input value={floorNumber} onChange={(e) => setFloorNumber(e.target.value)} className={inputClass} placeholder="3rd Floor" />
+                </div>
+                <div>
+                  <label className={labelClass}>Total Floors</label>
+                  <input type="number" value={totalFloors} onChange={(e) => setTotalFloors(e.target.value)} className={inputClass} placeholder="10" />
+                </div>
+                <div>
+                  <label className={labelClass}>Parking Slots</label>
+                  <input type="number" value={parkingSlots} onChange={(e) => setParkingSlots(e.target.value)} className={inputClass} placeholder="5" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={labelClass}>Availability Date</label>
+                  <input type="date" value={availabilityDate} onChange={(e) => setAvailabilityDate(e.target.value)} className={inputClass} />
+                </div>
+                <div>
+                  <label className={labelClass}>Min Lease Duration (months)</label>
+                  <input type="number" value={leaseDuration} onChange={(e) => setLeaseDuration(e.target.value)} className={inputClass} placeholder="12" />
+                </div>
+              </div>
               <div>
                 <label className={labelClass}>Furnishing Type</label>
                 <select value={furnishingType} onChange={(e) => setFurnishingType(e.target.value)} className={`${inputClass} appearance-none`}>
