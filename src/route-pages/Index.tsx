@@ -69,6 +69,38 @@ const Index = () => {
         />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
+        <section className="px-4 sm:px-6 lg:px-12">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-4">
+              Tell Us What Your Team Needs
+            </h2>
+            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
+              <p>
+                EverySpaces helps startups, SMEs, and enterprise teams find the right coworking space, private office,
+                managed office, and flexible workspace in Bangalore and Hyderabad. We combine local market knowledge,
+                faster shortlisting, and practical lease guidance so your team can move without wasting weeks on
+                fragmented office search platforms.
+              </p>
+              <p>
+                Start with our{" "}
+                <a href="/office-space/bangalore" className="font-semibold text-foreground underline underline-offset-4">
+                  Bangalore office space guide
+                </a>
+                , compare options on the{" "}
+                <a href="/office-space/hyderabad" className="font-semibold text-foreground underline underline-offset-4">
+                  Hyderabad workspace page
+                </a>
+                , or review live inventory on our{" "}
+                <a href="/listings" className="font-semibold text-foreground underline underline-offset-4">
+                  office listings page
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+      <AnimatedSection delay={0.1}>
         <ContactForm />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
