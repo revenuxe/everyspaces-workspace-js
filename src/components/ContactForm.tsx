@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { X, Loader2 } from "lucide-react";
+import { X, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "@/compat/react-router-dom";
 import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
 import heroImg from "@/assets/hero-workspace.png";
 
 const leadSchema = z.object({
@@ -36,12 +35,13 @@ const ContactForm = () => {
   const [business, setBusiness] = useState("");
   const [timeline, setTimeline] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const { toast } = useToast();
+  const [formError, setFormError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setFormError("");
 
     const result = leadSchema.safeParse({
       full_name: fullName,
@@ -55,7 +55,7 @@ const ContactForm = () => {
 
     if (!result.success) {
       const firstError = result.error.errors[0]?.message || "Invalid input";
-      toast({ title: "Validation Error", description: firstError, variant: "destructive" });
+      setFormError(firstError);
       setSubmitting(false);
       return;
     }
@@ -72,7 +72,7 @@ const ContactForm = () => {
 
     if (!response.ok) {
       const payload = await response.json().catch(() => null);
-      toast({ title: "Something went wrong", description: payload?.error || "Please try again.", variant: "destructive" });
+      setFormError(payload?.error || "Something went wrong. Please try again.");
       return;
     }
 
@@ -101,8 +101,34 @@ const ContactForm = () => {
           </p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl shadow-black/20">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl shadow-black/20 overflow-hidden">
+          {submitting ? (
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-primary/45 backdrop-blur-sm">
+              <div className="rounded-3xl border border-white/20 bg-white/10 px-8 py-7 text-center shadow-2xl">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                  <div className="relative h-8 w-8">
+                    <span className="absolute inset-0 rounded-full border-2 border-white/20" />
+                    <span className="absolute inset-0 rounded-full border-2 border-transparent border-t-white border-r-white animate-spin" />
+                    <span className="absolute inset-[7px] rounded-full bg-accent/90" />
+                  </div>
+                </div>
+                <p className="text-lg font-semibold text-primary-foreground">Finding your ideal workspace</p>
+                <p className="mt-2 max-w-xs text-sm leading-relaxed text-primary-foreground/75">
+                  We are preparing your request and matching it with the right office options for your team.
+                </p>
+              </div>
+            </div>
+          ) : null}
+
           <form onSubmit={handleSubmit} className="space-y-5">
+            {formError ? (
+              <div className="rounded-2xl border border-red-300/30 bg-red-500/10 px-4 py-3 text-sm text-primary-foreground">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-red-200" />
+                  <p>{formError}</p>
+                </div>
+              </div>
+            ) : null}
             <div>
               <label className={labelClass}>Full Name</label>
               <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Rahul Sharma" required className={inputClass} />
@@ -163,15 +189,8 @@ const ContactForm = () => {
               </div>
             </div>
             <div className="pt-3">
-              <button type="submit" disabled={submitting} className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60">
-                {submitting ? (
-                  <span className="inline-flex items-center gap-2">
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Finding your space...
-                  </span>
-                ) : (
-                  "Start My Office Search"
-                )}
+              <button type="submit" disabled={submitting} className="w-full bg-primary-foreground text-primary font-semibold text-base py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-black/10 disabled:opacity-60 disabled:hover:scale-100">
+                {submitting ? "Preparing your shortlist..." : "Start My Office Search"}
               </button>
             </div>
           </form>
