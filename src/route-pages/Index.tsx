@@ -69,7 +69,7 @@ const Index = () => {
         />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
-        <section className="px-4 sm:px-6 lg:px-12">
+        <section className="px-4 pb-10 sm:px-6 sm:pb-14 lg:px-12 lg:pb-16">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-4">
               Tell Us What Your Team Needs
