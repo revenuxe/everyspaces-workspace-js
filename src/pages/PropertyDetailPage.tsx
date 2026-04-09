@@ -20,6 +20,13 @@ interface PropertyDetail {
   address: string | null;
   price: number | null;
   seating_capacity: number | null;
+  sqft: number | null;
+  carpet_area: number | null;
+  floor_number: string | null;
+  total_floors: number | null;
+  parking_slots: number | null;
+  availability_date: string | null;
+  lease_duration_months: number | null;
   short_description: string | null;
   full_description: string | null;
   furnishing_type: string | null;
@@ -47,6 +54,8 @@ const PropertyDetailPage = () => {
         .from("properties")
         .select(`
           id, name, slug, city, area, address, price, seating_capacity,
+          sqft, carpet_area, floor_number, total_floors, parking_slots,
+          availability_date, lease_duration_months,
           short_description, full_description, furnishing_type, phone, whatsapp,
           whatsapp_message, featured_image, meta_title, meta_description,
           property_types(name),
@@ -194,6 +203,36 @@ const PropertyDetailPage = () => {
                 <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
                   <p className="text-xl font-bold text-foreground">{property.seating_capacity}</p>
                   <p className="text-xs text-muted-foreground">Seats</p>
+                </div>
+              )}
+              {property.sqft && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.sqft.toLocaleString()}</p>
+                  <p className="text-xs text-muted-foreground">sq ft</p>
+                </div>
+              )}
+              {property.carpet_area && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.carpet_area.toLocaleString()}</p>
+                  <p className="text-xs text-muted-foreground">Carpet Area</p>
+                </div>
+              )}
+              {property.floor_number && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.floor_number}</p>
+                  <p className="text-xs text-muted-foreground">Floor</p>
+                </div>
+              )}
+              {property.parking_slots && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.parking_slots}</p>
+                  <p className="text-xs text-muted-foreground">Parking</p>
+                </div>
+              )}
+              {property.lease_duration_months && (
+                <div className="bg-secondary rounded-xl p-4 text-center min-w-[100px]">
+                  <p className="text-xl font-bold text-foreground">{property.lease_duration_months}</p>
+                  <p className="text-xs text-muted-foreground">Min Months</p>
                 </div>
               )}
             </div>

@@ -17,6 +17,7 @@ interface Property {
   address: string | null;
   price: number | null;
   seating_capacity: number | null;
+  sqft: number | null;
   short_description: string | null;
   furnishing_type: string | null;
   featured_image: string | null;
@@ -50,7 +51,7 @@ const ListingsPage = () => {
     const fetchData = async () => {
       const [propRes, typesRes, amenRes] = await Promise.all([
         supabase.from("properties").select(`
-          id, name, slug, city, area, address, price, seating_capacity, 
+          id, name, slug, city, area, address, price, seating_capacity, sqft,
           short_description, furnishing_type, featured_image, is_featured,
           property_types(name),
           property_amenities(amenities(name, icon))
@@ -349,6 +350,9 @@ const ListingsPage = () => {
                         )}
                         {prop.seating_capacity && (
                           <span className="text-[10px] bg-secondary text-foreground px-2 py-0.5 rounded-full">{prop.seating_capacity} Seats</span>
+                        )}
+                        {prop.sqft && (
+                          <span className="text-[10px] bg-secondary text-foreground px-2 py-0.5 rounded-full">{prop.sqft.toLocaleString()} sq ft</span>
                         )}
                       </div>
 

@@ -19,6 +19,13 @@ const AdminPropertyForm = () => {
   const [area, setArea] = useState("");
   const [price, setPrice] = useState("");
   const [seatingCapacity, setSeatingCapacity] = useState("");
+  const [sqft, setSqft] = useState("");
+  const [carpetArea, setCarpetArea] = useState("");
+  const [floorNumber, setFloorNumber] = useState("");
+  const [totalFloors, setTotalFloors] = useState("");
+  const [parkingSlots, setParkingSlots] = useState("");
+  const [availabilityDate, setAvailabilityDate] = useState("");
+  const [leaseDuration, setLeaseDuration] = useState("");
   const [shortDesc, setShortDesc] = useState("");
   const [fullDesc, setFullDesc] = useState("");
   const [furnishingType, setFurnishingType] = useState("Fully Furnished");
@@ -76,6 +83,13 @@ const AdminPropertyForm = () => {
           setArea(data.area);
           setPrice(data.price?.toString() || "");
           setSeatingCapacity(data.seating_capacity?.toString() || "");
+          setSqft((data as any).sqft?.toString() || "");
+          setCarpetArea((data as any).carpet_area?.toString() || "");
+          setFloorNumber((data as any).floor_number || "");
+          setTotalFloors((data as any).total_floors?.toString() || "");
+          setParkingSlots((data as any).parking_slots?.toString() || "");
+          setAvailabilityDate((data as any).availability_date || "");
+          setLeaseDuration((data as any).lease_duration_months?.toString() || "");
           setShortDesc(data.short_description || "");
           setFullDesc(data.full_description || "");
           setFurnishingType(data.furnishing_type || "Fully Furnished");
@@ -138,7 +152,7 @@ const AdminPropertyForm = () => {
     if (!name || !slug) return;
     setSaving(true);
 
-    const payload = {
+    const payload: Record<string, any> = {
       name,
       slug,
       property_type_id: propertyTypeId || null,
@@ -148,6 +162,13 @@ const AdminPropertyForm = () => {
       area,
       price: price ? parseFloat(price) : null,
       seating_capacity: seatingCapacity ? parseInt(seatingCapacity) : null,
+      sqft: sqft ? parseInt(sqft) : null,
+      carpet_area: carpetArea ? parseInt(carpetArea) : null,
+      floor_number: floorNumber || null,
+      total_floors: totalFloors ? parseInt(totalFloors) : null,
+      parking_slots: parkingSlots ? parseInt(parkingSlots) : null,
+      availability_date: availabilityDate || null,
+      lease_duration_months: leaseDuration ? parseInt(leaseDuration) : null,
       short_description: shortDesc || null,
       full_description: fullDesc || null,
       furnishing_type: furnishingType || null,
@@ -164,9 +185,9 @@ const AdminPropertyForm = () => {
     let propId = propertyId;
 
     if (isEdit) {
-      await supabase.from("properties").update(payload).eq("id", propertyId!);
+      await (supabase.from("properties").update(payload as any) as any).eq("id", propertyId!);
     } else {
-      const { data } = await supabase.from("properties").insert(payload).select("id").single();
+      const { data } = await (supabase.from("properties").insert(payload as any) as any).select("id").single();
       propId = data?.id;
     }
 
@@ -259,6 +280,40 @@ const AdminPropertyForm = () => {
                 <div>
                   <label className={labelClass}>Seating Capacity</label>
                   <input type="number" value={seatingCapacity} onChange={(e) => setSeatingCapacity(e.target.value)} className={inputClass} placeholder="50" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={labelClass}>Total Area (sq ft)</label>
+                  <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} className={inputClass} placeholder="5000" />
+                </div>
+                <div>
+                  <label className={labelClass}>Carpet Area (sq ft)</label>
+                  <input type="number" value={carpetArea} onChange={(e) => setCarpetArea(e.target.value)} className={inputClass} placeholder="4200" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className={labelClass}>Floor Number</label>
+                  <input value={floorNumber} onChange={(e) => setFloorNumber(e.target.value)} className={inputClass} placeholder="3rd Floor" />
+                </div>
+                <div>
+                  <label className={labelClass}>Total Floors</label>
+                  <input type="number" value={totalFloors} onChange={(e) => setTotalFloors(e.target.value)} className={inputClass} placeholder="10" />
+                </div>
+                <div>
+                  <label className={labelClass}>Parking Slots</label>
+                  <input type="number" value={parkingSlots} onChange={(e) => setParkingSlots(e.target.value)} className={inputClass} placeholder="5" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className={labelClass}>Availability Date</label>
+                  <input type="date" value={availabilityDate} onChange={(e) => setAvailabilityDate(e.target.value)} className={inputClass} />
+                </div>
+                <div>
+                  <label className={labelClass}>Min Lease Duration (months)</label>
+                  <input type="number" value={leaseDuration} onChange={(e) => setLeaseDuration(e.target.value)} className={inputClass} placeholder="12" />
                 </div>
               </div>
               <div>

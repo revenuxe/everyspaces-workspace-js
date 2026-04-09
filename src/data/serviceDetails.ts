@@ -187,5 +187,6 @@ export const serviceSlugMap: Record<string, string> = {
   "Office Interior Design": "office-interior-design",
   "Market Research & Analysis": "market-research-analysis",
   "Workspace Management Services": "workspace-management",
+  "Workspace Management": "workspace-management",
   "Custom Workspace Strategies": "custom-workspace-strategies",
 };
