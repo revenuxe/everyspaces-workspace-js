@@ -8,6 +8,7 @@ import { z } from "zod";
 import heroImg from "@/assets/hero-workspace.png";
 
 const leadSchema = z.object({
+  lead_type: z.literal("consultation"),
   full_name: z.string().trim().min(1, "Name is required").max(200, "Name is too long"),
   email: z.string().trim().email("Invalid email address").max(255, "Email is too long"),
   phone: z.string().trim().max(30, "Phone number is too long").optional().or(z.literal("")),
@@ -44,6 +45,7 @@ const ContactForm = () => {
     setFormError("");
 
     const result = leadSchema.safeParse({
+      lead_type: "consultation",
       full_name: fullName,
       email: email,
       phone: phone,

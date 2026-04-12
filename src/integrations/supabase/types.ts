@@ -37,10 +37,12 @@ export type Database = {
       }
       leads: {
         Row: {
+          company_name: string | null
           created_at: string
           email: string
           full_name: string
           id: string
+          lead_type: string
           message: string | null
           nature_of_business: string | null
           phone: string | null
@@ -50,10 +52,12 @@ export type Database = {
           team_size: string | null
         }
         Insert: {
+          company_name?: string | null
           created_at?: string
           email: string
           full_name: string
           id?: string
+          lead_type?: string
           message?: string | null
           nature_of_business?: string | null
           phone?: string | null
@@ -63,10 +67,12 @@ export type Database = {
           team_size?: string | null
         }
         Update: {
+          company_name?: string | null
           created_at?: string
           email?: string
           full_name?: string
           id?: string
+          lead_type?: string
           message?: string | null
           nature_of_business?: string | null
           phone?: string | null

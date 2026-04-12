@@ -8,6 +8,7 @@ import { Plus, Search, Edit, Trash2, Eye, LogOut, Building2, Tag, Sparkles, MapP
 import { motion, AnimatePresence } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
 import { useToast } from "@/hooks/use-toast";
+import { leadTypeLabels, type LeadType } from "@/lib/leads";
 
 type Tab = "properties" | "types" | "amenities" | "locations" | "leads";
 
@@ -219,8 +220,12 @@ const PropertiesTab = () => {
 /* =================== Leads Tab =================== */
 interface Lead {
   id: string;
+  company_name: string | null;
   full_name: string;
   email: string;
+  lead_type: LeadType;
+  message?: string | null;
+  service?: string | null;
   phone: string | null;
   team_size: string | null;
   preferred_location: string | null;
@@ -234,6 +239,7 @@ const LeadsTab = () => {
   const [loading, setLoading] = useState(true);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [activeType, setActiveType] = useState<LeadType>("consultation");
   const { toast } = useToast();
 
   const fetchLeads = useCallback(async () => {
@@ -276,6 +282,12 @@ const LeadsTab = () => {
   const formatDate = (d: string) =>
     new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
 
+  const resolveLeadType = (lead: Lead): LeadType =>
+    lead.lead_type || (lead.service === "certification" ? "certification" : "consultation");
+  const resolveCompanyName = (lead: Lead) =>
+    lead.company_name || lead.message?.match(/^Company Name:\s*(.+)$/)?.[1] || null;
+  const filteredLeads = leads.filter((lead) => resolveLeadType(lead) === activeType);
+
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
@@ -286,20 +298,35 @@ const LeadsTab = () => {
         <button onClick={fetchLeads} className="p-2 rounded-full hover:bg-muted transition-colors"><RefreshCw size={16} /></button>
       </div>
 
+      <div className="mb-4 inline-flex rounded-full border border-border bg-card p-1 shadow-sm">
+        {(["consultation", "certification"] as LeadType[]).map((type) => (
+          <button
+            key={type}
+            onClick={() => setActiveType(type)}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              activeType === type ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {leadTypeLabels[type]}
+          </button>
+        ))}
+      </div>
+
       {loading ? (
         <div className="flex justify-center py-12"><span className="h-6 w-6 border-2 border-primary/20 border-t-primary rounded-full animate-spin" /></div>
-      ) : leads.length === 0 ? (
+      ) : filteredLeads.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
           <Users size={40} className="mx-auto mb-2 opacity-30" />
-          <p className="text-sm">No leads yet</p>
+          <p className="text-sm">No {leadTypeLabels[activeType].toLowerCase()} leads yet</p>
         </div>
       ) : (
         <div className="space-y-3">
-          {leads.map((lead, i) => (
+          {filteredLeads.map((lead, i) => (
             <motion.div key={lead.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }} className="bg-card border border-border rounded-xl p-4 shadow-sm">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold text-foreground text-sm truncate">{lead.full_name}</h3>
+                  {resolveCompanyName(lead) ? <p className="text-xs text-foreground/70 truncate">{resolveCompanyName(lead)}</p> : null}
                   <p className="text-xs text-muted-foreground truncate">{lead.email}</p>
                   <p className="text-[11px] text-muted-foreground/60 mt-1">{formatDate(lead.created_at)}</p>
                 </div>
@@ -311,6 +338,7 @@ const LeadsTab = () => {
                 </div>
               </div>
               <div className="flex flex-wrap gap-1.5 mt-2.5">
+                <span className="text-[10px] bg-primary/5 text-primary px-2 py-0.5 rounded-full">{leadTypeLabels[resolveLeadType(lead)]}</span>
                 {lead.team_size && <span className="text-[10px] bg-secondary/50 text-secondary-foreground px-2 py-0.5 rounded-full">{lead.team_size} people</span>}
                 {lead.preferred_location && <span className="text-[10px] bg-accent/10 text-accent px-2 py-0.5 rounded-full">{lead.preferred_location}</span>}
                 {lead.planned_timeline && <span className="text-[10px] bg-primary/5 text-primary px-2 py-0.5 rounded-full">{lead.planned_timeline}</span>}
@@ -330,6 +358,8 @@ const LeadsTab = () => {
                 <button onClick={() => setSelectedLead(null)} className="p-1 rounded-full hover:bg-primary-foreground/10 transition-colors"><X size={18} /></button>
               </div>
               <div className="p-5 space-y-3 max-h-[65vh] overflow-y-auto">
+                <DetailRow label="Lead Type" value={leadTypeLabels[resolveLeadType(selectedLead)]} />
+                <DetailRow label="Company Name" value={resolveCompanyName(selectedLead)} />
                 <DetailRow label="Full Name" value={selectedLead.full_name} />
                 <DetailRow label="Email" value={selectedLead.email} />
                 <DetailRow label="Phone" value={selectedLead.phone} />
