@@ -27,6 +27,8 @@ const badges = [
   "High-Speed Internet Workspace",
   "Most Trusted Workspace",
   "Best Value Workspace",
+  "Top Community Workspace",
+  "Premium Meeting Ready",
 ];
 
 const userBenefits = [
