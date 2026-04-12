@@ -15,6 +15,8 @@ const evaluationPoints = [
   "Location and accessibility",
   "Pricing and value",
   "Safety and environment",
+  "Amenities and comfort",
+  "Booking and onboarding experience",
 ];
 
 const badges = [
@@ -155,9 +157,6 @@ const CertificationPage = () => {
               </svg>
             </div>
             <div className="relative z-10 mx-auto max-w-7xl">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-foreground/70">
-                Workspace reviews and certification
-              </p>
               <h1 className="max-w-5xl text-4xl font-serif leading-[1.1] sm:text-5xl sm:leading-tight md:text-7xl lg:text-8xl">
                 EverySpaces Workspace <span className="italic font-normal">Certification</span>
               </h1>
