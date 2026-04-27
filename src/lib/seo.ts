@@ -99,6 +99,17 @@ export function organizationSchema() {
   };
 }
 
+export function brandSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    name: "EverySpaces",
+    url: defaultMetadata.siteUrl,
+    logo: absoluteUrl("/everyspaces-logo.webp"),
+    slogan: "Find the right office space faster.",
+  };
+}
+
 export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
   return {
     "@context": "https://schema.org",
