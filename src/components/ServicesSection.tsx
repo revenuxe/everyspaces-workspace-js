@@ -204,6 +204,15 @@ const ExpandedPanel = ({
               <ArrowUpRight size={14} />
             </span>
           </Link>
+          <Link
+            to={`/services/${slug}`}
+            className="flex items-center justify-between border border-foreground text-foreground font-semibold text-sm py-3 pl-5 pr-3 rounded-full hover:bg-foreground hover:text-primary-foreground transition-colors md:w-fit md:gap-4 shrink-0"
+          >
+            <span>View Detailed Page</span>
+            <span className="w-8 h-8 rounded-full border-2 border-current/30 flex items-center justify-center ml-3">
+              <ArrowUpRight size={14} />
+            </span>
+          </Link>
         </div>
       </div>
     </motion.div>

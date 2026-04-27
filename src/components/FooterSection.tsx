@@ -1,6 +1,7 @@
 import { Linkedin, Instagram } from "lucide-react";
 import { Link } from "@/compat/react-router-dom";
 import logo from "@/assets/logo.webp";
+import { servicePageLinks } from "@/data/servicePages";
 
 type FooterLink = { label?: string; href?: string; isRoute?: boolean; titleLink?: string };
 
@@ -8,9 +9,13 @@ const footerLinks: Record<string, FooterLink[]> = {
   "Quick Links": [
     { label: "Home", href: "/", isRoute: true },
     { label: "Blog", href: "/blog", isRoute: true },
+    { label: "Certification", href: "/certification", isRoute: true },
+    { label: "Listings", href: "/listings", isRoute: true },
+    { label: "Areas We Serve", href: "/areas-we-serve", isRoute: true },
     { label: "About Us", href: "/about", isRoute: true },
     { label: "Contact Us", href: "#contact-form", isRoute: false },
   ],
+  Services: servicePageLinks,
   "Bangalore": [
     { label: "Koramangala", href: "/office-space/bangalore/koramangala", isRoute: true },
     { label: "HSR Layout", href: "/office-space/bangalore/hsr-layout", isRoute: true },
@@ -71,7 +76,7 @@ const FooterSection = () => {
 
       {/* Footer links */}
       <div className="border-t border-border py-8 md:py-12 px-4 sm:px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 md:gap-8">
           <div className="col-span-2">
             <Link to="/" className="mb-5 inline-flex bg-primary px-3 py-2 rounded-md">
               <img src={logo.src} alt="EverySpaces logo" className="h-14 w-auto" />

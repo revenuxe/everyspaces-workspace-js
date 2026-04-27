@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { allAreas } from "@/data/areas";
 import { cityContent } from "@/data/cityContent";
+import { servicePages } from "@/data/servicePages";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.everyspaces.com";
 
@@ -261,7 +262,8 @@ export function getStaticPublicPaths() {
   const basePaths = ["/", "/about", "/blog", "/certification", "/certification/contact-us", "/contact", "/privacy-policy", "/terms-and-conditions", "/areas-we-serve", "/listings"];
   const cityPaths = Object.values(cityContent).map((city) => `/office-space/${city.citySlug}`);
   const areaPaths = allAreas.map((area) => `/office-space/${area.citySlug}/${area.slug}`);
-  return [...basePaths, ...cityPaths, ...areaPaths];
+  const servicePaths = servicePages.map((service) => `/services/${service.slug}`);
+  return [...basePaths, ...cityPaths, ...areaPaths, ...servicePaths];
 }
 
 export function buildArticleMetadata({
