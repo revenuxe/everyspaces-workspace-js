@@ -7,6 +7,7 @@ type FooterLink = { label?: string; href?: string; isRoute?: boolean; titleLink?
 const footerLinks: Record<string, FooterLink[]> = {
   "Quick Links": [
     { label: "Home", href: "/", isRoute: true },
+    { label: "Blog", href: "/blog", isRoute: true },
     { label: "About Us", href: "/about", isRoute: true },
     { label: "Contact Us", href: "#contact-form", isRoute: false },
   ],

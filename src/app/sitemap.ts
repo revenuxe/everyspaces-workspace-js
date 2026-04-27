@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllBlogSlugs } from "@/lib/blog";
 import { getActivePropertySlugs } from "@/lib/server-data";
 import { absoluteUrl, getStaticPublicPaths } from "@/lib/seo";
 
@@ -14,6 +15,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
+  const blogPaths = (await getAllBlogSlugs()).map((slug) => ({
+    url: absoluteUrl(`/blog/${slug}`),
+    changeFrequency: "weekly" as const,
+    priority: 0.75,
+  }));
 
-  return [...staticPaths, ...propertyPaths];
+  return [...staticPaths, ...propertyPaths, ...blogPaths];
 }

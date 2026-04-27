@@ -123,9 +123,200 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
   };
 }
 
+export function collectionPageSchema({
+  name,
+  description,
+  url,
+  items,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  items: Array<{ name: string; url: string }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url,
+    isPartOf: {
+      "@type": "WebSite",
+      name: defaultMetadata.siteName,
+      url: defaultMetadata.siteUrl,
+    },
+    about: {
+      "@type": "Thing",
+      name: "Office space, coworking, managed workspace and workplace strategy",
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+      })),
+    },
+  };
+}
+
+export function personSchema({
+  name,
+  url,
+  description,
+  image,
+  jobTitle,
+}: {
+  name: string;
+  url?: string;
+  description?: string;
+  image?: string;
+  jobTitle?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name,
+    url,
+    description,
+    image,
+    jobTitle,
+  };
+}
+
+export function faqSchema(faqs: Array<{ question: string; answer: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function articleSchema({
+  headline,
+  description,
+  url,
+  image,
+  datePublished,
+  dateModified,
+  authorName,
+  authorUrl,
+  keywords,
+  section,
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+  authorName?: string;
+  authorUrl?: string;
+  keywords?: string[];
+  section?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    mainEntityOfPage: url,
+    headline,
+    description,
+    image: image ? [image] : undefined,
+    datePublished,
+    dateModified,
+    articleSection: section,
+    keywords,
+    author: authorName
+      ? {
+          "@type": "Person",
+          name: authorName,
+          url: authorUrl,
+        }
+      : {
+          "@type": "Organization",
+          name: defaultMetadata.siteName,
+          url: defaultMetadata.siteUrl,
+        },
+    publisher: {
+      "@type": "Organization",
+      name: defaultMetadata.siteName,
+      url: defaultMetadata.siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/everyspaces-logo.webp"),
+      },
+    },
+  };
+}
+
 export function getStaticPublicPaths() {
-  const basePaths = ["/", "/about", "/contact", "/privacy-policy", "/terms-and-conditions", "/areas-we-serve", "/listings"];
+  const basePaths = ["/", "/about", "/blog", "/certification", "/certification/contact-us", "/contact", "/privacy-policy", "/terms-and-conditions", "/areas-we-serve", "/listings"];
   const cityPaths = Object.values(cityContent).map((city) => `/office-space/${city.citySlug}`);
   const areaPaths = allAreas.map((area) => `/office-space/${area.citySlug}/${area.slug}`);
   return [...basePaths, ...cityPaths, ...areaPaths];
+}
+
+export function buildArticleMetadata({
+  title,
+  description,
+  path,
+  keywords,
+  publishedTime,
+  modifiedTime,
+  authors,
+  section,
+  tags,
+  image,
+  noIndex = false,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authors?: string[];
+  section?: string;
+  tags?: string[];
+  image?: string;
+  noIndex?: boolean;
+}): Metadata {
+  return {
+    ...buildMetadata({
+      title,
+      description,
+      path,
+      keywords,
+      ogType: "article",
+      noIndex,
+    }),
+    openGraph: {
+      type: "article",
+      siteName: defaultMetadata.siteName,
+      locale: defaultMetadata.locale,
+      title,
+      description,
+      url: absoluteUrl(path),
+      images: [image || defaultMetadata.ogImage],
+      publishedTime,
+      modifiedTime,
+      authors,
+      section,
+      tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image || defaultMetadata.ogImage],
+    },
+  };
 }
