@@ -78,17 +78,6 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
       </section>
 
       <section className="px-4 py-12 sm:px-6 md:py-20 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
-          {service.proofPoints.map((point) => (
-            <div key={point.label} className="rounded-2xl border border-border bg-card p-6 shadow-md">
-              <p className="font-serif text-4xl text-accent sm:text-5xl">{point.value}</p>
-              <p className="mt-3 text-sm font-medium text-muted-foreground">{point.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-4 pb-12 sm:px-6 md:pb-20 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Who it helps</p>
