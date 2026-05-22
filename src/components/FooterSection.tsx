@@ -16,6 +16,13 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: "Contact Us", href: "#contact-form", isRoute: false },
   ],
   Services: servicePageLinks,
+  Blog: [
+    { label: "Office Space for Rent in Bangalore", href: "/blog/office-space-for-rent-in-bangalore", isRoute: true },
+    { label: "Office Space in HBR Layout", href: "/blog/best-office-space-for-rent-in-hbr-layout", isRoute: true },
+    { label: "Best Areas in Bangalore", href: "/blog/best-areas-for-office-space-in-bangalore", isRoute: true },
+    { label: "Managed Office vs Coworking", href: "/blog/managed-office-vs-coworking-bangalore", isRoute: true },
+    { label: "EverySpaces Journal", href: "/blog", isRoute: true },
+  ],
   "Bangalore": [
     { label: "Koramangala", href: "/office-space/bangalore/koramangala", isRoute: true },
     { label: "HSR Layout", href: "/office-space/bangalore/hsr-layout", isRoute: true },
@@ -76,7 +83,7 @@ const FooterSection = () => {
 
       {/* Footer links */}
       <div className="border-t border-border py-8 md:py-12 px-4 sm:px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 md:gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-6 md:gap-8">
           <div className="col-span-2">
             <Link to="/" className="mb-5 inline-flex bg-primary px-3 py-2 rounded-md">
               <img src={logo.src} alt="EverySpaces logo" className="h-14 w-auto" />
@@ -131,7 +138,7 @@ const FooterSection = () => {
 
       {/* Copyright */}
       <div className="bg-lime-strong py-4 px-4 sm:px-6 text-center">
-        <p className="text-xs sm:text-sm text-foreground">© 2025 EverySpaces. All Rights Reserved.</p>
+        <p className="text-xs sm:text-sm text-foreground">© 2026 EverySpaces. All Rights Reserved.</p>
       </div>
     </footer>
   );

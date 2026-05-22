@@ -1,16 +1,16 @@
 import { Fragment, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { type PortableTextBlock, sanityImageUrl } from "@/lib/sanity";
+import { type BlogContentBlock } from "@/lib/blog";
 
 function renderText(children: ReactNode[]) {
   return children.length ? children : null;
 }
 
-export function PortableTextRenderer({
+export function BlogContentRenderer({
   value,
   className,
 }: {
-  value: PortableTextBlock[];
+  value: BlogContentBlock[];
   className?: string;
 }) {
   const renderedBlocks: ReactNode[] = [];
@@ -55,20 +55,11 @@ export function PortableTextRenderer({
 
     flushList();
 
-    if (block._type === "image") {
-      const imageUrl = sanityImageUrl(
-        { asset: block.asset, alt: block.alt, caption: block.caption },
-        { width: 1400, auto: "format", fit: "max" },
-      );
-
-      if (!imageUrl) {
-        return;
-      }
-
+    if (block._type === "image" && block.image?.url) {
       renderedBlocks.push(
         <figure key={block._key || `image-${index}`} className="overflow-hidden rounded-[2rem] border border-border bg-card">
-          <img src={imageUrl} alt={block.alt || ""} className="h-auto w-full object-cover" />
-          {block.caption ? <figcaption className="px-5 py-4 text-sm leading-6 text-muted-foreground">{block.caption}</figcaption> : null}
+          <img src={block.image.url} alt={block.image.alt || ""} className="h-auto w-full object-cover" />
+          {block.image.caption ? <figcaption className="px-5 py-4 text-sm leading-6 text-muted-foreground">{block.image.caption}</figcaption> : null}
         </figure>,
       );
       return;
@@ -120,48 +111,34 @@ export function PortableTextRenderer({
   return <div className={cn("space-y-6", className)}>{renderedBlocks}</div>;
 }
 
-function renderSpanChildren(block: PortableTextBlock) {
-  const markDefs = new Map((block.markDefs || []).map((mark) => [mark._key, mark]));
-
+function renderSpanChildren(block: BlogContentBlock) {
   return renderText(
     (block.children || []).map((child, index) => {
-      let node: ReactNode = child.text;
+      let node: ReactNode = child.href ? (
+        <a href={child.href} className="font-semibold text-foreground underline decoration-accent underline-offset-4 transition-colors hover:text-accent">
+          {child.text}
+        </a>
+      ) : (
+        child.text
+      );
 
       (child.marks || []).forEach((mark) => {
-        const definition = markDefs.get(mark);
-
         if (mark === "strong") {
-          node = <strong key={`${child._key || index}-${mark}`}>{node}</strong>;
+          node = <strong key={`${index}-${mark}`}>{node}</strong>;
           return;
         }
 
         if (mark === "em") {
-          node = <em key={`${child._key || index}-${mark}`}>{node}</em>;
+          node = <em key={`${index}-${mark}`}>{node}</em>;
           return;
         }
 
         if (mark === "code") {
-          node = <code key={`${child._key || index}-${mark}`} className="rounded bg-secondary/70 px-1.5 py-0.5 text-[0.95em] text-foreground">{node}</code>;
-          return;
-        }
-
-        if (definition?._type === "link" && definition.href) {
-          const isExternal = definition.href.startsWith("http");
-          node = (
-            <a
-              key={`${child._key || index}-${mark}`}
-              href={definition.href}
-              target={isExternal ? "_blank" : undefined}
-              rel={isExternal ? "noopener noreferrer" : undefined}
-              className="font-semibold text-foreground underline decoration-accent underline-offset-4 transition-colors hover:text-accent"
-            >
-              {node}
-            </a>
-          );
+          node = <code key={`${index}-${mark}`} className="rounded bg-secondary/70 px-1.5 py-0.5 text-[0.95em] text-foreground">{node}</code>;
         }
       });
 
-      return <Fragment key={child._key || `span-${index}`}>{node}</Fragment>;
+      return <Fragment key={`span-${index}`}>{node}</Fragment>;
     }),
   );
 }

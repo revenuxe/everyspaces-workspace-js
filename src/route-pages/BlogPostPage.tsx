@@ -4,10 +4,9 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import AnimatedSection from "@/components/AnimatedSection";
 import InternalLinksSection from "@/components/InternalLinksSection";
-import { PortableTextRenderer } from "@/components/blog/PortableTextRenderer";
+import { BlogContentRenderer } from "@/components/blog/BlogContentRenderer";
 import { Link } from "@/compat/react-router-dom";
 import { type BlogPost, getAuthorProfileUrl, getBlogPostCoverImage, getBlogPostUrl } from "@/lib/blog";
-import { sanityImageUrl } from "@/lib/sanity";
 
 function formatDate(value?: string) {
   if (!value) {
@@ -24,8 +23,13 @@ export default function BlogPostPage({
   post: BlogPost;
   relatedPosts: BlogPost[];
 }) {
-  const coverImage = getBlogPostCoverImage(post, 1800);
-  const authorImage = sanityImageUrl(post.author?.image, { width: 240, height: 240, fit: "crop", auto: "format" });
+  const coverImage = getBlogPostCoverImage(post);
+  const authorImage = post.author?.image?.url;
+  const tableOfContents = post.body
+    .filter((block) => block.style === "h2" || block.style === "h3")
+    .map((block) => block.children?.map((child) => child.text).join("").trim())
+    .filter(Boolean)
+    .slice(0, 8);
 
   return (
     <div className="min-h-screen bg-background">
@@ -76,7 +80,7 @@ export default function BlogPostPage({
         <section className="px-4 py-6 sm:px-6 lg:px-12 lg:py-10">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
             <article className="rounded-[2rem] border border-border bg-card px-6 py-8 shadow-sm sm:px-8 sm:py-10">
-              <PortableTextRenderer value={post.body} className="max-w-none" />
+              <BlogContentRenderer value={post.body} className="max-w-none" />
 
               {post.seo.faqs.length ? (
                 <div className="mt-10 rounded-[1.75rem] bg-secondary/45 px-5 py-6 sm:px-6">
@@ -91,9 +95,34 @@ export default function BlogPostPage({
                   </div>
                 </div>
               ) : null}
+
+              <div className="mt-10 rounded-[1.75rem] bg-primary px-6 py-7 text-primary-foreground">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime">EverySpaces Consultation</p>
+                <h2 className="mt-3 text-3xl font-serif leading-tight">Need help shortlisting office space in Bangalore?</h2>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-primary-foreground/78">
+                  Share your team size, budget, preferred areas, move-in timeline, and office type. EverySpaces will help you compare relevant coworking, private office, managed office, and leased options.
+                </p>
+                <Link to="/contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground">
+                  Get a curated shortlist
+                  <MoveRight size={16} />
+                </Link>
+              </div>
             </article>
 
             <aside className="space-y-6">
+              {tableOfContents.length ? (
+                <div className="rounded-[2rem] border border-border bg-card p-6 shadow-sm">
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">In This Guide</p>
+                  <div className="mt-5 space-y-3">
+                    {tableOfContents.map((item) => (
+                      <p key={item} className="text-sm leading-6 text-muted-foreground">
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
               <div className="rounded-[2rem] border border-border bg-card p-6 shadow-sm">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Brand Note</p>
                 <h2 className="mt-4 text-2xl font-serif text-foreground">Every article supports the brand story, not just rankings.</h2>
@@ -151,8 +180,8 @@ export default function BlogPostPage({
               <div className="mt-6 grid gap-6 md:grid-cols-3">
                 {relatedPosts.map((related) => (
                   <Link key={related.slug} to={getBlogPostUrl(related.slug)} className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl">
-                    {getBlogPostCoverImage(related, 900) ? (
-                      <img src={getBlogPostCoverImage(related, 900)!} alt={related.coverImage?.alt || related.title} className="h-48 w-full object-cover" />
+                    {getBlogPostCoverImage(related) ? (
+                      <img src={getBlogPostCoverImage(related)} alt={related.coverImage?.alt || related.title} className="h-48 w-full object-cover" />
                     ) : (
                       <div className="h-48 bg-[linear-gradient(135deg,#eff3d4_0%,#d7e8c1_35%,#f79a49_100%)]" />
                     )}

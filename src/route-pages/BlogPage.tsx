@@ -1,4 +1,4 @@
-import { ArrowRight, Clock3, Sparkles } from "lucide-react";
+import { ArrowRight, Building2, Clock3, MapPin, Sparkles } from "lucide-react";
 import { format } from "date-fns";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
@@ -15,8 +15,26 @@ function formatDate(value?: string) {
   return format(new Date(value), "dd MMM yyyy");
 }
 
+const officeTypes = [
+  "Coworking desks",
+  "Private offices",
+  "Managed offices",
+  "Serviced offices",
+  "Conventional leases",
+  "Virtual offices",
+];
+
+const bangaloreAreas = [
+  { name: "Koramangala", href: "/office-space/bangalore/koramangala" },
+  { name: "HSR Layout", href: "/office-space/bangalore/hsr-layout" },
+  { name: "Whitefield", href: "/office-space/bangalore/whitefield" },
+  { name: "Indiranagar", href: "/office-space/bangalore/indiranagar" },
+  { name: "MG Road", href: "/office-space/bangalore/mg-road" },
+  { name: "Electronic City", href: "/office-space/bangalore/electronic-city" },
+];
+
 export default function BlogPage({ data }: { data: BlogLandingData }) {
-  const { featuredPost, latestPosts, categories, isConfigured, studioUrl } = data;
+  const { featuredPost, latestPosts, categories, hasPosts } = data;
 
   return (
     <div className="min-h-screen bg-background">
@@ -34,16 +52,13 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
                 Workspace intelligence, curated through the EverySpaces brand lens.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
-                This blog is built for search growth and brand authority: city guides, leasing playbooks, coworking comparisons, workplace strategy pieces, and conversion-ready editorial content managed from Sanity.
+                City guides, leasing playbooks, coworking comparisons, workplace strategy pieces, and practical research for teams planning their next workspace.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:scale-[1.02]">
                   Talk to Our Team
                   <ArrowRight size={16} />
                 </Link>
-                <a href={studioUrl} className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground/90 transition-colors hover:bg-primary-foreground/10">
-                  Open Sanity Studio
-                </a>
               </div>
             </div>
             <div className="rounded-[2rem] border border-primary-foreground/18 bg-primary-foreground/8 p-6 backdrop-blur-sm">
@@ -60,21 +75,18 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
         </section>
       </AnimatedSection>
 
-      {!isConfigured || !featuredPost ? (
+      {!hasPosts || !featuredPost ? (
         <AnimatedSection delay={0.08}>
           <section className="px-4 py-14 sm:px-6 lg:px-12 lg:py-20">
             <div className="mx-auto max-w-5xl rounded-[2rem] border border-dashed border-border bg-card px-8 py-12 text-center shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Sanity Waiting Room</p>
-              <h2 className="mt-4 text-3xl font-serif text-foreground">The blog shell is live and ready for content.</h2>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Editorial Desk</p>
+              <h2 className="mt-4 text-3xl font-serif text-foreground">The journal is being refreshed.</h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-                Add your Sanity project values in `.env`, publish at least one `post` document, and this page will automatically populate with featured articles, topic clusters, and article detail pages.
+                New EverySpaces articles are being prepared for this page. For now, the team can help directly with location research, workspace shortlists, and leasing strategy.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <a href={studioUrl} className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
-                  Go to Studio
-                </a>
                 <Link to="/contact" className="inline-flex items-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground">
-                  Need SEO Content Strategy?
+                  Talk to EverySpaces
                 </Link>
               </div>
             </div>
@@ -86,9 +98,9 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
             <section className="px-4 py-14 sm:px-6 lg:px-12 lg:py-20">
               <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr]">
                 <Link to={getBlogPostUrl(featuredPost.slug)} className="group overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm transition-shadow hover:shadow-xl">
-                  {getBlogPostCoverImage(featuredPost, 1600) ? (
+                  {getBlogPostCoverImage(featuredPost) ? (
                     <img
-                      src={getBlogPostCoverImage(featuredPost, 1600)!}
+                      src={getBlogPostCoverImage(featuredPost)}
                       alt={featuredPost.coverImage?.alt || featuredPost.title}
                       className="h-[320px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-[420px]"
                     />
@@ -118,12 +130,12 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
                 </Link>
 
                 <div className="rounded-[2rem] border border-border bg-card p-6 shadow-sm">
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Brand Curation</p>
-                  <h2 className="mt-4 text-3xl font-serif leading-tight text-foreground">Why this blog works for both search and trust.</h2>
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Editorial Method</p>
+                  <h2 className="mt-4 text-3xl font-serif leading-tight text-foreground">Built around scannable, high-intent workspace decisions.</h2>
                   <div className="mt-6 space-y-4 text-sm leading-7 text-muted-foreground">
-                    <p>Each article is positioned to support topical authority around office space, coworking, location demand, leasing decisions, and commercial real estate intent.</p>
-                    <p>The design keeps the EverySpaces brand visible without overpowering the content, so it feels premium and editorial rather than templated.</p>
-                    <p>Sanity gives your team a cleaner CRM-style publishing workflow with structured SEO fields, modular content blocks, author bylines, FAQs, and reusable taxonomies.</p>
+                    <p>Each article follows a clean structure: keyword-led title, short hook, useful subheadings, compact paragraphs, lists, FAQs, and a direct consultation CTA.</p>
+                    <p>The content cluster targets searches around office space for rent, coworking, managed offices, private offices, location comparisons, and shortlisting support.</p>
+                    <p>Every piece is shaped to answer practical workspace questions while guiding readers toward a confident EverySpaces consultation.</p>
                   </div>
                   <div className="mt-8 rounded-[1.5rem] bg-secondary/55 p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-secondary-foreground">Active Topics</p>
@@ -134,6 +146,33 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
                         </span>
                       ))}
                     </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <section className="bg-secondary/35 px-4 py-12 sm:px-6 lg:px-12 lg:py-16">
+              <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Bangalore Office Guide</p>
+                  <h2 className="mt-3 text-3xl font-serif leading-tight text-foreground">Curated for teams searching office space for rent in Bangalore.</h2>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                    The journal connects search intent with real decisions: office type, area, budget, team size, commute, brand perception, and consultation support.
+                  </p>
+                </div>
+                <div className="rounded-[2rem] border border-border bg-background p-6 shadow-sm">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                    <Building2 size={20} />
+                  </div>
+                  <h3 className="text-2xl font-serif text-foreground">Types of offices</h3>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {officeTypes.map((type) => (
+                      <span key={type} className="rounded-full border border-border bg-card px-3 py-1 text-sm text-muted-foreground">
+                        {type}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -152,9 +191,9 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
                 <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {latestPosts.map((post) => (
                     <Link key={post.slug} to={getBlogPostUrl(post.slug)} className="group overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl">
-                      {getBlogPostCoverImage(post, 1200) ? (
+                      {getBlogPostCoverImage(post) ? (
                         <img
-                          src={getBlogPostCoverImage(post, 1200)!}
+                          src={getBlogPostCoverImage(post)}
                           alt={post.coverImage?.alt || post.title}
                           className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                         />
@@ -176,6 +215,28 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
                           <span>{post.readingTime} min</span>
                         </div>
                       </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.13}>
+            <section className="px-4 pb-14 sm:px-6 lg:px-12 lg:pb-20">
+              <div className="mx-auto max-w-7xl">
+                <div className="mb-6 flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Best Areas</p>
+                    <h2 className="mt-3 text-3xl font-serif text-foreground">Explore Bangalore office locations.</h2>
+                  </div>
+                  <MapPin className="hidden text-accent sm:block" size={30} />
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {bangaloreAreas.map((area) => (
+                    <Link key={area.name} to={area.href} className="flex items-center justify-between rounded-2xl border border-border bg-card px-5 py-4 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-secondary/55">
+                      {area.name}
+                      <ArrowRight size={16} />
                     </Link>
                   ))}
                 </div>
