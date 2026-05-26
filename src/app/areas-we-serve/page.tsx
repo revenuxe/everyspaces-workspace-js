@@ -7,10 +7,10 @@ import { absoluteUrl, breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Areas We Serve - Office Space & Coworking Locations | EverySpaces",
   description:
-    "Explore all locations where EverySpaces provides coworking spaces, office space for rent and managed workspaces. Serving Bangalore, Hyderabad and more.",
+    "Explore all Bangalore locations where EverySpaces provides coworking spaces, office space for rent and managed workspaces.",
   path: "/areas-we-serve",
   keywords:
-    "coworking space locations, office space for rent, coworking near me, office space Bangalore, coworking Hyderabad, managed office locations",
+    "coworking space locations Bangalore, office space for rent Bangalore, coworking near me Bangalore, Bengaluru office space, managed office locations Bangalore",
 });
 
 export default function AreasPage() {

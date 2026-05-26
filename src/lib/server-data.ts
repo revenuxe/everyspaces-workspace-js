@@ -1,5 +1,10 @@
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 
+const isBangaloreCity = (city: string | null | undefined) => {
+  const normalized = (city || "").trim().toLowerCase();
+  return normalized === "bangalore" || normalized === "bengaluru";
+};
+
 export async function getListingsPageData() {
   try {
     const supabase = createSupabaseServerClient();
@@ -19,11 +24,13 @@ export async function getListingsPageData() {
       supabase.from("amenities").select("id, name").order("name"),
     ]);
 
-    const properties = (propertiesRes.data || []).map((property: any) => ({
-      ...property,
-      property_type: property.property_types,
-      amenities: (property.property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
-    }));
+    const properties = (propertiesRes.data || [])
+      .filter((property: any) => isBangaloreCity(property.city))
+      .map((property: any) => ({
+        ...property,
+        property_type: property.property_types,
+        amenities: (property.property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
+      }));
 
     return {
       properties,
@@ -58,7 +65,7 @@ export async function getPropertyBySlug(slug: string) {
       .eq("status", "active")
       .maybeSingle();
 
-    if (!data) {
+    if (!data || !isBangaloreCity(data.city)) {
       return null;
     }
 
@@ -76,8 +83,8 @@ export async function getPropertyBySlug(slug: string) {
 export async function getActivePropertySlugs() {
   try {
     const supabase = createSupabaseServerClient();
-    const { data } = await supabase.from("properties").select("slug, updated_at").eq("status", "active");
-    return data || [];
+    const { data } = await supabase.from("properties").select("slug, updated_at, city").eq("status", "active");
+    return (data || []).filter((property) => isBangaloreCity(property.city));
   } catch {
     return [];
   }

@@ -8,10 +8,10 @@ import { getListingsPageData } from "@/lib/server-data";
 export const metadata: Metadata = buildMetadata({
   title: "Office Space & Coworking Listings | EverySpaces",
   description:
-    "Browse premium office spaces, coworking desks and managed workspaces for rent in Bangalore and Hyderabad. Filter by location, budget, capacity and amenities.",
+    "Browse premium office spaces, coworking desks and managed workspaces for rent in Bangalore and Bengaluru. Filter by location, budget, capacity and amenities.",
   path: "/listings",
   keywords:
-    "office space listings, coworking space for rent, office space Bangalore, coworking Hyderabad, managed office listings",
+    "office space listings, coworking space for rent, office space Bangalore, coworking Bengaluru, managed office listings Bangalore",
 });
 
 export default async function ListingsRoute() {

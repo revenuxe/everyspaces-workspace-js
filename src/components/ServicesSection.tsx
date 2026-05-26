@@ -244,7 +244,7 @@ const ServicesSection = () => {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
               We help businesses move from broad office search intent to a clear shortlist. That includes workspace
               consulting, site selection, lease support, office interiors, market research, and post-move workspace
-              management. If you are comparing managed office space in Bangalore, coworking in Hyderabad, or private
+              management. If you are comparing managed office space in Bangalore, coworking in Bengaluru, or private
               offices across multiple areas, these service tracks are built to reduce friction and improve decision
               quality.
             </p>

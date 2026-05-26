@@ -13,7 +13,7 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: "Listings", href: "/listings", isRoute: true },
     { label: "Areas We Serve", href: "/areas-we-serve", isRoute: true },
     { label: "About Us", href: "/about", isRoute: true },
-    { label: "Contact Us", href: "#contact-form", isRoute: false },
+    { label: "Contact Us", href: "/contact", isRoute: true },
   ],
   Services: servicePageLinks,
   Blog: [
@@ -30,12 +30,12 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: "Indiranagar", href: "/office-space/bangalore/indiranagar", isRoute: true },
     { titleLink: "/office-space/bangalore" },
   ],
-  "Hyderabad": [
-    { label: "HITEC City", href: "/office-space/hyderabad/hitec-city", isRoute: true },
-    { label: "Gachibowli", href: "/office-space/hyderabad/gachibowli", isRoute: true },
-    { label: "Madhapur", href: "/office-space/hyderabad/madhapur", isRoute: true },
-    { label: "Kondapur", href: "/office-space/hyderabad/kondapur", isRoute: true },
-    { titleLink: "/office-space/hyderabad" },
+  "Bengaluru Areas": [
+    { label: "Electronic City", href: "/office-space/bangalore/electronic-city", isRoute: true },
+    { label: "Marathahalli", href: "/office-space/bangalore/marathahalli", isRoute: true },
+    { label: "Bellandur", href: "/office-space/bangalore/bellandur", isRoute: true },
+    { label: "Hebbal", href: "/office-space/bangalore/hebbal", isRoute: true },
+    { titleLink: "/office-space/bangalore" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy-policy", isRoute: true },
@@ -89,7 +89,7 @@ const FooterSection = () => {
               <img src={logo.src} alt="EverySpaces logo" className="h-14 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs mb-6">
-              EverySpaces provides expert workspace consulting, coworking &amp; office space solutions in Bangalore and Hyderabad.
+              EverySpaces provides expert workspace consulting, coworking &amp; office space solutions in Bangalore and Bengaluru.
             </p>
             <p className="text-xs text-muted-foreground mb-2">Visit us on:</p>
             <div className="flex gap-3">

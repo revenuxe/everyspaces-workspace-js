@@ -11,7 +11,7 @@ export const metadata: Metadata = buildMetadata({
     "Read branded editorial content from EverySpaces covering coworking, managed offices, leasing strategy, city guides, workplace trends, and commercial real estate insights.",
   path: "/blog",
   keywords:
-    "EverySpaces blog, office space blog, coworking guides, managed office insights, workspace strategy, leasing advice, Bangalore office market, Hyderabad coworking",
+    "EverySpaces blog, office space blog, coworking guides, managed office insights, workspace strategy, leasing advice, Bangalore office market, Bengaluru coworking",
 });
 
 export default async function BlogRoute() {

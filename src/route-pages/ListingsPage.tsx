@@ -64,6 +64,11 @@ const amenityIcons: Record<string, React.ElementType> = {
   Users,
 };
 
+const isBangaloreCity = (city: string | null | undefined) => {
+  const normalized = (city || "").trim().toLowerCase();
+  return normalized === "bangalore" || normalized === "bengaluru";
+};
+
 const ListingsPage = ({
   initialProperties = [],
   initialPropertyTypes = [],
@@ -105,11 +110,13 @@ const ListingsPage = ({
         supabase.from("amenities").select("id, name").order("name"),
       ]);
 
-      const mapped = (propRes.data || []).map((property: any) => ({
-        ...property,
-        property_type: property.property_types,
-        amenities: (property.property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
-      }));
+      const mapped = (propRes.data || [])
+        .filter((property: any) => isBangaloreCity(property.city))
+        .map((property: any) => ({
+          ...property,
+          property_type: property.property_types,
+          amenities: (property.property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
+        }));
 
       setProperties(mapped);
       setPropertyTypes(typesRes.data || []);
@@ -171,9 +178,9 @@ const ListingsPage = ({
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Office Space & Coworking Listings | EverySpaces"
-        description="Browse premium office spaces, coworking desks & managed workspaces for rent in Bangalore & Hyderabad. Filter by location, budget, capacity & amenities."
+        description="Browse premium office spaces, coworking desks & managed workspaces for rent in Bangalore and Bengaluru. Filter by location, budget, capacity & amenities."
         canonical="/listings"
-        keywords="office space listings, coworking space for rent, office space Bangalore, coworking Hyderabad, managed office listings"
+        keywords="office space listings, coworking space for rent, office space Bangalore, coworking Bengaluru, managed office listings Bangalore"
       />
       <Navbar />
 
@@ -193,7 +200,7 @@ const ListingsPage = ({
             <span className="italic font-normal">Find</span> Your Perfect Workspace
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base max-w-xl mb-8">
-            Browse curated office spaces, coworking desks & managed workspaces across Bangalore & Hyderabad.
+            Browse curated office spaces, coworking desks & managed workspaces across Bangalore and Bengaluru.
           </p>
 
           <div className="bg-card border border-border rounded-2xl p-3 sm:p-4 shadow-lg">
@@ -412,9 +419,9 @@ const ListingsPage = ({
               description: "Review Bangalore neighborhoods, workspace demand, and office search guidance before shortlisting listings.",
             },
             {
-              href: "/office-space/hyderabad",
-              title: "Hyderabad Office Space Guide",
-              description: "Compare Hyderabad business districts, coworking demand, and managed office options.",
+              href: "/office-space/bangalore/whitefield",
+              title: "Whitefield Office Space Guide",
+              description: "Compare Whitefield business districts, coworking demand, and managed office options.",
             },
             {
               href: "/areas-we-serve",

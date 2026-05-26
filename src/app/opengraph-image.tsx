@@ -78,7 +78,7 @@ export default function OpenGraphImage() {
               }}
             >
               Find premium office space, managed workspaces, and coworking
-              options across Bangalore and Hyderabad.
+              options across Bangalore and Bengaluru.
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function OpenGraphImage() {
             }}
           >
             <div style={{ display: "flex", color: "#d8ff5e" }}>everyspaces.com</div>
-            <div style={{ display: "flex" }}>Bangalore • Hyderabad</div>
+            <div style={{ display: "flex" }}>Bangalore • Bengaluru</div>
           </div>
         </div>
       </div>

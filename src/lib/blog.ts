@@ -299,7 +299,7 @@ const posts: BlogPost[] = [
     author: {
       name: "EverySpaces Editorial Team",
       role: "Workspace Research Desk",
-      bio: "EverySpaces researches office space, coworking, managed offices, and business locations across Bangalore and Hyderabad.",
+      bio: "EverySpaces researches office space, coworking, managed offices, and business locations across Bangalore and Bengaluru.",
     },
     seo: {
       metaTitle: "Office Space for Rent in Bangalore | Best Areas & Office Types",
@@ -533,7 +533,7 @@ const posts: BlogPost[] = [
     author: {
       name: "EverySpaces Editorial Team",
       role: "Workspace Research Desk",
-      bio: "EverySpaces researches office space, coworking, managed offices, and business locations across Bangalore and Hyderabad.",
+      bio: "EverySpaces researches office space, coworking, managed offices, and business locations across Bangalore and Bengaluru.",
     },
     seo: {
       metaTitle: "Best Office Space for Rent in HBR Layout | EverySpaces",

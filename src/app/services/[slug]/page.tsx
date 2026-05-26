@@ -63,7 +63,7 @@ export default async function ServiceRoute({ params }: { params: Promise<{ slug:
               name: "EverySpaces",
               url: absoluteUrl("/"),
             },
-            areaServed: ["Bangalore", "Hyderabad"],
+            areaServed: ["Bangalore", "Bengaluru"],
             url: absoluteUrl(path),
           },
         ]}

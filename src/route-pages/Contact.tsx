@@ -40,9 +40,9 @@ const Contact = () => {
               description: "Explore managed offices, coworking desks, and private office options across Bangalore.",
             },
             {
-              href: "/office-space/hyderabad",
-              title: "Hyderabad Office Space",
-              description: "Check location-focused workspace options across Hyderabad's leading commercial zones.",
+              href: "/office-space/bangalore/whitefield",
+              title: "Whitefield Office Space",
+              description: "Check location-focused workspace options across Bengaluru's leading commercial zones.",
             },
           ]}
         />

@@ -156,7 +156,7 @@ const CertificationLeadForm = () => {
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="Bangalore, Hyderabad, Whitefield..."
+                placeholder="Bangalore, Whitefield, Koramangala..."
                 className={inputClass}
                 required
               />

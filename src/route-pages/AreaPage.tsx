@@ -54,7 +54,7 @@ const AreaPage = () => {
     description: area.metaDescription,
     url: absoluteUrl(`/office-space/${area.citySlug}/${area.slug}`),
     areaServed: { "@type": "Place", name: `${area.name}, ${area.city}` },
-    address: { "@type": "PostalAddress", addressLocality: area.city, addressRegion: area.city === "Bangalore" ? "Karnataka" : "Telangana", addressCountry: "IN" },
+    address: { "@type": "PostalAddress", addressLocality: area.city, addressRegion: "Karnataka", addressCountry: "IN" },
   };
 
   return (

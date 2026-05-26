@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 
 const cities = [
   { key: "bangalore", label: "Bangalore", state: "Karnataka" },
-  { key: "hyderabad", label: "Hyderabad", state: "Telangana" },
 ];
 
 const AreasWeServePage = () => {
@@ -20,9 +19,9 @@ const AreasWeServePage = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Areas We Serve – Office Space & Coworking Locations | EverySpaces"
-        description="Explore all locations where EverySpaces provides coworking spaces, office space for rent & managed workspaces. Serving Bangalore, Hyderabad & more."
+        description="Explore all Bangalore locations where EverySpaces provides coworking spaces, office space for rent & managed workspaces."
         canonical="/areas-we-serve"
-        keywords="coworking space locations, office space for rent, coworking near me, office space Bangalore, coworking Hyderabad, managed office locations"
+        keywords="coworking space locations Bangalore, office space for rent Bangalore, coworking near me Bangalore, Bengaluru office space, managed office locations Bangalore"
       />
       <Navbar />
 
@@ -49,7 +48,7 @@ const AreasWeServePage = () => {
               <span className="italic font-normal">All</span> Areas We Serve
             </h1>
             <p className="text-muted-foreground text-base sm:text-lg max-w-2xl">
-              Find premium coworking spaces, private offices &amp; managed workspaces across India's leading business cities. Browse by location to find office space near you.
+              Find premium coworking spaces, private offices &amp; managed workspaces across Bangalore's leading business districts. Browse by location to find office space near you.
             </p>
           </div>
         </div>
@@ -100,8 +99,8 @@ const AreasWeServePage = () => {
       <AnimatedSection>
         <InternalLinksSection
           eyebrow="Continue Exploring"
-          title="Compare City Guides and Available Workspaces"
-          description="Use these internal paths to move from overview pages into city-specific research and live inventory."
+          title="Compare Bangalore Guides and Available Workspaces"
+          description="Use these internal paths to move from overview pages into Bangalore area research and live inventory."
           links={[
             {
               href: "/office-space/bangalore",
@@ -109,9 +108,9 @@ const AreasWeServePage = () => {
               description: "Review Bangalore office space trends, popular areas, and workspace options across the city.",
             },
             {
-              href: "/office-space/hyderabad",
-              title: "Hyderabad City Page",
-              description: "Explore Hyderabad's top office markets, coworking hubs, and managed office neighborhoods.",
+              href: "/office-space/bangalore/whitefield",
+              title: "Whitefield Office Space",
+              description: "Explore workspace options in one of Bengaluru's largest enterprise and IT corridors.",
             },
             {
               href: "/listings",

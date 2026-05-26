@@ -69,10 +69,14 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${defaultMetadata.siteUrl}/#website`,
     name: defaultMetadata.siteName,
     url: defaultMetadata.siteUrl,
     description: defaultMetadata.description,
     inLanguage: "en-IN",
+    publisher: {
+      "@id": `${defaultMetadata.siteUrl}/#organization`,
+    },
   };
 }
 
@@ -80,9 +84,12 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
+    "@id": `${defaultMetadata.siteUrl}/#organization`,
     name: "EverySpaces",
     description: "Expert workspace consulting and office space solutions in Bangalore",
     url: defaultMetadata.siteUrl,
+    logo: absoluteUrl("/everyspaces-logo.webp"),
+    image: absoluteUrl("/opengraph-image"),
     address: {
       "@type": "PostalAddress",
       streetAddress: "HBR Layout",
@@ -93,6 +100,26 @@ export function organizationSchema() {
     telephone: "+919886285028",
     email: "everyspaces.com@gmail.com",
     foundingDate: "2025",
+    priceRange: "₹₹",
+    areaServed: [
+      { "@type": "City", name: "Bangalore" },
+      { "@type": "City", name: "Bengaluru" },
+    ],
+    knowsAbout: [
+      "Office space for rent",
+      "Coworking spaces",
+      "Managed offices",
+      "Private offices",
+      "Workspace consulting",
+      "Commercial real estate leasing",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+919886285028",
+      contactType: "workspace consultation",
+      areaServed: "IN",
+      availableLanguage: ["en", "hi", "kn"],
+    },
     sameAs: [
       "https://www.linkedin.com/company/everyspaces",
       "https://www.instagram.com/every.spaces/",
@@ -104,6 +131,7 @@ export function brandSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Brand",
+    "@id": `${defaultMetadata.siteUrl}/#brand`,
     name: "EverySpaces",
     url: defaultMetadata.siteUrl,
     logo: absoluteUrl("/everyspaces-logo.webp"),

@@ -15,11 +15,11 @@ const StatsSection = () => {
               Helping teams find the best coworking space, managed office &amp; flexible workspace near you
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Whether you need a private office for rent, shared desk, or a fully managed workspace — we match you with the right space in top business locations across India's leading tech cities.
+              Whether you need a private office for rent, shared desk, or a fully managed workspace — we match you with the right space in top business locations across Bangalore.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed mt-3">
               Our approach is built for companies comparing office space in Koramangala, Whitefield, HSR Layout,
-              HITEC City, Gachibowli, Madhapur, and other high-demand business districts where speed, fit, and
+              Indiranagar, MG Road, Electronic City, and other high-demand Bengaluru business districts where speed, fit, and
               long-term flexibility matter more than generic property portals.
             </p>
           </div>

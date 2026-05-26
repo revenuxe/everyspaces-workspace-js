@@ -255,7 +255,7 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
             {
               href: "/listings",
               title: "Browse Live Listings",
-              description: "Move from educational content into active office inventory across Bangalore and Hyderabad.",
+              description: "Move from educational content into active office inventory across Bangalore and Bengaluru.",
             },
             {
               href: "/areas-we-serve",

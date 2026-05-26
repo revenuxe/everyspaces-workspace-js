@@ -153,12 +153,4 @@ INSERT INTO public.locations (city, area, slug) VALUES
   ('Bangalore', 'Marathahalli', 'bangalore-marathahalli'),
   ('Bangalore', 'JP Nagar', 'bangalore-jp-nagar'),
   ('Bangalore', 'Bannerghatta Road', 'bangalore-bannerghatta-road'),
-  ('Bangalore', 'Jayanagar', 'bangalore-jayanagar'),
-  ('Hyderabad', 'HITEC City', 'hyderabad-hitec-city'),
-  ('Hyderabad', 'Gachibowli', 'hyderabad-gachibowli'),
-  ('Hyderabad', 'Madhapur', 'hyderabad-madhapur'),
-  ('Hyderabad', 'Banjara Hills', 'hyderabad-banjara-hills'),
-  ('Hyderabad', 'Jubilee Hills', 'hyderabad-jubilee-hills'),
-  ('Hyderabad', 'Kondapur', 'hyderabad-kondapur'),
-  ('Hyderabad', 'Ameerpet', 'hyderabad-ameerpet'),
-  ('Hyderabad', 'Kukatpally', 'hyderabad-kukatpally');
+  ('Bangalore', 'Jayanagar', 'bangalore-jayanagar');

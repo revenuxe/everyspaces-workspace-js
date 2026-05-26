@@ -204,7 +204,7 @@ const AboutUs = () => {
             {
               href: "/listings",
               title: "Browse Current Listings",
-              description: "Review office space, coworking, and managed workspace listings across Bangalore and Hyderabad.",
+              description: "Review office space, coworking, and managed workspace listings across Bangalore and Bengaluru.",
             },
             {
               href: "/areas-we-serve",
