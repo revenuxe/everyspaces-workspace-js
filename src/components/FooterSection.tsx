@@ -1,4 +1,4 @@
-import { Linkedin, Instagram } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, MapPin } from "lucide-react";
 import { Link } from "@/compat/react-router-dom";
 import logo from "@/assets/logo.webp";
 import { servicePageLinks } from "@/data/servicePages";
@@ -6,42 +6,41 @@ import { servicePageLinks } from "@/data/servicePages";
 type FooterLink = { label?: string; href?: string; isRoute?: boolean; titleLink?: string };
 
 const footerLinks: Record<string, FooterLink[]> = {
-  "Quick Links": [
+  Navigate: [
     { label: "Home", href: "/", isRoute: true },
-    { label: "Blog", href: "/blog", isRoute: true },
-    { label: "Certification", href: "/certification", isRoute: true },
     { label: "Listings", href: "/listings", isRoute: true },
     { label: "Areas We Serve", href: "/areas-we-serve", isRoute: true },
+    { label: "Blog", href: "/blog", isRoute: true },
     { label: "About Us", href: "/about", isRoute: true },
     { label: "Contact Us", href: "/contact", isRoute: true },
   ],
-  Services: servicePageLinks,
-  Blog: [
+  Resources: [
     { label: "Office Space for Rent in Bangalore", href: "/blog/office-space-for-rent-in-bangalore", isRoute: true },
-    { label: "Office Space in HBR Layout", href: "/blog/best-office-space-for-rent-in-hbr-layout", isRoute: true },
     { label: "Best Areas in Bangalore", href: "/blog/best-areas-for-office-space-in-bangalore", isRoute: true },
     { label: "Managed Office vs Coworking", href: "/blog/managed-office-vs-coworking-bangalore", isRoute: true },
+    { label: "Certification", href: "/certification", isRoute: true },
     { label: "EverySpaces Journal", href: "/blog", isRoute: true },
-  ],
-  "Bangalore": [
-    { label: "Koramangala", href: "/office-space/bangalore/koramangala", isRoute: true },
-    { label: "HSR Layout", href: "/office-space/bangalore/hsr-layout", isRoute: true },
-    { label: "Whitefield", href: "/office-space/bangalore/whitefield", isRoute: true },
-    { label: "Indiranagar", href: "/office-space/bangalore/indiranagar", isRoute: true },
-    { titleLink: "/office-space/bangalore" },
-  ],
-  "Bengaluru Areas": [
-    { label: "Electronic City", href: "/office-space/bangalore/electronic-city", isRoute: true },
-    { label: "Marathahalli", href: "/office-space/bangalore/marathahalli", isRoute: true },
-    { label: "Bellandur", href: "/office-space/bangalore/bellandur", isRoute: true },
-    { label: "Hebbal", href: "/office-space/bangalore/hebbal", isRoute: true },
-    { titleLink: "/office-space/bangalore" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy-policy", isRoute: true },
     { label: "Terms & Conditions", href: "/terms-and-conditions", isRoute: true },
   ],
 };
+
+const mainAreas = [
+  { label: "Koramangala", href: "/office-space/bangalore/koramangala" },
+  { label: "HSR Layout", href: "/office-space/bangalore/hsr-layout" },
+  { label: "Whitefield", href: "/office-space/bangalore/whitefield" },
+  { label: "Indiranagar", href: "/office-space/bangalore/indiranagar" },
+  { label: "MG Road", href: "/office-space/bangalore/mg-road" },
+  { label: "Electronic City", href: "/office-space/bangalore/electronic-city" },
+  { label: "Marathahalli", href: "/office-space/bangalore/marathahalli" },
+  { label: "Bellandur", href: "/office-space/bangalore/bellandur" },
+  { label: "Hebbal", href: "/office-space/bangalore/hebbal" },
+  { label: "JP Nagar", href: "/office-space/bangalore/jp-nagar" },
+  { label: "Jayanagar", href: "/office-space/bangalore/jayanagar" },
+  { label: "Sarjapur Road", href: "/office-space/bangalore/sarjapur-road" },
+];
 
 const FooterSection = () => {
   return (
@@ -83,8 +82,8 @@ const FooterSection = () => {
 
       {/* Footer links */}
       <div className="border-t border-border py-8 md:py-12 px-4 sm:px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-6 md:gap-8">
-          <div className="col-span-2">
+        <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-[1.2fr_1.8fr_2fr] lg:gap-10">
+          <div>
             <Link to="/" className="mb-5 inline-flex bg-primary px-3 py-2 rounded-md">
               <img src={logo.src} alt="EverySpaces logo" className="h-14 w-auto" />
             </Link>
@@ -101,38 +100,59 @@ const FooterSection = () => {
               </a>
             </div>
           </div>
-          {Object.entries(footerLinks).map(([title, links]) => {
-            const titleLinkItem = links.find((l) => l.titleLink);
-            const displayLinks = links.filter((l) => l.label);
-            return (
-              <div key={title}>
-                <h4 className="font-bold text-sm mb-3 md:mb-4">
-                  {titleLinkItem ? (
-                    <Link to={titleLinkItem.titleLink!} className="hover:text-accent transition-colors">
-                      {title}
+
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
+            <div>
+              <h4 className="font-bold text-sm mb-3 md:mb-4">Services</h4>
+              <ul className="space-y-2">
+                {servicePageLinks.slice(0, 6).map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.href!} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
                     </Link>
-                  ) : (
-                    title
-                  )}
-                </h4>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title}>
+                <h4 className="font-bold text-sm mb-3 md:mb-4">{title}</h4>
                 <ul className="space-y-2">
-                  {displayLinks.map((link) => (
+                  {links.map((link) => (
                     <li key={link.label}>
-                      {link.isRoute ? (
-                        <Link to={link.href!} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                          {link.label}
-                        </Link>
-                      ) : (
-                        <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                          {link.label}
-                        </a>
-                      )}
+                      <Link to={link.href!} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          <div className="rounded-2xl border border-border bg-card/60 p-5">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <div>
+                <h4 className="font-bold text-sm">Areas We Serve</h4>
+                <p className="mt-1 text-xs text-muted-foreground">Main Bangalore workspace markets</p>
+              </div>
+              <MapPin size={20} className="text-accent shrink-0" />
+            </div>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3">
+              {mainAreas.map((area) => (
+                <Link key={area.href} to={area.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  {area.label}
+                </Link>
+              ))}
+            </div>
+            <Link
+              to="/areas-we-serve"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              View all areas
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
         </div>
       </div>
 
