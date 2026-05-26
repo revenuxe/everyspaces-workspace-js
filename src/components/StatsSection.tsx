@@ -49,15 +49,15 @@ const StatsSection = () => {
             <div className="mt-5 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <Link
                 to="/areas-we-serve"
-                className="rounded-full bg-primary px-4 py-2.5 text-center text-xs font-semibold text-primary-foreground hover:opacity-90 transition-opacity sm:px-5 sm:text-sm"
+                className="flex min-h-14 items-center justify-center rounded-full bg-primary px-3 py-2 text-center text-xs font-semibold leading-tight text-primary-foreground hover:opacity-90 transition-opacity sm:min-h-0 sm:px-5 sm:py-2.5 sm:text-sm"
               >
                 Explore areas
               </Link>
               <Link
                 to="/certification"
-                className="rounded-full border border-foreground px-4 py-2.5 text-center text-xs font-semibold text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors sm:px-5 sm:text-sm"
+                className="flex min-h-14 items-center justify-center rounded-full border border-foreground px-3 py-2 text-center text-xs font-semibold leading-tight text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors sm:min-h-0 sm:px-5 sm:py-2.5 sm:text-sm"
               >
-                Workspace certification
+                Certification
               </Link>
             </div>
           </div>

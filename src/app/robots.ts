@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Bingbot", allow: "/", crawlDelay: 1 },
       { userAgent: "Twitterbot", allow: "/" },
       { userAgent: "facebookexternalhit", allow: "/" },
-      { userAgent: "*", allow: "/", disallow: ["/admin/", "/thank-you"] },
+      { userAgent: "*", allow: "/", disallow: ["/admin/", "/thank-you", "/certification/thank-you"] },
     ],
     sitemap: absoluteUrl("/sitemap.xml"),
   };
