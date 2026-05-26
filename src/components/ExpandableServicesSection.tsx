@@ -18,22 +18,23 @@ const variantClasses = {
   default: "bg-card border border-border shadow-md",
   lime: "bg-lime text-foreground shadow-md",
   orange: "bg-accent text-accent-foreground shadow-md",
+  blue: "bg-primary text-primary-foreground shadow-md",
 };
 
 type ServiceItem = {
   image: string | StaticImageData;
   title: string;
   desc: string;
-  variant: "default" | "lime" | "orange";
+  variant: "default" | "lime" | "orange" | "blue";
 };
 
 const getImageSrc = (image: string | StaticImageData) =>
   typeof image === "string" ? image : image.src;
 
 export const getLocationServices = (location: string) => [
-  { image: serviceConsulting, title: "Workspace Consulting", desc: `Expert guidance to find and optimize the perfect workspace for your team in ${location}.`, variant: "default" as const },
+  { image: serviceConsulting, title: "Workspace Consulting", desc: `Expert guidance to find and optimize the perfect workspace for your team in ${location}.`, variant: "orange" as const },
   { image: serviceSearch, title: "Space Search & Acquisition", desc: `Professional assistance finding, leasing & acquiring office space in ${location} — fast and hassle-free.`, variant: "default" as const },
-  { image: serviceInterior, title: "Office Interior Design", desc: `End-to-end office interior solutions in ${location} — from concept ideation to final execution.`, variant: "orange" as const },
+  { image: serviceInterior, title: "Office Interior Design", desc: `End-to-end office interior solutions in ${location} — from concept ideation to final execution.`, variant: "blue" as const },
   { image: serviceResearch, title: "Market Research & Analysis", desc: `In-depth ${location} commercial real estate analysis to guide your workspace investment decisions.`, variant: "default" as const },
   { image: serviceManagement, title: "Workspace Management", desc: `Comprehensive workspace management in ${location} to maximize occupancy & minimize costs.`, variant: "lime" as const },
   { image: serviceStrategy, title: "Custom Workspace Strategies", desc: `Tailored workspace strategies for businesses in ${location}, designed for your growth profile.`, variant: "default" as const },
@@ -57,7 +58,9 @@ const ServiceCard = ({ service, isExpanded, onToggle }: { service: ServiceItem; 
         className={`flex items-center gap-1.5 text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
           service.variant === "orange"
             ? "border-accent-foreground hover:bg-accent-foreground hover:text-accent"
-            : "border-current hover:bg-foreground hover:text-primary-foreground"
+            : service.variant === "blue"
+              ? "border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              : "border-current hover:bg-foreground hover:text-primary-foreground"
         }`}
       >
         <Plus size={16} className={`transition-transform duration-300 ${isExpanded ? "rotate-45" : ""}`} />

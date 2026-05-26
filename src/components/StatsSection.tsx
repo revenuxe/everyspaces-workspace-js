@@ -1,4 +1,4 @@
-import { Building2, CheckCircle2, MapPinned, Timer, Users } from "lucide-react";
+import { Building2, CheckCircle2, MapPinned, Timer } from "lucide-react";
 import { Link } from "@/compat/react-router-dom";
 
 const stats = [
@@ -37,10 +37,6 @@ const StatsSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div className="max-w-2xl">
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              <Users size={14} className="text-accent" />
-              Workspace search, simplified
-            </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif leading-snug">
               Find a Bangalore office that fits your team, budget, and next move.
             </h2>
@@ -50,16 +46,16 @@ const StatsSection = () => {
               EverySpaces turns scattered office options into a clear decision path: local market guidance, curated
               options, site visits, and practical lease support for growing teams across Bengaluru.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
               <Link
                 to="/areas-we-serve"
-                className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+                className="rounded-full bg-primary px-4 py-2.5 text-center text-xs font-semibold text-primary-foreground hover:opacity-90 transition-opacity sm:px-5 sm:text-sm"
               >
                 Explore areas
               </Link>
               <Link
                 to="/certification"
-                className="rounded-full border border-foreground px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
+                className="rounded-full border border-foreground px-4 py-2.5 text-center text-xs font-semibold text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors sm:px-5 sm:text-sm"
               >
                 Workspace certification
               </Link>

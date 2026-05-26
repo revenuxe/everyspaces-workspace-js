@@ -18,7 +18,7 @@ const services = [
     image: serviceConsulting,
     title: "Workspace Consulting",
     desc: "Expert guidance to help you find and optimize the perfect workspace for your team.",
-    variant: "default" as const,
+    variant: "blue" as const,
   },
   {
     image: serviceSearch,
@@ -56,6 +56,7 @@ const variantClasses = {
   default: "bg-card border border-border shadow-md",
   lime: "bg-lime text-foreground shadow-md",
   orange: "bg-accent text-accent-foreground shadow-md",
+  blue: "bg-primary text-primary-foreground shadow-md",
 };
 
 const ServiceCard = ({
@@ -89,7 +90,9 @@ const ServiceCard = ({
         className={`flex items-center gap-1.5 text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
           service.variant === "orange"
             ? "border-accent-foreground hover:bg-accent-foreground hover:text-accent"
-            : "border-current hover:bg-foreground hover:text-primary-foreground"
+            : service.variant === "blue"
+              ? "border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              : "border-current hover:bg-foreground hover:text-primary-foreground"
         }`}
       >
         <Plus size={16} className={`transition-transform duration-300 ${isExpanded ? "rotate-45" : ""}`} />
