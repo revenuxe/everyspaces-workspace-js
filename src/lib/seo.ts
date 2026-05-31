@@ -287,7 +287,7 @@ export function articleSchema({
 }
 
 export function getStaticPublicPaths() {
-  const basePaths = ["/", "/about", "/blog", "/certification", "/certification/contact-us", "/contact", "/privacy-policy", "/terms-and-conditions", "/areas-we-serve", "/listings"];
+  const basePaths = ["/", "/we-help", "/about", "/blog", "/certification", "/certification/contact-us", "/contact", "/privacy-policy", "/terms-and-conditions", "/areas-we-serve", "/listings"];
   const cityPaths = Object.values(cityContent).map((city) => `/office-space/${city.citySlug}`);
   const areaPaths = allAreas.map((area) => `/office-space/${area.citySlug}/${area.slug}`);
   const servicePaths = servicePages.map((service) => `/services/${service.slug}`);

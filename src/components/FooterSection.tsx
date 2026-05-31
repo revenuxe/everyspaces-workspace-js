@@ -8,6 +8,7 @@ type FooterLink = { label?: string; href?: string; isRoute?: boolean; titleLink?
 const footerLinks: Record<string, FooterLink[]> = {
   Navigate: [
     { label: "Home", href: "/", isRoute: true },
+    { label: "We help", href: "/we-help", isRoute: true },
     { label: "Listings", href: "/listings", isRoute: true },
     { label: "Areas We Serve", href: "/areas-we-serve", isRoute: true },
     { label: "Blog", href: "/blog", isRoute: true },
