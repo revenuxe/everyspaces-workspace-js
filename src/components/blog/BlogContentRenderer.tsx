@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Fragment, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { type BlogContentBlock } from "@/lib/blog";
@@ -58,7 +59,7 @@ export function BlogContentRenderer({
     if (block._type === "image" && block.image?.url) {
       renderedBlocks.push(
         <figure key={block._key || `image-${index}`} className="overflow-hidden rounded-[2rem] border border-border bg-card">
-          <img src={block.image.url} alt={block.image.alt || ""} className="h-auto w-full object-cover" />
+          <Image src={block.image.url} alt={block.image.alt || ""} width={1200} height={675} sizes="(max-width: 1024px) 100vw, 800px" className="h-auto w-full object-cover" />
           {block.image.caption ? <figcaption className="px-5 py-4 text-sm leading-6 text-muted-foreground">{block.image.caption}</figcaption> : null}
         </figure>,
       );

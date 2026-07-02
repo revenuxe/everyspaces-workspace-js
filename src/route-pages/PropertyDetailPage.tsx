@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "@/compat/react-router-dom";
 import { MapPin, Phone, Calendar, ChevronLeft, ChevronRight, Wifi, Car, Snowflake, Shield, Coffee, Zap, UserCheck, Printer, Users } from "lucide-react";
@@ -164,10 +165,14 @@ const PropertyDetailPage = ({ initialProperty = null }: PropertyDetailPageProps)
         <div className="relative rounded-2xl overflow-hidden bg-muted">
           {allImages.length > 0 ? (
             <>
-              <img
+              <Image
                 src={allImages[currentImage]}
                 alt={`${property.name} - Image ${currentImage + 1}`}
-                className="w-full h-[250px] sm:h-[350px] md:h-[500px] object-cover"
+                width={1200}
+                height={500}
+                priority={currentImage === 0}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                className="h-[250px] w-full object-cover sm:h-[350px] md:h-[500px]"
               />
               {allImages.length > 1 && (
                 <>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, Instagram, Linkedin, MapPin } from "lucide-react";
 import { Link } from "@/compat/react-router-dom";
 import logo from "@/assets/logo.webp";
@@ -86,7 +87,7 @@ const FooterSection = () => {
         <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-[1.2fr_1.8fr_2fr] lg:gap-10">
           <div>
             <Link to="/" className="mb-5 inline-flex bg-primary px-3 py-2 rounded-md">
-              <img src={logo.src} alt="EverySpaces logo" className="h-14 w-auto" />
+              <Image src={logo} alt="EverySpaces logo" sizes="140px" className="h-14 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs mb-6">
               EverySpaces provides expert workspace consulting, coworking &amp; office space solutions in Bangalore and Bengaluru.
@@ -159,7 +160,7 @@ const FooterSection = () => {
 
       {/* Copyright */}
       <div className="bg-lime-strong py-4 px-4 sm:px-6 text-center">
-        <p className="text-xs sm:text-sm text-foreground">© 2026 EverySpaces. All Rights Reserved.</p>
+        <p className="text-xs sm:text-sm text-foreground">&copy; 2026 EverySpaces. All Rights Reserved.</p>
       </div>
     </footer>
   );

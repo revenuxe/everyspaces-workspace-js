@@ -6,6 +6,10 @@ import { JsonLd } from "@/components/JsonLd";
 import { cityContent } from "@/data/cityContent";
 import { absoluteUrl, breadcrumbSchema, buildMetadata } from "@/lib/seo";
 
+export function generateStaticParams() {
+  return Object.values(cityContent).map((city) => ({ citySlug: city.citySlug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ citySlug: string }> }): Promise<Metadata> {
   const { citySlug } = await params;
   const city = cityContent[citySlug];

@@ -3,8 +3,12 @@ import { notFound } from "next/navigation";
 import AreaPage from "@/route-pages/AreaPage";
 import { RouteShell } from "@/components/RouteShell";
 import { JsonLd } from "@/components/JsonLd";
-import { getAreaBySlug } from "@/data/areas";
+import { allAreas, getAreaBySlug } from "@/data/areas";
 import { absoluteUrl, breadcrumbSchema, buildMetadata } from "@/lib/seo";
+
+export function generateStaticParams() {
+  return allAreas.map((area) => ({ citySlug: area.citySlug, areaSlug: area.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ citySlug: string; areaSlug: string }> }): Promise<Metadata> {
   const { citySlug, areaSlug } = await params;

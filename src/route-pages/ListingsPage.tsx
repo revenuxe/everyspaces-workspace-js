@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@/compat/react-router-dom";
 import {
@@ -348,7 +349,7 @@ const ListingsPage = ({
                   <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
                     <div className="relative h-48 sm:h-52 overflow-hidden">
                       {property.featured_image ? (
-                        <img src={property.featured_image} alt={property.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <Image src={property.featured_image} alt={property.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                       ) : (
                         <div className="w-full h-full bg-muted flex items-center justify-center">
                           <MapPin size={32} className="text-muted-foreground/30" />

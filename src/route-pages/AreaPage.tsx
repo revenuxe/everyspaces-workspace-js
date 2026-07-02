@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useParams, Link } from "@/compat/react-router-dom";
 import { MapPin, ArrowUpRight, CheckCircle2, Star, Target, TrendingUp, Shield } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -85,7 +87,7 @@ const AreaPage = () => {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 -mt-16 sm:-mt-20 relative z-20">
           <div className="rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl">
-            <img src={heroImg.src} alt={`Office space and coworking in ${area.name}, ${area.city}`} className="w-full h-[200px] sm:h-[300px] md:h-[500px] object-cover" />
+            <Image src={heroImg} alt={`Office space and coworking in ${area.name}, ${area.city}`} priority sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px" className="w-full h-[200px] sm:h-[300px] md:h-[500px] object-cover" />
           </div>
           <div className="mt-6 sm:mt-8">
             <a href="#contact-form" className="flex items-center justify-between bg-primary text-primary-foreground font-semibold text-base sm:text-lg py-3 sm:py-4 pl-6 sm:pl-8 pr-3 sm:pr-4 rounded-full hover:opacity-90 transition-opacity">
@@ -180,7 +182,7 @@ const AreaPage = () => {
               <span className="italic font-bold">Customer</span> Experiences Real<br />Success Stories in {area.name}
             </h2>
             <div className="relative rounded-none overflow-hidden min-h-[300px] sm:min-h-[400px]">
-              <img src={testimonialBg.src} alt={`Workspace in ${area.name}`} className="w-full h-full object-cover absolute inset-0" />
+              <Image src={testimonialBg} alt={`Workspace in ${area.name}`} fill sizes="(max-width: 1024px) 100vw, 1200px" className="object-cover" />
               <div className="relative z-10 flex items-center justify-center min-h-[300px] sm:min-h-[400px] p-4 sm:p-8">
                 <div className="bg-card rounded-none p-6 sm:p-8 max-w-md shadow-xl w-full sm:w-auto">
                   <div className="flex items-center justify-between mb-4">
