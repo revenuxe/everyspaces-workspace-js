@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PropertyDetailPage from "@/route-pages/PropertyDetailPage";
@@ -11,12 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const property = await getPropertyBySlug(slug);
 
   if (!property) {
-    return buildMetadata({
-      title: "Property Not Found | EverySpaces",
-      description: "The requested property could not be found.",
-      path: `/listings/${slug}`,
-      noIndex: true,
-    });
+    notFound();
   }
 
   return buildMetadata({
@@ -58,7 +55,7 @@ export default async function PropertyRoute({ params }: { params: Promise<{ slug
               property.meta_description || property.short_description || `Office space in ${property.area}, ${property.city}`,
             image: property.featured_image ? [property.featured_image] : property.images.map((image: any) => image.image_url),
             url: propertyUrl,
-            brand: { "@type": "Brand", name: "EverySpaces" },
+            brand: { "@type": "Brand", name: "Numunix" },
             offers: property.price
               ? {
                   "@type": "Offer",

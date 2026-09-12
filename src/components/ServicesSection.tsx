@@ -53,10 +53,10 @@ const services = [
 ];
 
 const variantClasses = {
-  default: "bg-card border border-border shadow-md",
-  lime: "bg-lime text-foreground shadow-md",
-  orange: "bg-accent text-accent-foreground shadow-md",
-  blue: "bg-primary text-primary-foreground shadow-md",
+  default: "bg-card border-primary/15",
+  lime: "bg-lime text-foreground border-primary/15",
+  orange: "bg-accent text-accent-foreground border-accent-foreground/25",
+  blue: "bg-primary text-primary-foreground border-primary-foreground/20",
 };
 
 const ServiceCard = ({
@@ -73,21 +73,22 @@ const ServiceCard = ({
   <motion.div
     layout
     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-    className={`rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[240px] sm:min-h-[280px] cursor-pointer group ${variantClasses[service.variant]} ${isExpanded ? "ring-2 ring-accent" : ""}`}
-    onClick={onToggle}
+    className={`relative rounded-2xl border p-6 sm:p-8 flex flex-col h-full min-h-[320px] group shadow-[0_4px_8px_-4px_hsl(var(--primary)/0.15),0_12px_28px_-12px_hsl(var(--primary)/0.25)] transition-[box-shadow,border-color] duration-200 hover:shadow-[0_8px_16px_-6px_hsl(var(--primary)/0.2),0_20px_40px_-14px_hsl(var(--primary)/0.3)] hover:border-accent focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 motion-safe:hover:-translate-y-1 ${variantClasses[service.variant]} ${isExpanded ? "ring-2 ring-accent" : ""}`}
   >
     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-6 sm:mb-8 border-2 border-background/60">
       <img src={service.image.src} alt={service.title} className="w-full h-full object-cover" />
     </div>
-    <div>
-      <h3 className="text-lg sm:text-xl font-bold font-sans mb-2">{service.title}</h3>
-      <p className="text-sm opacity-70 leading-relaxed mb-4 sm:mb-5">{service.desc}</p>
+    <div className="flex flex-1 flex-col">
+      <h3 className="text-lg sm:text-xl font-bold font-sans mb-3 md:min-h-[56px]">{service.title}</h3>
+      <p className="text-sm opacity-80 leading-7 mb-6 flex-1">{service.desc}</p>
       <button
         onClick={(e) => {
           e.stopPropagation();
           onToggle();
         }}
-        className={`flex items-center gap-1.5 text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
+        aria-expanded={isExpanded}
+        aria-label={`${isExpanded ? "Close" : "Explore"} ${service.title}`}
+        className={`after:absolute after:inset-0 after:rounded-2xl after:content-[''] cursor-pointer focus-visible:outline-none self-start flex items-center gap-1.5 text-sm font-medium border rounded-full px-5 py-2 transition-colors ${
           service.variant === "orange"
             ? "border-accent-foreground hover:bg-accent-foreground hover:text-accent"
             : service.variant === "blue"
@@ -96,7 +97,7 @@ const ServiceCard = ({
         }`}
       >
         <Plus size={16} className={`transition-transform duration-300 ${isExpanded ? "rotate-45" : ""}`} />
-        {isExpanded ? "Close" : "Expand"}
+        {isExpanded ? "Close details" : "Explore service"}
       </button>
     </div>
   </motion.div>
@@ -135,6 +136,7 @@ const ExpandedPanel = ({
           </div>
           <button
             onClick={onClose}
+            aria-label="Close service details"
             className="w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors shrink-0"
           >
             <X size={16} />
@@ -178,7 +180,7 @@ const ExpandedPanel = ({
         </div>
 
         {/* Deliverables + CTA row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 pt-6 md:pt-8 border-t border-border">
+        <div className="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-6 md:gap-8 pt-6 md:pt-8 border-t border-border">
           <div className="flex-1">
             <span className="text-accent font-semibold text-xs uppercase tracking-wider">What You Get</span>
             <h4 className="text-lg sm:text-xl font-serif font-bold mt-1 mb-4">Key Deliverables</h4>
@@ -237,38 +239,20 @@ const ServicesSection = () => {
   }
 
   return (
-    <section id="service" className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
+    <section id="service" className="border-t border-border py-16 md:py-24 px-4 sm:px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row items-start justify-between mb-8 md:mb-12 gap-4">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif max-w-xl">
-              <span className="font-bold">Expert</span> Office Space &amp; Coworking Solutions for Growing Teams
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              We help businesses move from broad office search intent to a clear shortlist. That includes workspace
-              consulting, site selection, lease support, office interiors, market research, and post-move workspace
-              management. If you are comparing managed office space in Bangalore, coworking in Bengaluru, or private
-              offices across multiple areas, these service tracks are built to reduce friction and improve decision
-              quality.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Teams often use this section alongside our{" "}
-              <Link to="/areas-we-serve" className="font-medium text-foreground underline underline-offset-4">
-                areas we serve
-              </Link>{" "}
-              page and{" "}
-              <Link to="/listings" className="font-medium text-foreground underline underline-offset-4">
-                live workspace listings
-              </Link>{" "}
-              to understand which service and location combination makes the most sense.
-            </p>
+        <div className="mb-10 md:mb-14 grid gap-6 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our services</p>
+            <h2 className="text-3xl md:text-4xl font-serif leading-tight text-balance">Expert office space solutions for growing teams</h2>
           </div>
-          <Link
-            to="/contact"
-            className="hidden md:flex w-12 h-12 rounded-full border-2 border-foreground items-center justify-center hover:bg-foreground hover:text-primary-foreground transition-colors shrink-0"
-          >
-            <ArrowUpRight size={20} />
-          </Link>
+          <div className="lg:pt-8">
+            <p className="text-base leading-7 text-muted-foreground">From your first shortlist to your next move, get support with workspace consulting, leasing, interiors, and office management across Bangalore and Bengaluru.</p>
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
+              <Link to="/areas-we-serve" className="inline-flex items-center gap-2 underline underline-offset-4">Explore locations <ArrowUpRight size={16} /></Link>
+              <Link to="/listings" className="inline-flex items-center gap-2 underline underline-offset-4">Browse workspaces <ArrowUpRight size={16} /></Link>
+            </div>
+          </div>
         </div>
 
         {isMobile ? (
@@ -297,10 +281,10 @@ const ServicesSection = () => {
           </div>
         ) : (
           /* Desktop: cards in rows of 3, panel after the row */
-          <div className="space-y-5">
+          <div className="space-y-6">
             {rows.map((row, rowIdx) => (
               <div key={rowIdx}>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-3 gap-6">
                   {row.map((i) => (
                     <ServiceCard
                       key={i}
@@ -331,6 +315,5 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
 
 

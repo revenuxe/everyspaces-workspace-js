@@ -54,8 +54,8 @@ const AdminLogin = () => {
   return (
     <>
       <SEOHead
-        title="Admin Login | EverySpaces"
-        description="Admin login portal for EverySpaces."
+        title="Admin Login | Numunix"
+        description="Admin login portal for Numunix."
         keywords="admin login"
         noIndex
       />
@@ -85,7 +85,7 @@ const AdminLogin = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@es.com"
+                  placeholder="admin@numunix.com"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary-foreground/30 transition-all"
                 />

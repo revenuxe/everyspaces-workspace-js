@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!result?.post) {
     return buildArticleMetadata({
-      title: "Article Not Found | EverySpaces Journal",
+      title: "Article Not Found | Numunix Journal",
       description: "The requested article could not be found.",
       path: `/blog/${slug}`,
       noIndex: true,
@@ -74,15 +74,15 @@ export default async function BlogPostRoute({ params }: { params: Promise<{ slug
             image: getBlogPostCoverImage(post) || undefined,
             datePublished: post.publishedAt,
             dateModified: post.updatedAt,
-            authorName: post.author?.name || "EverySpaces Editorial Team",
+            authorName: post.author?.name || "Numunix Editorial Team",
             authorUrl: getAuthorProfileUrl(post.author),
             keywords: post.seo.keywords,
             section: post.categories[0]?.title,
           }),
           personSchema({
-            name: post.author?.name || "EverySpaces Editorial Team",
+            name: post.author?.name || "Numunix Editorial Team",
             url: getAuthorProfileUrl(post.author),
-            description: post.author?.bio || "Editorial team at EverySpaces covering office space, coworking, and workspace strategy.",
+            description: post.author?.bio || "Editorial team at Numunix covering office space, coworking, and workspace strategy.",
             image: getBlogPostCoverImage(post) || undefined,
             jobTitle: post.author?.role || "Workspace Research Desk",
           }),

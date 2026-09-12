@@ -35,10 +35,10 @@ const makeArea = (
   city,
   citySlug,
   shortDesc,
-  metaTitle: `Coworking & Office Space in ${name}, ${city} | EverySpaces`,
-  metaDescription: `Find affordable coworking spaces & office space for rent in ${name}, ${city}. Premium managed offices, hot desks & private cabins. EverySpaces workspace solutions.`,
+  metaTitle: `Coworking & Office Space in ${name}, ${city} | Numunix`,
+  metaDescription: `Find affordable coworking spaces & office space for rent in ${name}, ${city}. Premium managed offices, hot desks & private cabins. Numunix workspace solutions.`,
   heroHeading: `Office Space & Coworking in ${name}`,
-  heroSubheading: `Find the perfect coworking desk, private office, or managed workspace in ${name}, ${city}. EverySpaces helps startups, enterprises & growing teams find their ideal workspace.`,
+  heroSubheading: `Find the perfect coworking desk, private office, or managed workspace in ${name}, ${city}. Numunix helps startups, enterprises & growing teams find their ideal workspace.`,
   whyTitle: `Why ${name} for Your Office?`,
   whyPoints: [
     `Prime location in ${city}'s business ecosystem`,
@@ -49,9 +49,9 @@ const makeArea = (
   popularFor: ["Tech Startups", "IT Companies", "Freelancers", "SMEs"],
   statsHeading: `Trusted by teams across ${name}`,
   servicesHeading: `Workspace Solutions in ${name}, ${city}`,
-  goalsHeading: `Why Teams in ${name} Choose EverySpaces`,
+  goalsHeading: `Why Teams in ${name} Choose Numunix`,
   testimonial: {
-    quote: `EverySpaces helped us find the ideal office in ${name} within a week. Their local expertise in ${city}'s commercial market is unmatched!`,
+    quote: `Numunix helped us find the ideal office in ${name} within a week. Their local expertise in ${city}'s commercial market is unmatched!`,
     name: "Happy Client",
     initials: "HC",
     location: name,
@@ -70,7 +70,7 @@ const bangaloreAreas: Area[] = [
       "Proximity to HSR Layout, Indiranagar & BTM Layout talent pools",
     ],
     popularFor: ["Tech Startups", "VC & Angel Investors", "SaaS Companies", "Digital Agencies"],
-    testimonial: { quote: "EverySpaces helped us find the ideal office in Koramangala within a week. Their local expertise in Bangalore's commercial market is unmatched — we couldn't have done it without them!", name: "Rahul Krishnan", initials: "RK", location: "Koramangala" },
+    testimonial: { quote: "Numunix helped us find the ideal office in Koramangala within a week. Their local expertise in Bangalore's commercial market is unmatched — we couldn't have done it without them!", name: "Rahul Krishnan", initials: "RK", location: "Koramangala" },
   }),
   makeArea("HSR Layout", "hsr-layout", "Bangalore", "bangalore", "Affordable offices near Outer Ring Road", {
     heroSubheading: "HSR Layout offers the perfect blend of affordability and accessibility, sitting right next to the Outer Ring Road tech corridor. Ideal for startups and growing teams looking for value-driven workspaces.",
@@ -167,7 +167,7 @@ const bangaloreAreas: Area[] = [
     ],
     popularFor: ["MNCs", "GCCs", "Travel & Logistics", "Biotech Firms"],
   }),
-  makeArea("HBR Layout", "hbr-layout", "Bangalore", "bangalore", "EverySpaces HQ — emerging coworking destination", {
+  makeArea("HBR Layout", "hbr-layout", "Bangalore", "bangalore", "Numunix HQ — emerging coworking destination", {
     whyPoints: [
       "Affordable rents with excellent value for money",
       "Good connectivity to Hebbal, Kalyan Nagar & Outer Ring Road",

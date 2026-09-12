@@ -52,7 +52,7 @@ const AreaPage = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: `EverySpaces – ${area.name}, ${area.city}`,
+    name: `Numunix – ${area.name}, ${area.city}`,
     description: area.metaDescription,
     url: absoluteUrl(`/office-space/${area.citySlug}/${area.slug}`),
     areaServed: { "@type": "Place", name: `${area.name}, ${area.city}` },

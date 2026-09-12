@@ -3,11 +3,12 @@ import { getAllBlogSlugs } from "@/lib/blog";
 import { getActivePropertySlugs } from "@/lib/server-data";
 import { absoluteUrl, getStaticPublicPaths } from "@/lib/seo";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
+
   const staticPaths: MetadataRoute.Sitemap = getStaticPublicPaths().map((path) => ({
     url: absoluteUrl(path),
-    lastModified: now,
     changeFrequency: path === "/" ? "weekly" : "monthly",
     priority: path === "/" ? 1 : 0.8,
   }));
@@ -19,7 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
   const blogPaths = (await getAllBlogSlugs()).map((slug) => ({
     url: absoluteUrl(`/blog/${slug}`),
-    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.75,
   }));

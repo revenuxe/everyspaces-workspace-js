@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import ListingsPage from "@/route-pages/ListingsPage";
 import { RouteShell } from "@/components/RouteShell";
@@ -6,7 +8,7 @@ import { absoluteUrl, breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { getListingsPageData } from "@/lib/server-data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Office Space & Coworking Listings | EverySpaces",
+  title: "Office Space & Coworking Listings | Numunix",
   description:
     "Browse premium office spaces, coworking desks and managed workspaces for rent in Bangalore and Bengaluru. Filter by location, budget, capacity and amenities.",
   path: "/listings",

@@ -4,8 +4,8 @@ import CertificationThankYou from "@/route-pages/CertificationThankYou";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Certification Request Received | EverySpaces",
-  description: "Thank you for submitting your EverySpaces certification request.",
+  title: "Certification Request Received | Numunix",
+  description: "Thank you for submitting your Numunix certification request.",
   path: "/certification/thank-you",
   noIndex: true,
 });

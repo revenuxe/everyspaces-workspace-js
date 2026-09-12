@@ -14,7 +14,7 @@ export function RouteShell({
 }) {
   return (
     <RouteCompatProvider pathname={pathname} params={params}>
-      {children}
+      <main>{children}</main>
     </RouteCompatProvider>
   );
 }

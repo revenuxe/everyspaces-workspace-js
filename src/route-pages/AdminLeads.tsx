@@ -94,7 +94,7 @@ const AdminLeads = () => {
 
   return (
     <>
-      <SEOHead title="Leads | EverySpaces Admin" description="Admin leads" keywords="admin" noIndex />
+      <SEOHead title="Leads | Numunix Admin" description="Admin leads" keywords="admin" noIndex />
       <div className="min-h-screen bg-background">
         <header className="sticky top-0 z-30 bg-primary text-primary-foreground px-4 py-3 flex items-center justify-between shadow-lg">
           <div className="flex items-center gap-2">

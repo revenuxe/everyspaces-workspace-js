@@ -54,12 +54,12 @@ const certificationFaqs = [
   {
     question: "What is workspace certification?",
     answer:
-      "Workspace certification is EverySpaces' review and audit process for coworking spaces and office space listings. It checks quality, facilities, service, and user experience before assigning a score and badges.",
+      "Workspace certification is Numunix' review and audit process for coworking spaces and office space listings. It checks quality, facilities, service, and user experience before assigning a score and badges.",
   },
   {
     question: "What makes a verified workspace?",
     answer:
-      "A verified workspace has completed the EverySpaces review process and met the standards we use for infrastructure, maintenance, internet, support, access, pricing, safety, and overall experience.",
+      "A verified workspace has completed the Numunix review process and met the standards we use for infrastructure, maintenance, internet, support, access, pricing, safety, and overall experience.",
   },
   {
     question: "Why do workspace badges matter?",
@@ -87,7 +87,7 @@ function certificationCollectionPageSchema({
     url,
     isPartOf: {
       "@type": "WebSite",
-      name: "EverySpaces",
+      name: "Numunix",
       url: absoluteUrl("/"),
     },
     about: {
@@ -127,9 +127,9 @@ const jsonLd = [
     { name: "Certification", url: absoluteUrl("/certification") },
   ]),
   certificationCollectionPageSchema({
-    name: "EverySpaces Workspace Certification",
+    name: "Numunix Workspace Certification",
     description:
-      "EverySpaces certification reviews coworking spaces and office space listings with scores, badges, and workspace reviews to identify the best workspaces.",
+      "Numunix certification reviews coworking spaces and office space listings with scores, badges, and workspace reviews to identify the best workspaces.",
     url: absoluteUrl("/certification"),
     items: badges.map((badge) => ({
       name: badge,
@@ -160,7 +160,7 @@ const CertificationPage = () => {
             </div>
             <div className="relative z-10 mx-auto max-w-7xl">
               <h1 className="max-w-5xl text-4xl font-serif leading-[1.1] sm:text-5xl sm:leading-tight md:text-7xl lg:text-8xl">
-                EverySpaces Workspace <span className="italic font-normal">Certification</span>
+                Numunix Workspace <span className="italic font-normal">Certification</span>
               </h1>
             </div>
           </div>
@@ -173,7 +173,7 @@ const CertificationPage = () => {
                   Show users a verified workspace with trust they can see.
                 </h2>
                 <p className="mt-5 max-w-2xl text-sm leading-relaxed text-primary-foreground/80 sm:text-base">
-                  EverySpaces reviews quality, service, technology, and user experience to award certification badges
+                  Numunix reviews quality, service, technology, and user experience to award certification badges
                   that help the best workspaces stand out.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -191,12 +191,12 @@ const CertificationPage = () => {
               <div className="grid grid-cols-2 gap-4 sm:gap-5">
                 <div className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-4 shadow-2xl sm:p-6">
                   <Image
-                    src="/certification-badge-best-amenities.webp"
-                    alt="EverySpaces best amenities workspace certification badge"
+                    src="/numunix-certification-badge-best-amenities.webp"
+                    alt="Numunix best amenities workspace certification badge"
                     priority
                     width={900}
                     height={1200}
-                    className="h-auto w-full rounded-[1.5rem] object-contain"
+                    className="h-56 w-full rounded-[1.5rem] object-contain sm:h-72"
                   />
                   <div className="mt-4 rounded-[1.25rem] bg-muted px-3 py-3 sm:px-4">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent sm:text-xs">Badge example</p>
@@ -208,18 +208,18 @@ const CertificationPage = () => {
                 </div>
                 <div className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-4 shadow-2xl sm:p-6">
                   <Image
-                    src="/certification-badge-verified-workspace.webp"
-                    alt="EverySpaces verified workspace certification badge"
+                    src="/numunix-certification-badge-verified-workspace.webp"
+                    alt="Numunix verified workspace certification badge"
                     priority
                     width={900}
                     height={1200}
-                    className="h-auto w-full rounded-[1.5rem] object-contain"
+                    className="h-56 w-full rounded-[1.5rem] object-contain sm:h-72"
                   />
                   <div className="mt-4 rounded-[1.25rem] bg-muted px-3 py-3 sm:px-4">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent sm:text-xs">Badge example</p>
                     <p className="mt-2 hidden text-sm font-medium text-foreground sm:block sm:text-base">Verified Workspace</p>
                     <p className="mt-1 hidden text-xs leading-relaxed text-muted-foreground sm:block sm:text-sm">
-                      Builds trust fast by showing that the workspace passed the EverySpaces review.
+                      Builds trust fast by showing that the workspace passed the Numunix review.
                     </p>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ const CertificationPage = () => {
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Certification overview</p>
               <h2 className="mt-3 text-3xl font-serif sm:text-4xl">Workspace certification, badges, and evaluation</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                EverySpaces keeps certification simple and readable. Users can understand how a verified workspace is
+                Numunix keeps certification simple and readable. Users can understand how a verified workspace is
                 reviewed, while operators can see how badge performance supports trust and visibility.
               </p>
             </div>
@@ -269,10 +269,10 @@ const CertificationPage = () => {
               <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
                 <section className="rounded-[2rem] border border-border bg-card p-6 shadow-sm sm:p-8">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent">Section 1</p>
-                  <h3 className="mt-3 text-2xl font-serif sm:text-3xl">What is EverySpaces Certification?</h3>
+                  <h3 className="mt-3 text-2xl font-serif sm:text-3xl">What is Numunix Certification?</h3>
                   <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     <p>
-                      EverySpaces Certification is a system that checks and rates workspaces based on real factors like
+                      Numunix Certification is a system that checks and rates workspaces based on real factors like
                       quality, facilities, and user experience.
                     </p>
                     <p>
@@ -283,7 +283,7 @@ const CertificationPage = () => {
 
                 <section className="rounded-[2rem] border border-border bg-secondary p-6 shadow-sm sm:p-8">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/70">Section 2</p>
-                  <h3 className="mt-3 text-2xl font-serif sm:text-3xl">EverySpaces Score</h3>
+                  <h3 className="mt-3 text-2xl font-serif sm:text-3xl">Numunix Score</h3>
                   <div className="mt-6 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
                     <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                       <p>We give every workspace a clear score out of 100.</p>
@@ -390,7 +390,7 @@ const CertificationPage = () => {
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-foreground/70">Apply for evaluation</p>
             <h2 className="mt-4 text-3xl font-serif sm:text-4xl md:text-5xl">Get Your Workspace Certified</h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              If you run a coworking space or office space and want to be reviewed, EverySpaces can assess your
+              If you run a coworking space or office space and want to be reviewed, Numunix can assess your
               workspace, calculate your score, and assign badges based on performance.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">

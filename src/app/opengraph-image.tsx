@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "EverySpaces office space and coworking solutions";
+export const alt = "Numunix office space and coworking solutions";
 export const size = {
   width: 1200,
   height: 630,
@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
                 backgroundColor: "#d8ff5e",
               }}
             />
-            EVERYSPACES
+            NUMUNIX
           </div>
 
           <div
@@ -91,7 +91,7 @@ export default function OpenGraphImage() {
               fontSize: 28,
             }}
           >
-            <div style={{ display: "flex", color: "#d8ff5e" }}>everyspaces.com</div>
+            <div style={{ display: "flex", color: "#d8ff5e" }}>numunix.com</div>
             <div style={{ display: "flex" }}>Bangalore • Bengaluru</div>
           </div>
         </div>

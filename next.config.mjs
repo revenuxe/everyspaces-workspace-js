@@ -1,5 +1,29 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: process.env.NEXT_BUILD_DIR || ".next",
+  poweredByHeader: false,
+  async headers() {
+    return [{ source: "/:path*", headers: [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "X-Frame-Options", value: "DENY" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+    ] }, { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }] }];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/blog/best-workspace-consultant-everyspaces",
+        destination: "/blog/best-workspace-consultant-numunix",
+        permanent: true,
+      },
+      {
+        source: "/everyspaces-logo.webp",
+        destination: "/numes.webp",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

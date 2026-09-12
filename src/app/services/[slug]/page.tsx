@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!service) {
     return buildMetadata({
-      title: "Service Not Found | EverySpaces",
-      description: "The requested EverySpaces service page could not be found.",
+      title: "Service Not Found | Numunix",
+      description: "The requested Numunix service page could not be found.",
       path: `/services/${slug}`,
       noIndex: true,
     });
@@ -60,7 +60,7 @@ export default async function ServiceRoute({ params }: { params: Promise<{ slug:
             description: service.description,
             provider: {
               "@type": "Organization",
-              name: "EverySpaces",
+              name: "Numunix",
               url: absoluteUrl("/"),
             },
             areaServed: ["Bangalore", "Bengaluru"],

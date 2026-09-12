@@ -152,7 +152,11 @@ const AdminPropertyForm = () => {
     const newImages: { url: string; isFeatured: boolean }[] = [];
     
     for (const file of Array.from(files)) {
-      const ext = file.name.split(".").pop();
+      if (!["image/jpeg", "image/png", "image/webp", "image/avif"].includes(file.type) || file.size > 10 * 1024 * 1024) {
+        toast({ title: "Unsupported image", description: "Use a JPEG, PNG, WebP, or AVIF image up to 10 MB.", variant: "destructive" });
+        continue;
+      }
+      const ext = file.type.split("/")[1];
       const path = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
       const { error } = await supabase.storage.from("property-images").upload(path, file);
       if (!error) {
@@ -178,7 +182,8 @@ const AdminPropertyForm = () => {
   };
 
   const handleSave = async (publishStatus: "draft" | "active") => {
-    if (!name || !slug || !city || !area) {
+    if (saving || uploading) return;
+    if (!name.trim() || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug) || !city.trim() || !area.trim()) {
       toast({
         title: "Missing required fields",
         description: "Name, slug, city, and area are required.",
@@ -219,96 +224,20 @@ const AdminPropertyForm = () => {
       meta_description: metaDesc || null,
     };
 
-    let propId = propertyId;
-
-    if (isEdit) {
-      const { error } = await (supabase.from("properties").update(payload as any) as any).eq("id", propertyId!);
-      if (error) {
-        toast({
-          title: "Property update failed",
-          description: error.message,
-          variant: "destructive",
-        });
-        setSaving(false);
-        return;
-      }
-    } else {
-      const { data, error } = await (supabase.from("properties").insert(payload as any) as any).select("id").single();
-      if (error) {
-        toast({
-          title: "Property creation failed",
-          description: error.message,
-          variant: "destructive",
-        });
-        setSaving(false);
-        return;
-      }
-      propId = data?.id;
+    try {
+      const { error } = await supabase.rpc("save_property", {
+        _id: isEdit ? propertyId! : undefined,
+        _property: payload,
+        _amenities: selectedAmenities,
+        _images: images.map((image) => ({ url: image.url })),
+      });
+      if (error) throw error;
+      navigate("/admin/dashboard");
+    } catch (error) {
+      toast({ title: "Property save failed", description: error instanceof Error ? error.message : "Unable to save the property. Please try again.", variant: "destructive" });
+    } finally {
+      setSaving(false);
     }
-
-    if (propId) {
-      // Sync amenities
-      const { error: deleteAmenitiesError } = await supabase.from("property_amenities").delete().eq("property_id", propId);
-      if (deleteAmenitiesError) {
-        toast({
-          title: "Amenity sync failed",
-          description: deleteAmenitiesError.message,
-          variant: "destructive",
-        });
-        setSaving(false);
-        return;
-      }
-
-      if (selectedAmenities.length > 0) {
-        const { error: insertAmenitiesError } = await supabase.from("property_amenities").insert(
-          selectedAmenities.map((aid) => ({ property_id: propId!, amenity_id: aid }))
-        );
-        if (insertAmenitiesError) {
-          toast({
-            title: "Amenity sync failed",
-            description: insertAmenitiesError.message,
-            variant: "destructive",
-          });
-          setSaving(false);
-          return;
-        }
-      }
-
-      // Sync images
-      const { error: deleteImagesError } = await supabase.from("property_images").delete().eq("property_id", propId);
-      if (deleteImagesError) {
-        toast({
-          title: "Image sync failed",
-          description: deleteImagesError.message,
-          variant: "destructive",
-        });
-        setSaving(false);
-        return;
-      }
-
-      if (images.length > 0) {
-        const { error: insertImagesError } = await supabase.from("property_images").insert(
-          images.map((img, i) => ({
-            property_id: propId!,
-            image_url: img.url,
-            is_featured: img.url === featuredImage,
-            sort_order: i,
-          }))
-        );
-        if (insertImagesError) {
-          toast({
-            title: "Image sync failed",
-            description: insertImagesError.message,
-            variant: "destructive",
-          });
-          setSaving(false);
-          return;
-        }
-      }
-    }
-
-    setSaving(false);
-    navigate("/admin/dashboard");
   };
 
   if (loading) {

@@ -95,7 +95,7 @@ const posts: BlogPost[] = [
     title: "Office Space for Rent in Bangalore: Best Areas, Office Types, Costs & Expert Consultation",
     slug: "office-space-for-rent-in-bangalore",
     excerpt:
-      "A practical guide to finding office space for rent in Bangalore, including the best areas, types of offices, why teams need the right workspace, and how EverySpaces helps you shortlist faster.",
+      "A practical guide to finding office space for rent in Bangalore, including the best areas, types of offices, why teams need the right workspace, and how Numunix helps you shortlist faster.",
     body: [
       {
         style: "h2",
@@ -113,7 +113,7 @@ const posts: BlogPost[] = [
         children: [
           {
             text:
-              "This guide breaks down the office types, best business areas, decision factors, SEO-friendly topic ideas, and the reason EverySpaces consultation can make the search faster and cleaner.",
+              "This guide breaks down the office types, best business areas, decision factors, SEO-friendly topic ideas, and the reason Numunix consultation can make the search faster and cleaner.",
           },
         ],
       },
@@ -189,7 +189,7 @@ const posts: BlogPost[] = [
       },
       {
         children: [
-          { text: "You can also compare EverySpaces location pages for " },
+          { text: "You can also compare Numunix location pages for " },
           { text: "Koramangala", href: "/office-space/bangalore/koramangala" },
           { text: ", " },
           { text: "HSR Layout", href: "/office-space/bangalore/hsr-layout" },
@@ -226,10 +226,10 @@ const posts: BlogPost[] = [
       },
       {
         style: "h2",
-        children: [{ text: "Why EverySpaces consultation is different" }],
+        children: [{ text: "Why Numunix consultation is different" }],
       },
       {
-        children: [{ text: "EverySpaces is built for teams that do not want to waste weeks calling random operators, comparing unclear quotes, or visiting spaces that do not match the brief. The consultation starts with your team size, budget, preferred areas, lease expectations, privacy needs, and growth plan." }],
+        children: [{ text: "Numunix is built for teams that do not want to waste weeks calling random operators, comparing unclear quotes, or visiting spaces that do not match the brief. The consultation starts with your team size, budget, preferred areas, lease expectations, privacy needs, and growth plan." }],
       },
       {
         listItem: "bullet",
@@ -283,7 +283,7 @@ const posts: BlogPost[] = [
         children: [{ text: "The best office space for rent in Bangalore depends on your people, customers, budget, operating style, and growth plan. A beautiful workspace in the wrong area can slow hiring. A cheap workspace with poor access can hurt productivity. A flexible office with the right terms can give a growing team room to move." }],
       },
       {
-        children: [{ text: "EverySpaces helps teams make that decision with sharper shortlists, local guidance, and practical consultation from search to site visit." }],
+        children: [{ text: "Numunix helps teams make that decision with sharper shortlists, local guidance, and practical consultation from search to site visit." }],
       },
     ],
     publishedAt: "2026-05-22",
@@ -297,14 +297,14 @@ const posts: BlogPost[] = [
       { title: "Workspace Strategy", slug: "workspace-strategy" },
     ],
     author: {
-      name: "EverySpaces Editorial Team",
+      name: "Numunix Editorial Team",
       role: "Workspace Research Desk",
-      bio: "EverySpaces researches office space, coworking, managed offices, and business locations across Bangalore and Bengaluru.",
+      bio: "Numunix researches office space, coworking, managed offices, and business locations across Bangalore and Bengaluru.",
     },
     seo: {
       metaTitle: "Office Space for Rent in Bangalore | Best Areas & Office Types",
       metaDescription:
-        "Find office space for rent in Bangalore with this EverySpaces guide to best areas, office types, consultation benefits, keywords, and workspace shortlisting tips.",
+        "Find office space for rent in Bangalore with this Numunix guide to best areas, office types, consultation benefits, keywords, and workspace shortlisting tips.",
       keywords: bangaloreOfficeKeywords,
       faqs: [
         {
@@ -318,19 +318,19 @@ const posts: BlogPost[] = [
             "Most startups begin with coworking desks, private offices, or managed offices because these options reduce setup time and offer flexibility as the team grows.",
         },
         {
-          question: "Why use EverySpaces for office consultation?",
+          question: "Why use Numunix for office consultation?",
           answer:
-            "EverySpaces helps map requirements, compare locations, curate relevant spaces, coordinate visits, and bring clarity to pricing, lock-ins, amenities, and long-term suitability.",
+            "Numunix helps map requirements, compare locations, curate relevant spaces, coordinate visits, and bring clarity to pricing, lock-ins, amenities, and long-term suitability.",
         },
       ],
     },
   },
   {
-    _id: "best-workspace-consultant-everyspaces",
-    title: "Best Workspace Consultant: Why EverySpaces Makes Office Search Easier",
-    slug: "best-workspace-consultant-everyspaces",
+    _id: "best-workspace-consultant-numunix",
+    title: "Best Workspace Consultant: Why Numunix Makes Office Search Easier",
+    slug: "best-workspace-consultant-numunix",
     excerpt:
-      "Learn why EverySpaces is the best workspace consultant for Bangalore teams who want fast, practical office search support, curated shortlists, and clear lease guidance.",
+      "Learn why Numunix is the best workspace consultant for Bangalore teams who want fast, practical office search support, curated shortlists, and clear lease guidance.",
     body: [
       {
         style: "h2",
@@ -362,13 +362,13 @@ const posts: BlogPost[] = [
       },
       {
         style: "h2",
-        children: [{ text: "How EverySpaces helps teams make better workspace decisions" }],
+        children: [{ text: "How Numunix helps teams make better workspace decisions" }],
       },
       {
         children: [
           {
             text:
-              "EverySpaces works as a practical extension of your team. We turn broad office search questions into a shortlist of spaces that match your needs and avoid wasted visits.",
+              "Numunix works as a practical extension of your team. We turn broad office search questions into a shortlist of spaces that match your needs and avoid wasted visits.",
           },
         ],
       },
@@ -390,13 +390,13 @@ const posts: BlogPost[] = [
       },
       {
         style: "h2",
-        children: [{ text: "EverySpaces consulting advantage" }],
+        children: [{ text: "Numunix consulting advantage" }],
       },
       {
         children: [
           {
             text:
-              "EverySpaces is rooted in Bangalore workspace consulting, so our guidance reflects current supply, operator offerings, and what modern teams need to move confidently.",
+              "Numunix is rooted in Bangalore workspace consulting, so our guidance reflects current supply, operator offerings, and what modern teams need to move confidently.",
           },
         ],
       },
@@ -438,13 +438,13 @@ const posts: BlogPost[] = [
       },
       {
         style: "h2",
-        children: [{ text: "Why EverySpaces is the best choice for your workspace consulting needs" }],
+        children: [{ text: "Why Numunix is the best choice for your workspace consulting needs" }],
       },
       {
         children: [
           {
             text:
-              "EverySpaces makes the office search clearer. We listen to the brief, sharpen the shortlist, and keep the recommendation practical so you can decide faster.",
+              "Numunix makes the office search clearer. We listen to the brief, sharpen the shortlist, and keep the recommendation practical so you can decide faster.",
           },
         ],
       },
@@ -463,7 +463,7 @@ const posts: BlogPost[] = [
       {
         children: [
           {
-            text: "Contact EverySpaces to turn your workspace strategy into a shortlist of office options that can be reviewed, visited, and chosen with confidence.",
+            text: "Contact Numunix to turn your workspace strategy into a shortlist of office options that can be reviewed, visited, and chosen with confidence.",
           },
         ],
       },
@@ -483,7 +483,7 @@ const posts: BlogPost[] = [
         children: [
           {
             text:
-              "EverySpaces delivers that clarity through Bangalore office market knowledge, curated shortlists, transparent comparisons, and a customer-first consultation process.",
+              "Numunix delivers that clarity through Bangalore office market knowledge, curated shortlists, transparent comparisons, and a customer-first consultation process.",
           },
         ],
       },
@@ -498,20 +498,20 @@ const posts: BlogPost[] = [
       { title: "Office Search", slug: "office-search" },
     ],
     author: {
-      name: "EverySpaces Editorial Team",
+      name: "Numunix Editorial Team",
       role: "Workspace Research Desk",
-      bio: "EverySpaces researches office space, coworking, managed offices, and workspace consulting across Bangalore and Bengaluru.",
+      bio: "Numunix researches office space, coworking, managed offices, and workspace consulting across Bangalore and Bengaluru.",
     },
     seo: {
-      metaTitle: "Best Workspace Consultant | EverySpaces Workspace Consulting Guide",
+      metaTitle: "Best Workspace Consultant | Numunix Workspace Consulting Guide",
       metaDescription:
-        "Discover why EverySpaces is the best workspace consultant for Bangalore teams. Learn how we simplify office search with curated shortlists, market clarity, and consultation-led workspace decisions.",
+        "Discover why Numunix is the best workspace consultant for Bangalore teams. Learn how we simplify office search with curated shortlists, market clarity, and consultation-led workspace decisions.",
       keywords: [
         "best workspace consultant",
         "workspace consultant Bangalore",
         "workspace consulting",
         "office space consultant",
-        "EverySpaces workspace consultant",
+        "Numunix workspace consultant",
         "workspace strategy Bangalore",
       ],
       faqs: [
@@ -521,14 +521,14 @@ const posts: BlogPost[] = [
             "A workspace consultant helps teams define requirements, compare location and office format options, shortlist suitable spaces, clarify commercial terms, and coordinate visits so the search stays efficient.",
         },
         {
-          question: "Why choose EverySpaces for workspace consulting?",
+          question: "Why choose Numunix for workspace consulting?",
           answer:
-            "EverySpaces combines Bangalore market knowledge, curated shortlists, transparent comparisons, and consultation support that helps teams select the right coworking, private office, managed office, or leased workspace.",
+            "Numunix combines Bangalore market knowledge, curated shortlists, transparent comparisons, and consultation support that helps teams select the right coworking, private office, managed office, or leased workspace.",
         },
         {
-          question: "Can EverySpaces help with coworking and private office search?",
+          question: "Can Numunix help with coworking and private office search?",
           answer:
-            "Yes. EverySpaces supports coworking, private offices, managed offices, serviced offices and small commercial workspace searches with a focus on matching your brief to the right local options.",
+            "Yes. Numunix supports coworking, private offices, managed offices, serviced offices and small commercial workspace searches with a focus on matching your brief to the right local options.",
         },
       ],
     },
@@ -556,7 +556,7 @@ const posts: BlogPost[] = [
       { title: "Location Guide", slug: "location-guide" },
     ],
     seo: {
-      metaTitle: "Best Areas for Office Space in Bangalore | EverySpaces",
+      metaTitle: "Best Areas for Office Space in Bangalore | Numunix",
       metaDescription: "Compare the best Bangalore areas for office space, coworking, managed offices and private offices.",
       keywords: ["best areas for office space in Bangalore", "office space in Koramangala", "office space in Whitefield"],
       faqs: [],
@@ -584,7 +584,7 @@ const posts: BlogPost[] = [
       { title: "Managed Offices", slug: "managed-offices" },
     ],
     seo: {
-      metaTitle: "Managed Office vs Coworking in Bangalore | EverySpaces",
+      metaTitle: "Managed Office vs Coworking in Bangalore | Numunix",
       metaDescription: "Compare managed offices, coworking spaces and private offices in Bangalore before choosing your workspace.",
       keywords: ["managed office space Bangalore", "coworking space Bangalore", "private office space Bangalore"],
       faqs: [],
@@ -683,13 +683,13 @@ const posts: BlogPost[] = [
       },
       {
         style: "h2",
-        children: [{ text: "Why EverySpaces is a strong choice for HBR Layout office consultation" }],
+        children: [{ text: "Why Numunix is a strong choice for HBR Layout office consultation" }],
       },
       {
         children: [
           {
             text:
-              "EverySpaces is based in HBR Layout and understands the local office market, nearby business pockets, and the practical tradeoffs between budget, commute, amenities, and team size. Instead of browsing random listings, you get a curated shortlist based on your actual requirement.",
+              "Numunix is based in HBR Layout and understands the local office market, nearby business pockets, and the practical tradeoffs between budget, commute, amenities, and team size. Instead of browsing random listings, you get a curated shortlist based on your actual requirement.",
           },
         ],
       },
@@ -711,7 +711,7 @@ const posts: BlogPost[] = [
       },
       {
         children: [
-          { text: "You can also explore the EverySpaces " },
+          { text: "You can also explore the Numunix " },
           { text: "HBR Layout office location page", href: "/office-space/bangalore/hbr-layout" },
           { text: " or contact the team for a curated shortlist." },
         ],
@@ -724,7 +724,7 @@ const posts: BlogPost[] = [
         children: [
           {
             text:
-              "HBR Layout is a strong office location for teams that want Bangalore connectivity without unnecessary complexity. If you want a practical workspace with the right cost, access, and setup, EverySpaces can help compare options and guide the search from brief to site visit.",
+              "HBR Layout is a strong office location for teams that want Bangalore connectivity without unnecessary complexity. If you want a practical workspace with the right cost, access, and setup, Numunix can help compare options and guide the search from brief to site visit.",
           },
         ],
       },
@@ -739,14 +739,14 @@ const posts: BlogPost[] = [
       { title: "Office Space", slug: "office-space" },
     ],
     author: {
-      name: "EverySpaces Editorial Team",
+      name: "Numunix Editorial Team",
       role: "Workspace Research Desk",
-      bio: "EverySpaces researches office space, coworking, managed offices, and business locations across Bangalore and Bengaluru.",
+      bio: "Numunix researches office space, coworking, managed offices, and business locations across Bangalore and Bengaluru.",
     },
     seo: {
-      metaTitle: "Best Office Space for Rent in HBR Layout | EverySpaces",
+      metaTitle: "Best Office Space for Rent in HBR Layout | Numunix",
       metaDescription:
-        "Find the best office space for rent in HBR Layout, Bangalore. Compare coworking, private offices, managed offices, location benefits, and EverySpaces consultation support.",
+        "Find the best office space for rent in HBR Layout, Bangalore. Compare coworking, private offices, managed offices, location benefits, and Numunix consultation support.",
       keywords: [
         "office space for rent in HBR Layout",
         "best office space in HBR Layout",
@@ -767,9 +767,9 @@ const posts: BlogPost[] = [
             "Teams can consider coworking spaces, private offices, managed offices, serviced offices, and smaller commercial office spaces depending on budget, team size, and privacy needs.",
         },
         {
-          question: "How can EverySpaces help find office space in HBR Layout?",
+          question: "How can Numunix help find office space in HBR Layout?",
           answer:
-            "EverySpaces helps map your requirement, compare nearby locations, shortlist relevant office options, coordinate visits, and clarify commercial terms before you decide.",
+            "Numunix helps map your requirement, compare nearby locations, shortlist relevant office options, coordinate visits, and clarify commercial terms before you decide.",
         },
       ],
     },
@@ -862,13 +862,13 @@ export function getBlogMetadata(post: BlogPost) {
   const ogImage = getBlogPostCoverImage(post) || defaultMetadata.ogImage;
 
   return {
-    title: post.seo.metaTitle || `${post.title} | EverySpaces Journal`,
+    title: post.seo.metaTitle || `${post.title} | Numunix Journal`,
     description: post.seo.metaDescription || post.excerpt,
     path: post.seo.canonicalUrl || canonicalPath,
     keywords: post.seo.keywords.length ? post.seo.keywords.join(", ") : undefined,
     publishedTime: post.publishedAt,
     modifiedTime: post.updatedAt,
-    authors: post.author?.name ? [post.author.name] : ["EverySpaces Editorial Team"],
+    authors: post.author?.name ? [post.author.name] : ["Numunix Editorial Team"],
     section: post.categories[0]?.title || "Workspace Insights",
     tags: post.categoryNames,
     image: ogImage,

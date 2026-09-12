@@ -160,7 +160,7 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
               to="/contact"
               className="flex items-center justify-between rounded-full bg-primary py-3 pl-6 pr-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 md:min-w-[260px]"
             >
-              <span>Start With EverySpaces</span>
+              <span>Start With Numunix</span>
               <span className="ml-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary-foreground/30">
                 <ArrowUpRight size={18} />
               </span>
@@ -172,7 +172,7 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
       <InternalLinksSection
         eyebrow="Other Services"
         title="Explore More Workspace Support"
-        description="EverySpaces can combine multiple service tracks when your search, design, research, or operations needs overlap."
+        description="Numunix can combine multiple service tracks when your search, design, research, or operations needs overlap."
         links={relatedServices}
       />
 

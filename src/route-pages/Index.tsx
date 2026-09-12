@@ -15,8 +15,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="EverySpaces – Best Coworking & Office Space in Bangalore | Workspace Solutions"
-        description="Find affordable coworking spaces, private offices & managed workspaces in Bangalore and Bengaluru. EverySpaces offers expert workspace consulting, office space for rent & flexible desk solutions for startups & enterprises."
+        title="Numunix – Best Coworking & Office Space in Bangalore | Workspace Solutions"
+        description="Find affordable coworking spaces, private offices & managed workspaces in Bangalore and Bengaluru. Numunix offers expert workspace consulting, office space for rent & flexible desk solutions for startups & enterprises."
         canonical="/"
         keywords="coworking space Bangalore, office space for rent Bangalore, coworking space Bengaluru, managed office Bangalore, shared office space, flexible workspace Bangalore, commercial office space Bengaluru, workspace solutions, coworking near me, office on rent Bangalore, Koramangala coworking"
       />
@@ -41,9 +41,10 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <InternalLinksSection
-          eyebrow="Popular Paths"
+          eyebrow="Explore more"
+          className="border-t border-border"
           title="Explore Workspace Options by City, Area, and Need"
-          description="Move between our highest-intent pages to compare office space, managed workspace, and coworking options across Bangalore and Bengaluru."
+          description="Explore local guides and live listings to find the right workspace for your team."
           links={[
             {
               href: "/office-space/bangalore",
@@ -69,39 +70,7 @@ const Index = () => {
         />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
-        <section className="px-4 pb-10 sm:px-6 sm:pb-14 lg:px-12 lg:pb-16">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-4">
-              Tell Us What Your Team Needs
-            </h2>
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
-              <p>
-                EverySpaces helps startups, SMEs, and enterprise teams find the right coworking space, private office,
-                managed office, and flexible workspace in Bangalore and Bengaluru. We combine local market knowledge,
-                faster shortlisting, and practical lease guidance so your team can move without wasting weeks on
-                fragmented office search platforms.
-              </p>
-              <p>
-                Start with our{" "}
-                <a href="/office-space/bangalore" className="font-semibold text-foreground underline underline-offset-4">
-                  Bangalore office space guide
-                </a>
-                , compare options on the{" "}
-                <a href="/office-space/bangalore/whitefield" className="font-semibold text-foreground underline underline-offset-4">
-                  Whitefield workspace page
-                </a>
-                , or review live inventory on our{" "}
-                <a href="/listings" className="font-semibold text-foreground underline underline-offset-4">
-                  office listings page
-                </a>
-                .
-              </p>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-      <AnimatedSection delay={0.1}>
-        <ContactForm />
+        <ContactForm layout="split" />
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <FooterSection />

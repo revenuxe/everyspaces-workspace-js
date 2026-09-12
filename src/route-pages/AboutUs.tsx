@@ -8,7 +8,7 @@ import { Quote, Building2, Home, Wifi, Users, Heart, Rocket } from "lucide-react
 const quotes = [
   {
     text: "The office of the future is wherever you are — all you need is purpose, a good chair, and a strong Wi-Fi signal.",
-    author: "EverySpaces Team",
+    author: "Numunix Team",
   },
   {
     text: "Great workspaces don't just house people — they inspire movements, spark ideas, and build cultures.",
@@ -56,10 +56,10 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="About EverySpaces – Bangalore's Trusted Workspace Consulting Firm | Est. 2025"
-        description="Learn about EverySpaces, Bangalore's expert workspace consultants founded in 2025. We help startups & enterprises find coworking spaces, private offices & remote work solutions across Bangalore."
+        title="About Numunix – Bangalore's Trusted Workspace Consulting Firm | Est. 2025"
+        description="Learn about Numunix, Bangalore's expert workspace consultants founded in 2025. We help startups & enterprises find coworking spaces, private offices & remote work solutions across Bangalore."
         canonical="/about"
-        keywords="about EverySpaces, workspace consulting Bangalore, office space advisor, coworking consultant India, remote work solutions Bangalore, commercial real estate Bangalore, workspace strategy"
+        keywords="about Numunix, workspace consulting Bangalore, office space advisor, coworking consultant India, remote work solutions Bangalore, commercial real estate Bangalore, workspace strategy"
       />
       <Navbar />
 
@@ -69,11 +69,11 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-4">Est. 2025</p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight mb-6">
-              We're <span className="italic">EverySpaces</span> — Redefining
+              We're <span className="italic">Numunix</span> — Redefining
               <br className="hidden sm:block" /> How India Works
             </h1>
             <p className="text-primary-foreground/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Founded in 2025 in the heart of Bangalore, EverySpaces was born from a simple belief: every professional deserves a workspace that fuels their best work — whether that's a buzzing coworking hub, a private office, or a thoughtfully designed home setup.
+              Founded in 2025 in the heart of Bangalore, Numunix was born from a simple belief: every professional deserves a workspace that fuels their best work — whether that's a buzzing coworking hub, a private office, or a thoughtfully designed home setup.
             </p>
           </div>
         </section>
@@ -91,7 +91,7 @@ const AboutUs = () => {
                 In early 2025, a group of workspace enthusiasts in Bangalore noticed a gap: finding the right commercial space was still painfully slow, opaque, and frustrating for growing businesses.
               </p>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-4">
-                We set out to change that. EverySpaces brings together deep local market knowledge, a curated portfolio of premium spaces, and a consultative approach that puts your team's needs first.
+                We set out to change that. Numunix brings together deep local market knowledge, a curated portfolio of premium spaces, and a consultative approach that puts your team's needs first.
               </p>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                 Today, we serve startups, SMEs, and enterprises across Bangalore — helping them find, set up, and thrive in workspaces that truly fit.
@@ -209,7 +209,7 @@ const AboutUs = () => {
             {
               href: "/areas-we-serve",
               title: "Explore Served Locations",
-              description: "Compare the cities and neighborhood pages where EverySpaces helps teams lease workspace.",
+              description: "Compare the cities and neighborhood pages where Numunix helps teams lease workspace.",
             },
             {
               href: "/office-space/bangalore",

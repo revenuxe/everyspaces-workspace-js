@@ -19,7 +19,8 @@ async function fetchWithTimeout(input: RequestInfo | URL, init?: RequestInit) {
   try {
     return await fetch(input, {
       ...init,
-      signal: init?.signal || controller.signal,
+      signal: init?.signal ? AbortSignal.any([init.signal, controller.signal]) : controller.signal,
+      cache: "no-store",
     });
   } finally {
     clearTimeout(timeout);

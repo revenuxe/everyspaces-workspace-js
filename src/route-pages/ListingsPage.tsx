@@ -1,5 +1,6 @@
 "use client";
 
+import { rebrandProperty } from "@/lib/brand";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@/compat/react-router-dom";
@@ -114,7 +115,7 @@ const ListingsPage = ({
       const mapped = (propRes.data || [])
         .filter((property: any) => isBangaloreCity(property.city))
         .map((property: any) => ({
-          ...property,
+          ...rebrandProperty(property),
           property_type: property.property_types,
           amenities: (property.property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
         }));
@@ -178,7 +179,7 @@ const ListingsPage = ({
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Office Space & Coworking Listings | EverySpaces"
+        title="Office Space & Coworking Listings | Numunix"
         description="Browse premium office spaces, coworking desks & managed workspaces for rent in Bangalore and Bengaluru. Filter by location, budget, capacity & amenities."
         canonical="/listings"
         keywords="office space listings, coworking space for rent, office space Bangalore, coworking Bengaluru, managed office listings Bangalore"
@@ -432,7 +433,7 @@ const ListingsPage = ({
             {
               href: "/contact",
               title: "Need a Shortlist?",
-              description: "Talk to EverySpaces for a curated workspace shortlist based on your business requirements.",
+              description: "Talk to Numunix for a curated workspace shortlist based on your business requirements.",
             },
           ]}
         />

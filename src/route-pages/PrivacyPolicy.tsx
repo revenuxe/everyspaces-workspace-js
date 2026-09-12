@@ -9,10 +9,10 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Privacy Policy – EverySpaces | How We Protect Your Data"
-        description="Read EverySpaces' privacy policy to understand how we collect, use, and protect your personal information. Your data security is our priority."
+        title="Privacy Policy – Numunix | How We Protect Your Data"
+        description="Read Numunix' privacy policy to understand how we collect, use, and protect your personal information. Your data security is our priority."
         canonical="/privacy-policy"
-        keywords="EverySpaces privacy policy, data protection, personal information security, workspace consulting privacy"
+        keywords="Numunix privacy policy, data protection, personal information security, workspace consulting privacy"
       />
       <Navbar />
       <AnimatedSection>
@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">1. Introduction</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              EverySpaces ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you visit our website, use our services, or interact with us in any way. By accessing or using our services, you agree to the terms of this Privacy Policy.
+              Numunix ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you visit our website, use our services, or interact with us in any way. By accessing or using our services, you agree to the terms of this Privacy Policy.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">2. Information We Collect</h2>
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
             <ul className="list-disc pl-5 text-muted-foreground text-sm leading-relaxed mb-6 space-y-1">
               <li><strong>Service Partners:</strong> With workspace providers and property partners solely to fulfill your workspace requirements, with your consent</li>
               <li><strong>Legal Compliance:</strong> When required by law, regulation, court order, or governmental authority</li>
-              <li><strong>Business Protection:</strong> To protect the rights, property, or safety of EverySpaces, our users, or the public</li>
+              <li><strong>Business Protection:</strong> To protect the rights, property, or safety of Numunix, our users, or the public</li>
               <li><strong>Service Providers:</strong> With trusted third-party vendors who assist us in operating our website and services, bound by confidentiality agreements</li>
             </ul>
 
@@ -94,7 +94,7 @@ const PrivacyPolicy = () => {
               <li><strong>Withdraw Consent:</strong> Withdraw previously given consent for data processing</li>
             </ul>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              To exercise any of these rights, please contact us at <strong>everyspaces.com@gmail.com</strong>.
+              To exercise any of these rights, please contact us at <strong>numunix@gmail.com</strong>.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">8. Data Retention</h2>
@@ -122,9 +122,9 @@ const PrivacyPolicy = () => {
               If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us:
             </p>
             <div className="bg-secondary rounded-xl p-5 text-sm text-muted-foreground space-y-1">
-              <p><strong className="text-foreground">EverySpaces</strong></p>
+              <p><strong className="text-foreground">Numunix</strong></p>
               <p>HBR Layout, Bangalore, India</p>
-              <p>Email: everyspaces.com@gmail.com</p>
+              <p>Email: numunix@gmail.com</p>
               <p>Phone: +91 98862 85028</p>
             </div>
           </div>

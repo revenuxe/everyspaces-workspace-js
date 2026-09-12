@@ -56,7 +56,7 @@ export default function BlogPostPage({
                 <Clock3 size={16} />
                 {post.readingTime} min read
               </span>
-              <span>Curated by {post.author?.name || "EverySpaces Editorial Team"}</span>
+              <span>Curated by {post.author?.name || "Numunix Editorial Team"}</span>
             </div>
           </div>
         </section>
@@ -97,10 +97,10 @@ export default function BlogPostPage({
               ) : null}
 
               <div className="mt-10 rounded-[1.75rem] bg-primary px-6 py-7 text-primary-foreground">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime">EverySpaces Consultation</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-lime">Numunix Consultation</p>
                 <h2 className="mt-3 text-3xl font-serif leading-tight">Need help shortlisting office space in Bangalore?</h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-primary-foreground/78">
-                  Share your team size, budget, preferred areas, move-in timeline, and office type. EverySpaces will help you compare relevant coworking, private office, managed office, and leased options.
+                  Share your team size, budget, preferred areas, move-in timeline, and office type. Numunix will help you compare relevant coworking, private office, managed office, and leased options.
                 </p>
                 <Link to="/contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground">
                   Get a curated shortlist
@@ -127,7 +127,7 @@ export default function BlogPostPage({
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Brand Note</p>
                 <h2 className="mt-4 text-2xl font-serif text-foreground">Every article supports the brand story, not just rankings.</h2>
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                  This journal is designed to strengthen EverySpaces as a trusted advisor for office search, workspace strategy, and leasing decisions across high-intent commercial areas.
+                  This journal is designed to strengthen Numunix as a trusted advisor for office search, workspace strategy, and leasing decisions across high-intent commercial areas.
                 </p>
               </div>
 
@@ -135,14 +135,14 @@ export default function BlogPostPage({
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Curated By</p>
                 <div className="mt-5 flex items-start gap-4">
                   {authorImage ? (
-                    <img src={authorImage} alt={post.author?.name || "EverySpaces Editorial Team"} className="h-16 w-16 rounded-2xl object-cover" />
+                    <img src={authorImage} alt={post.author?.name || "Numunix Editorial Team"} className="h-16 w-16 rounded-2xl object-cover" />
                   ) : (
                     <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary text-lg font-semibold text-secondary-foreground">
                       {(post.author?.name || "ES").slice(0, 2).toUpperCase()}
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl font-serif text-foreground">{post.author?.name || "EverySpaces Editorial Team"}</h3>
+                    <h3 className="text-xl font-serif text-foreground">{post.author?.name || "Numunix Editorial Team"}</h3>
                     <p className="mt-1 text-sm font-medium text-foreground/75">{post.author?.role || "Workspace Research Desk"}</p>
                     {post.author?.bio ? <p className="mt-3 text-sm leading-7 text-muted-foreground">{post.author.bio}</p> : null}
                     <a href={getAuthorProfileUrl(post.author)} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground underline decoration-accent underline-offset-4">
@@ -216,13 +216,13 @@ export default function BlogPostPage({
             },
             {
               href: "/about",
-              title: "Learn About EverySpaces",
+              title: "Learn About Numunix",
               description: "See the people and positioning behind the content you just read.",
             },
             {
               href: "/contact",
               title: "Start a Workspace Brief",
-              description: "Talk to EverySpaces if you want help translating research into a shortlist.",
+              description: "Talk to Numunix if you want help translating research into a shortlist.",
             },
           ]}
         />

@@ -38,9 +38,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Workspace Consulting",
     shortTitle: "Consulting",
     description: serviceDetails["workspace-consulting"].desc,
-    metaTitle: "Workspace Consulting Services | EverySpaces",
+    metaTitle: "Workspace Consulting Services | Numunix",
     metaDescription:
-      "Get expert workspace consulting for office search, layout planning, budget alignment, and team growth. EverySpaces helps businesses choose smarter workspaces.",
+      "Get expert workspace consulting for office search, layout planning, budget alignment, and team growth. Numunix helps businesses choose smarter workspaces.",
     keywords:
       "workspace consulting, office space consultant, workspace strategy, office planning, coworking advisor, managed office consulting",
     image: serviceConsulting,
@@ -80,9 +80,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Space Search & Acquisition",
     shortTitle: "Search & Acquisition",
     description: serviceDetails["space-search-acquisition"].desc,
-    metaTitle: "Space Search & Acquisition Services | EverySpaces",
+    metaTitle: "Space Search & Acquisition Services | Numunix",
     metaDescription:
-      "Find, compare, lease, and acquire high-value workspace properties with EverySpaces. Get curated shortlists, site visits, and negotiation support.",
+      "Find, compare, lease, and acquire high-value workspace properties with Numunix. Get curated shortlists, site visits, and negotiation support.",
     keywords:
       "office space search, workspace acquisition, office leasing support, commercial property search, managed office search, coworking space search",
     image: serviceSearch,
@@ -122,9 +122,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Office Interior Design",
     shortTitle: "Interior Design",
     description: serviceDetails["office-interior-design"].desc,
-    metaTitle: "Office Interior Design Services | EverySpaces",
+    metaTitle: "Office Interior Design Services | Numunix",
     metaDescription:
-      "Plan and execute productive office interiors with EverySpaces, from concept and space planning to furniture, materials, build coordination, and handover.",
+      "Plan and execute productive office interiors with Numunix, from concept and space planning to furniture, materials, build coordination, and handover.",
     keywords:
       "office interior design, workspace interiors, office fit out, managed office interiors, commercial interior design, office space planning",
     image: serviceInterior,
@@ -164,9 +164,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Market Research & Analysis",
     shortTitle: "Research",
     description: serviceDetails["market-research-analysis"].desc,
-    metaTitle: "Workspace Market Research & Analysis | EverySpaces",
+    metaTitle: "Workspace Market Research & Analysis | Numunix",
     metaDescription:
-      "Use EverySpaces market research to compare locations, pricing, demand, competitors, and workspace investment opportunities before making a decision.",
+      "Use Numunix market research to compare locations, pricing, demand, competitors, and workspace investment opportunities before making a decision.",
     keywords:
       "workspace market research, office market analysis, coworking market analysis, commercial real estate research, office pricing benchmark",
     image: serviceResearch,
@@ -206,9 +206,9 @@ export const servicePages: ServicePageContent[] = [
     title: "Workspace Management Services",
     shortTitle: "Management",
     description: serviceDetails["workspace-management"].desc,
-    metaTitle: "Workspace Management Services | EverySpaces",
+    metaTitle: "Workspace Management Services | Numunix",
     metaDescription:
-      "Improve workspace operations, occupancy, cost control, vendor coordination, and tenant experience with EverySpaces workspace management services.",
+      "Improve workspace operations, occupancy, cost control, vendor coordination, and tenant experience with Numunix workspace management services.",
     keywords:
       "workspace management, office management services, managed workspace operations, workspace occupancy, office operations support",
     image: serviceManagement,
@@ -248,7 +248,7 @@ export const servicePages: ServicePageContent[] = [
     title: "Custom Workspace Strategies",
     shortTitle: "Strategies",
     description: serviceDetails["custom-workspace-strategies"].desc,
-    metaTitle: "Custom Workspace Strategy Services | EverySpaces",
+    metaTitle: "Custom Workspace Strategy Services | Numunix",
     metaDescription:
       "Build a custom workspace strategy for growth, hybrid work, multi-location planning, employee experience, and long-term office decisions.",
     keywords:

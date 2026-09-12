@@ -36,7 +36,7 @@ const CertificationThankYou = () => {
             "Trusted workspaces earn confidence faster when quality is visible."
           </blockquote>
           <p className="mt-4 text-sm font-medium uppercase tracking-wide text-primary-foreground/50">
-            EverySpaces Certification
+            Numunix Certification
           </p>
         </div>
 

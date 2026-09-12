@@ -9,10 +9,10 @@ const TermsConditions = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Terms & Conditions – EverySpaces | Service Agreement & Policies"
-        description="Review EverySpaces' terms and conditions covering service fees, payment methods, liability, and workspace consulting policies. Transparent terms for all clients."
+        title="Terms & Conditions – Numunix | Service Agreement & Policies"
+        description="Review Numunix' terms and conditions covering service fees, payment methods, liability, and workspace consulting policies. Transparent terms for all clients."
         canonical="/terms-and-conditions"
-        keywords="EverySpaces terms and conditions, service agreement, office brokerage fees, workspace consulting terms, payment policy"
+        keywords="Numunix terms and conditions, service agreement, office brokerage fees, workspace consulting terms, payment policy"
       />
       <Navbar />
       <AnimatedSection>
@@ -31,11 +31,11 @@ const TermsConditions = () => {
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">1. Acceptance of Terms</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              By accessing or using the EverySpaces website and services ("Services"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use our Services. These Terms constitute a legally binding agreement between you and EverySpaces.
+              By accessing or using the Numunix website and services ("Services"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use our Services. These Terms constitute a legally binding agreement between you and Numunix.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">2. Description of Services</h2>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-2">EverySpaces provides workspace consulting, search, and management services including but not limited to:</p>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-2">Numunix provides workspace consulting, search, and management services including but not limited to:</p>
             <ul className="list-disc pl-5 text-muted-foreground text-sm leading-relaxed mb-6 space-y-1">
               <li>Commercial office space search and recommendations</li>
               <li>Coworking space identification and booking assistance</li>
@@ -59,28 +59,28 @@ const TermsConditions = () => {
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">4. Intellectual Property</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              All content on the EverySpaces website — including text, graphics, logos, images, designs, layouts, and software — is the property of EverySpaces and is protected by Indian and international intellectual property laws. You may not copy, modify, distribute, sell, or create derivative works from any content without our express written permission.
+              All content on the Numunix website — including text, graphics, logos, images, designs, layouts, and software — is the property of Numunix and is protected by Indian and international intellectual property laws. You may not copy, modify, distribute, sell, or create derivative works from any content without our express written permission.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">5. Service Disclaimer</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              EverySpaces provides workspace recommendations and advisory services on a best-effort basis. We do <strong>not</strong> guarantee the availability, pricing, condition, or suitability of any workspace or property. All workspace listings, market data, and property information are provided "as is" and may change without notice. We recommend independent verification of all property details before making any commitments.
+              Numunix provides workspace recommendations and advisory services on a best-effort basis. We do <strong>not</strong> guarantee the availability, pricing, condition, or suitability of any workspace or property. All workspace listings, market data, and property information are provided "as is" and may change without notice. We recommend independent verification of all property details before making any commitments.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">6. Limitation of Liability</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              To the fullest extent permitted by law, EverySpaces, its directors, employees, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our Services, including but not limited to loss of profits, business interruption, data loss, or damages resulting from reliance on workspace recommendations. Our total liability for any claim shall not exceed the fees paid by you for the specific service giving rise to the claim.
+              To the fullest extent permitted by law, Numunix, its directors, employees, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our Services, including but not limited to loss of profits, business interruption, data loss, or damages resulting from reliance on workspace recommendations. Our total liability for any claim shall not exceed the fees paid by you for the specific service giving rise to the claim.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">7. Third-Party Services & Links</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              Our Services may involve interactions with third-party workspace providers, property owners, or service vendors. EverySpaces is not a party to any agreement you enter into with third parties and is not responsible for their actions, services, or policies. Any links to third-party websites are provided for convenience only and do not constitute endorsement.
+              Our Services may involve interactions with third-party workspace providers, property owners, or service vendors. Numunix is not a party to any agreement you enter into with third parties and is not responsible for their actions, services, or policies. Any links to third-party websites are provided for convenience only and do not constitute endorsement.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">8. Service Fees & Payment</h2>
             <h3 className="text-lg font-serif mb-2">8.1 Our Fee Structure</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              EverySpaces charges a <strong>one-time brokerage fee equivalent to one (1) month's rent</strong> of the rented office space. This fee is payable upon successful completion of the workspace deal — i.e., when the lease or rental agreement is signed between the client and the property owner/provider.
+              Numunix charges a <strong>one-time brokerage fee equivalent to one (1) month's rent</strong> of the rented office space. This fee is payable upon successful completion of the workspace deal — i.e., when the lease or rental agreement is signed between the client and the property owner/provider.
             </p>
             <h3 className="text-lg font-serif mb-2">8.2 When Payment Is Due</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -88,11 +88,11 @@ const TermsConditions = () => {
             </p>
             <h3 className="text-lg font-serif mb-2">8.3 Accepted Payment Methods</h3>
             <ul className="list-disc pl-5 text-muted-foreground text-sm leading-relaxed mb-4 space-y-1">
-              <li><strong>Bank Transfer (NEFT/RTGS/IMPS):</strong> Direct transfer to EverySpaces' designated bank account</li>
+              <li><strong>Bank Transfer (NEFT/RTGS/IMPS):</strong> Direct transfer to Numunix' designated bank account</li>
               <li><strong>UPI:</strong> Payment via Google Pay, PhonePe, Paytm, or any UPI-enabled app</li>
-              <li><strong>Cheque:</strong> Demand draft or account payee cheque in favour of EverySpaces</li>
-              <li><strong>Online Payment:</strong> Via payment link shared by EverySpaces (credit/debit card supported)</li>
-              <li><strong>Cash:</strong> Accepted in exceptional cases with a proper receipt issued by EverySpaces</li>
+              <li><strong>Cheque:</strong> Demand draft or account payee cheque in favour of Numunix</li>
+              <li><strong>Online Payment:</strong> Via payment link shared by Numunix (credit/debit card supported)</li>
+              <li><strong>Cash:</strong> Accepted in exceptional cases with a proper receipt issued by Numunix</li>
             </ul>
             <h3 className="text-lg font-serif mb-2">8.4 Invoicing & GST</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -100,7 +100,7 @@ const TermsConditions = () => {
             </p>
             <h3 className="text-lg font-serif mb-2">8.5 Refund Policy</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              The brokerage fee is <strong>non-refundable</strong> once the lease/rental agreement has been signed. If a deal falls through before signing due to reasons attributable to EverySpaces, a full refund of any advance payment will be provided. EverySpaces reserves the right to modify its fee structure with reasonable prior notice for future engagements.
+              The brokerage fee is <strong>non-refundable</strong> once the lease/rental agreement has been signed. If a deal falls through before signing due to reasons attributable to Numunix, a full refund of any advance payment will be provided. Numunix reserves the right to modify its fee structure with reasonable prior notice for future engagements.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">9. Confidentiality</h2>
@@ -110,12 +110,12 @@ const TermsConditions = () => {
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">10. Indemnification</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              You agree to indemnify, defend, and hold harmless EverySpaces and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including legal fees) arising from your use of the Services, violation of these Terms, or infringement of any third-party rights.
+              You agree to indemnify, defend, and hold harmless Numunix and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, or expenses (including legal fees) arising from your use of the Services, violation of these Terms, or infringement of any third-party rights.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">11. Termination</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              EverySpaces reserves the right to suspend or terminate your access to the Services at any time, with or without cause, and without prior notice. Upon termination, all provisions of these Terms that should reasonably survive — including intellectual property, limitation of liability, indemnification, and governing law — shall remain in effect.
+              Numunix reserves the right to suspend or terminate your access to the Services at any time, with or without cause, and without prior notice. Upon termination, all provisions of these Terms that should reasonably survive — including intellectual property, limitation of liability, indemnification, and governing law — shall remain in effect.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">12. Governing Law & Dispute Resolution</h2>
@@ -125,7 +125,7 @@ const TermsConditions = () => {
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">13. Force Majeure</h2>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              EverySpaces shall not be liable for any failure or delay in performing our obligations due to circumstances beyond our reasonable control, including but not limited to natural disasters, pandemics, government actions, cyber attacks, or infrastructure failures.
+              Numunix shall not be liable for any failure or delay in performing our obligations due to circumstances beyond our reasonable control, including but not limited to natural disasters, pandemics, government actions, cyber attacks, or infrastructure failures.
             </p>
 
             <h2 className="text-xl sm:text-2xl font-serif mb-4">14. Modifications to Terms</h2>
@@ -143,9 +143,9 @@ const TermsConditions = () => {
               For questions or concerns about these Terms, please reach out:
             </p>
             <div className="bg-secondary rounded-xl p-5 text-sm text-muted-foreground space-y-1">
-              <p><strong className="text-foreground">EverySpaces</strong></p>
+              <p><strong className="text-foreground">Numunix</strong></p>
               <p>HBR Layout, Bangalore, India</p>
-              <p>Email: everyspaces.com@gmail.com</p>
+              <p>Email: numunix@gmail.com</p>
               <p>Phone: +91 98862 85028</p>
             </div>
           </div>

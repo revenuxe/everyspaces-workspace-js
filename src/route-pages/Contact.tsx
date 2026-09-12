@@ -9,10 +9,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Contact EverySpaces – Get a Free Office Space Consultation in Bangalore"
-        description="Reach out to EverySpaces for expert workspace consulting in Bangalore. Get a free consultation for coworking spaces, private offices & commercial real estate. Quick response guaranteed."
+        title="Contact Numunix – Get a Free Office Space Consultation in Bangalore"
+        description="Reach out to Numunix for expert workspace consulting in Bangalore. Get a free consultation for coworking spaces, private offices & commercial real estate. Quick response guaranteed."
         canonical="/contact"
-        keywords="contact EverySpaces, office space consultation Bangalore, workspace advisor Bangalore, coworking inquiry, commercial real estate agent Bangalore, office broker Bangalore"
+        keywords="contact Numunix, office space consultation Bangalore, workspace advisor Bangalore, coworking inquiry, commercial real estate agent Bangalore, office broker Bangalore"
       />
       <Navbar />
       <AnimatedSection>
@@ -32,7 +32,7 @@ const Contact = () => {
             {
               href: "/areas-we-serve",
               title: "Compare All Locations",
-              description: "Review every city and micro-market page covered by EverySpaces.",
+              description: "Review every city and micro-market page covered by Numunix.",
             },
             {
               href: "/office-space/bangalore",

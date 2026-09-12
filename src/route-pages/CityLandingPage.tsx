@@ -53,7 +53,7 @@ const CityLandingPage = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: `EverySpaces – ${content.city}`,
+    name: `Numunix – ${content.city}`,
     description: content.metaDescription,
     url: absoluteUrl(`/office-space/${content.citySlug}`),
     areaServed: { "@type": "Place", name: `${content.city}, ${content.state}` },

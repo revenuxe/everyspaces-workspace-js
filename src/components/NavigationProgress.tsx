@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 interface NavigationProgressContextValue {
   isNavigating: boolean;
@@ -37,7 +37,6 @@ function NavigationLoader({ active }: { active: boolean }) {
 
 export function NavigationProgressProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [isNavigating, setIsNavigating] = useState(false);
   const startedAtRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
@@ -60,7 +59,7 @@ export function NavigationProgressProvider({ children }: { children: ReactNode }
       const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
       const targetUrl = new URL(target, window.location.origin);
 
-      if (`${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}` === currentUrl) {
+      if (targetUrl.origin !== window.location.origin || `${targetUrl.pathname}${targetUrl.search}` === `${window.location.pathname}${window.location.search}`) {
         return;
       }
     }
@@ -95,7 +94,7 @@ export function NavigationProgressProvider({ children }: { children: ReactNode }
 
   useEffect(() => {
     finishNavigation();
-  }, [pathname, searchParams, finishNavigation]);
+  }, [pathname, finishNavigation]);
 
   useEffect(() => {
     return () => {

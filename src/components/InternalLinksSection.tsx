@@ -10,6 +10,7 @@ interface InternalLinkItem {
 }
 
 interface InternalLinksSectionProps {
+  className?: string;
   eyebrow?: string;
   title: string;
   description?: string;
@@ -17,6 +18,7 @@ interface InternalLinksSectionProps {
 }
 
 const InternalLinksSection = ({
+  className = "",
   eyebrow = "Explore More",
   title,
   description,
@@ -27,20 +29,20 @@ const InternalLinksSection = ({
   }
 
   return (
-    <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-12">
+    <section className={`py-16 md:py-24 px-4 sm:px-6 lg:px-12 ${className}`}>
       <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mb-8">
+        <div className="max-w-3xl mb-10">
           <p className="text-accent text-xs font-semibold uppercase tracking-[0.24em] mb-3">{eyebrow}</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-3">{title}</h2>
-          {description ? <p className="text-sm sm:text-base text-muted-foreground">{description}</p> : null}
+          {description ? <p className="text-sm sm:text-base leading-7 text-muted-foreground">{description}</p> : null}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {links.map((link) => (
             <Link
               key={`${link.href}-${link.title}`}
               to={link.href}
-              className="group rounded-2xl border border-border bg-card p-5 transition-all hover:border-accent hover:shadow-md"
+              className="group rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent hover:shadow-md"
             >
               <div className="mb-4 flex items-start justify-between gap-3">
                 <h3 className="text-base font-bold font-sans leading-snug">{link.title}</h3>

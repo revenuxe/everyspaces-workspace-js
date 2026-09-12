@@ -16,7 +16,11 @@ const leadSchema = z.object({
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    if (!(request.headers.get("content-type") || "").includes("application/json")) return NextResponse.json({ error: "Send a JSON request." }, { status: 415 });
+    const raw = await request.text();
+    if (new TextEncoder().encode(raw).length > 16384) return NextResponse.json({ error: "Request is too large." }, { status: 413 });
+    let body: unknown;
+    try { body = JSON.parse(raw); } catch { return NextResponse.json({ error: "Invalid JSON." }, { status: 400 }); }
     const parsed = leadSchema.safeParse(body);
 
     if (!parsed.success) {
@@ -37,37 +41,7 @@ export async function POST(request: Request) {
     };
     const { error } = await supabase.from("leads").insert(primaryPayload);
 
-    if (error) {
-      const missingNewColumns =
-        error.message.includes("lead_type") ||
-        error.message.includes("company_name") ||
-        error.message.includes("schema cache");
-
-      if (!missingNewColumns) {
-        return NextResponse.json({ error: "Please try again." }, { status: 500 });
-      }
-
-      const fallbackPayload = {
-        full_name: parsed.data.full_name,
-        email: parsed.data.email,
-        phone: parsed.data.phone || null,
-        team_size: parsed.data.team_size || null,
-        preferred_location: parsed.data.preferred_location || null,
-        nature_of_business: parsed.data.nature_of_business || null,
-        planned_timeline: parsed.data.planned_timeline || null,
-        service: parsed.data.lead_type,
-        message:
-          parsed.data.lead_type === "certification" && parsed.data.company_name
-            ? `Company Name: ${parsed.data.company_name}`
-            : null,
-      };
-
-      const { error: fallbackError } = await supabase.from("leads").insert(fallbackPayload);
-
-      if (fallbackError) {
-        return NextResponse.json({ error: "Please try again." }, { status: 500 });
-      }
-    }
+    if (error) return NextResponse.json({ error: "We could not save your request. Please try again." }, { status: 503 });
 
     return NextResponse.json({ ok: true });
   } catch {

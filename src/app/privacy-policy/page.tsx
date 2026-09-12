@@ -4,8 +4,8 @@ import { RouteShell } from "@/components/RouteShell";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Privacy Policy | EverySpaces",
-  description: "Read the EverySpaces privacy policy and learn how we handle your information.",
+  title: "Privacy Policy | Numunix",
+  description: "Read the Numunix privacy policy and learn how we handle your information.",
   path: "/privacy-policy",
 });
 

@@ -56,7 +56,7 @@ const ThankYou = () => {
             "The best workspace isn't just a place - it's where your vision finds its ground."
           </blockquote>
           <p className="text-primary-foreground/50 text-sm mt-4 font-medium tracking-wide uppercase">
-            - EverySpaces
+            - Numunix
           </p>
         </motion.div>
 

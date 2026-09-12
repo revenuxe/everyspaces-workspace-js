@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { rebrandProperty } from "@/lib/brand";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 
 const isBangaloreCity = (city: string | null | undefined) => {
@@ -6,7 +8,6 @@ const isBangaloreCity = (city: string | null | undefined) => {
 };
 
 export async function getListingsPageData() {
-  try {
     const supabase = createSupabaseServerClient();
     const [propertiesRes, propertyTypesRes, amenitiesRes] = await Promise.all([
       supabase
@@ -24,10 +25,11 @@ export async function getListingsPageData() {
       supabase.from("amenities").select("id, name").order("name"),
     ]);
 
+    if (propertiesRes.error || propertyTypesRes.error || amenitiesRes.error) throw new Error("Workspace listings are temporarily unavailable.");
     const properties = (propertiesRes.data || [])
       .filter((property: any) => isBangaloreCity(property.city))
       .map((property: any) => ({
-        ...property,
+        ...rebrandProperty(property),
         property_type: property.property_types,
         amenities: (property.property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
       }));
@@ -37,19 +39,11 @@ export async function getListingsPageData() {
       propertyTypes: propertyTypesRes.data || [],
       amenities: amenitiesRes.data || [],
     };
-  } catch {
-    return {
-      properties: [],
-      propertyTypes: [],
-      amenities: [],
-    };
-  }
 }
 
-export async function getPropertyBySlug(slug: string) {
-  try {
+export const getPropertyBySlug = cache(async (slug: string) => {
     const supabase = createSupabaseServerClient();
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("properties")
       .select(`
         id, name, slug, city, area, address, price, seating_capacity,
@@ -65,27 +59,22 @@ export async function getPropertyBySlug(slug: string) {
       .eq("status", "active")
       .maybeSingle();
 
+    if (error) throw new Error("Workspace details are temporarily unavailable.");
     if (!data || !isBangaloreCity(data.city)) {
       return null;
     }
 
     return {
-      ...data,
+      ...rebrandProperty(data),
       property_type: (data as any).property_types,
       amenities: ((data as any).property_amenities || []).map((item: any) => item.amenities).filter(Boolean),
       images: ((data as any).property_images || []).sort((a: any, b: any) => a.sort_order - b.sort_order),
     };
-  } catch {
-    return null;
-  }
-}
+});
 
 export async function getActivePropertySlugs() {
-  try {
     const supabase = createSupabaseServerClient();
-    const { data } = await supabase.from("properties").select("slug, updated_at, city").eq("status", "active");
+    const { data, error } = await supabase.from("properties").select("slug, updated_at, city").eq("status", "active");
+    if (error) throw new Error("Workspace sitemap is temporarily unavailable.");
     return (data || []).filter((property) => isBangaloreCity(property.city));
-  } catch {
-    return [];
-  }
 }

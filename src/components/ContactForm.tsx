@@ -27,7 +27,7 @@ const timelineOptions = [
   "Just Exploring",
 ];
 
-const ContactForm = () => {
+const ContactForm = ({ layout = "stacked" }: { layout?: "stacked" | "split" }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -62,23 +62,24 @@ const ContactForm = () => {
       return;
     }
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(result.data),
-    });
-
-    setSubmitting(false);
-
-    if (!response.ok) {
-      const payload = await response.json().catch(() => null);
-      setFormError(payload?.error || "Something went wrong. Please try again.");
-      return;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+        signal: AbortSignal.timeout(15000),
+      });
+      if (!response.ok) {
+        const payload = await response.json().catch(() => null);
+        setFormError(payload?.error || "Something went wrong. Please try again.");
+        return;
+      }
+      navigate("/thank-you");
+    } catch {
+      setFormError("We couldn't send your request. Check your connection and try again.");
+    } finally {
+      setSubmitting(false);
     }
-
-    navigate("/thank-you");
   };
 
   const inputClass =
@@ -93,14 +94,15 @@ const ContactForm = () => {
         <div className="absolute inset-0 bg-primary/85" />
       </div>
 
-      <div className="max-w-xl mx-auto relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-14">
+      <div className={`mx-auto relative z-10 ${layout === "split" ? "max-w-7xl grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:items-start" : "max-w-xl"}`}>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className={layout === "split" ? "text-left lg:pt-8" : "text-center mb-10 md:mb-14"}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-snug mb-4 text-primary-foreground">
             <span className="italic">Find</span> Your Ideal Workspace
           </h2>
-          <p className="text-primary-foreground/70 text-base sm:text-lg max-w-md mx-auto">
+          <p className={`text-primary-foreground/70 text-base sm:text-lg leading-relaxed max-w-md ${layout === "split" ? "" : "mx-auto"}`}>
             Tell us your requirements - we'll curate the best office options for your team.
           </p>
+          {layout === "split" && <ul className="mt-8 space-y-4 text-sm text-primary-foreground/80">{["Share your team size, budget, and location.", "Get a shortlist matched to your requirements.", "Compare spaces and plan your site visits."].map((step) => <li key={step} className="flex items-start gap-3"><CheckCircle2 size={18} className="mt-0.5 shrink-0 text-lime" />{step}</li>)}</ul>}
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }} className="relative bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl shadow-black/20 overflow-hidden">

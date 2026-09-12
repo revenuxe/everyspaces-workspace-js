@@ -46,10 +46,10 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
             <div>
               <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em]">
                 <Sparkles size={14} />
-                EverySpaces Journal
+                Numunix Journal
               </p>
               <h1 className="max-w-4xl text-4xl font-serif leading-tight sm:text-5xl lg:text-6xl">
-                Workspace intelligence, curated through the EverySpaces brand lens.
+                Workspace intelligence, curated through the Numunix brand lens.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-primary-foreground/78 sm:text-lg">
                 City guides, leasing playbooks, coworking comparisons, workplace strategy pieces, and practical research for teams planning their next workspace.
@@ -82,11 +82,11 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">Editorial Desk</p>
               <h2 className="mt-4 text-3xl font-serif text-foreground">The journal is being refreshed.</h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-                New EverySpaces articles are being prepared for this page. For now, the team can help directly with location research, workspace shortlists, and leasing strategy.
+                New Numunix articles are being prepared for this page. For now, the team can help directly with location research, workspace shortlists, and leasing strategy.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Link to="/contact" className="inline-flex items-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground">
-                  Talk to EverySpaces
+                  Talk to Numunix
                 </Link>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
                   <div className="mt-6 space-y-4 text-sm leading-7 text-muted-foreground">
                     <p>Each article follows a clean structure: keyword-led title, short hook, useful subheadings, compact paragraphs, lists, FAQs, and a direct consultation CTA.</p>
                     <p>The content cluster targets searches around office space for rent, coworking, managed offices, private offices, location comparisons, and shortlisting support.</p>
-                    <p>Every piece is shaped to answer practical workspace questions while guiding readers toward a confident EverySpaces consultation.</p>
+                    <p>Every piece is shaped to answer practical workspace questions while guiding readers toward a confident Numunix consultation.</p>
                   </div>
                   <div className="mt-8 rounded-[1.5rem] bg-secondary/55 p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-secondary-foreground">Active Topics</p>
@@ -260,12 +260,12 @@ export default function BlogPage({ data }: { data: BlogLandingData }) {
             {
               href: "/areas-we-serve",
               title: "Explore Service Areas",
-              description: "See the neighborhoods and cities where EverySpaces can help teams shortlist faster.",
+              description: "See the neighborhoods and cities where Numunix can help teams shortlist faster.",
             },
             {
               href: "/about",
               title: "Meet the Brand",
-              description: "Learn how EverySpaces approaches consulting, curation, and workspace strategy.",
+              description: "Learn how Numunix approaches consulting, curation, and workspace strategy.",
             },
             {
               href: "/contact",

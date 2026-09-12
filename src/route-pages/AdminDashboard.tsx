@@ -51,7 +51,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <SEOHead title="Admin Dashboard | EverySpaces" description="Admin dashboard" keywords="admin" noIndex />
+      <SEOHead title="Admin Dashboard | Numunix" description="Admin dashboard" keywords="admin" noIndex />
       <div className="min-h-screen bg-background">
         <header className="sticky top-0 z-30 bg-primary text-primary-foreground px-4 py-3 flex items-center justify-between shadow-lg">
           <div className="flex items-center gap-3">

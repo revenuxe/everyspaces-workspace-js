@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ citySlug:
   const city = cityContent[citySlug];
 
   if (!city) {
-    return buildMetadata({ title: "City Not Found | EverySpaces", description: "The requested city page could not be found.", path: `/office-space/${citySlug}`, noIndex: true });
+    return buildMetadata({ title: "City Not Found | Numunix", description: "The requested city page could not be found.", path: `/office-space/${citySlug}`, noIndex: true });
   }
 
   return buildMetadata({

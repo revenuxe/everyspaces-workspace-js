@@ -1,5 +1,6 @@
 "use client";
 
+import { rebrandProperty } from "@/lib/brand";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "@/compat/react-router-dom";
@@ -81,7 +82,7 @@ const PropertyDetailPage = ({ initialProperty = null }: PropertyDetailPageProps)
 
       if (data) {
         setProperty({
-          ...data,
+          ...rebrandProperty(data),
           property_type: (data as any).property_types,
           amenities: ((data as any).property_amenities || []).map((pa: any) => pa.amenities).filter(Boolean),
           images: ((data as any).property_images || []).sort((a: any, b: any) => a.sort_order - b.sort_order),
@@ -142,7 +143,7 @@ const PropertyDetailPage = ({ initialProperty = null }: PropertyDetailPageProps)
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={property.meta_title || `${property.name} — Office Space in ${property.area}, ${property.city} | EverySpaces`}
+        title={property.meta_title || `${property.name} — Office Space in ${property.area}, ${property.city} | Numunix`}
         description={property.meta_description || property.short_description || `Premium office space for rent: ${property.name} in ${property.area}, ${property.city}.`}
         canonical={`/listings/${property.slug}`}
         keywords={`${property.name}, office space ${property.area}, coworking ${property.city}, ${property.property_type?.name || "office"} ${property.area}`}

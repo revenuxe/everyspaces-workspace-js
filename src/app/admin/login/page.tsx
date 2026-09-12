@@ -3,7 +3,7 @@ import AdminLogin from "@/route-pages/AdminLogin";
 import { RouteShell } from "@/components/RouteShell";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Admin Login | EverySpaces", description: "Admin login portal for EverySpaces.", path: "/admin/login", noIndex: true });
+export const metadata: Metadata = buildMetadata({ title: "Admin Login | Numunix", description: "Admin login portal for Numunix.", path: "/admin/login", noIndex: true });
 
 export default function AdminLoginRoute() {
   return (

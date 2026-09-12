@@ -6,12 +6,12 @@ import { absoluteUrl, breadcrumbSchema, buildMetadata, collectionPageSchema } fr
 import { getBlogLandingData, getBlogPostAbsoluteUrl } from "@/lib/blog";
 
 export const metadata: Metadata = buildMetadata({
-  title: "EverySpaces Journal | Workspace Strategy, Coworking Guides & Office Market Insights",
+  title: "Numunix Journal | Workspace Strategy, Coworking Guides & Office Market Insights",
   description:
-    "Read branded editorial content from EverySpaces covering coworking, managed offices, leasing strategy, city guides, workplace trends, and commercial real estate insights.",
+    "Read branded editorial content from Numunix covering coworking, managed offices, leasing strategy, city guides, workplace trends, and commercial real estate insights.",
   path: "/blog",
   keywords:
-    "EverySpaces blog, office space blog, coworking guides, managed office insights, workspace strategy, leasing advice, Bangalore office market, Bengaluru coworking",
+    "Numunix blog, office space blog, coworking guides, managed office insights, workspace strategy, leasing advice, Bangalore office market, Bengaluru coworking",
 });
 
 export default async function BlogRoute() {
@@ -26,8 +26,8 @@ export default async function BlogRoute() {
         data={[
           breadcrumbSchema([{ name: "Home", url: absoluteUrl("/") }, { name: "Blog", url: absoluteUrl("/blog") }]),
           collectionPageSchema({
-            name: "EverySpaces Journal",
-            description: "Editorial content and blog articles from EverySpaces about office space, coworking, and workplace strategy.",
+            name: "Numunix Journal",
+            description: "Editorial content and blog articles from Numunix about office space, coworking, and workplace strategy.",
             url: absoluteUrl("/blog"),
             items: data.posts.slice(0, 12).map((post) => ({
               name: post.title,

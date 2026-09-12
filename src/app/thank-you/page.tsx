@@ -4,8 +4,8 @@ import { RouteShell } from "@/components/RouteShell";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Thank You | EverySpaces",
-  description: "Thank you for contacting EverySpaces.",
+  title: "Thank You | Numunix",
+  description: "Thank you for contacting Numunix.",
   path: "/thank-you",
   noIndex: true,
 });

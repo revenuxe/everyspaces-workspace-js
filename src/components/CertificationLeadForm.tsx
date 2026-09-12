@@ -48,23 +48,24 @@ const CertificationLeadForm = () => {
       return;
     }
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(result.data),
-    });
-
-    setSubmitting(false);
-
-    if (!response.ok) {
-      const payload = await response.json().catch(() => null);
-      setFormError(payload?.error || "Something went wrong. Please try again.");
-      return;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+        signal: AbortSignal.timeout(15000),
+      });
+      if (!response.ok) {
+        const payload = await response.json().catch(() => null);
+        setFormError(payload?.error || "Something went wrong. Please try again.");
+        return;
+      }
+      navigate("/certification/thank-you");
+    } catch {
+      setFormError("We couldn't send your request. Check your connection and try again.");
+    } finally {
+      setSubmitting(false);
     }
-
-    navigate("/certification/thank-you");
   };
 
   return (
@@ -87,7 +88,7 @@ const CertificationLeadForm = () => {
           <div className="mt-8 space-y-3 text-sm text-primary-foreground/80">
             <p>Simple review request</p>
             <p>Minimal details only</p>
-            <p>Direct EverySpaces follow-up</p>
+            <p>Direct Numunix follow-up</p>
           </div>
         </motion.div>
 
@@ -110,7 +111,7 @@ const CertificationLeadForm = () => {
                 type="text"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
-                placeholder="EverySpaces"
+                placeholder="Numunix"
                 className={inputClass}
                 required
               />

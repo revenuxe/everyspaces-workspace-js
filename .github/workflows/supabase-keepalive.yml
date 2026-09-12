@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Ping Supabase health endpoint
         env:
-          KEEPALIVE_URL: ${{ secrets.EVERYSPACES_KEEPALIVE_URL }}
+          KEEPALIVE_URL: ${{ secrets.NUMUNIX_KEEPALIVE_URL }}
         run: |
-          URL="${KEEPALIVE_URL:-https://www.everyspaces.com/api/health/supabase}"
+          URL="${KEEPALIVE_URL:-https://www.numunix.com/api/health/supabase}"
           curl --fail --silent --show-error --max-time 30 "$URL"

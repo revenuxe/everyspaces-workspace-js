@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link } from "@/compat/react-router-dom";
-import logo from "@/assets/logo.webp";
+import logo from "../../public/numunix-logo-optimized.webp";
 
 const navLinks = [
   { label: "Home", href: "/", isRoute: true },
@@ -22,7 +22,7 @@ const Navbar = () => {
     <header className="w-full bg-primary py-4 px-6 lg:px-12 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <Image src={logo} alt="EverySpaces logo" priority sizes="(max-width: 640px) 120px, 140px" className="h-12 w-auto sm:h-14" />
+          <Image src={logo} alt="Numunix Workspaces Consulting logo" priority sizes="(max-width: 640px) 229px, 267px" className="h-12 w-auto sm:h-14" />
         </Link>
 
         <nav className="hidden lg:flex items-center bg-primary-foreground/10 backdrop-blur-sm rounded-full px-2 py-1 border border-primary-foreground/20">

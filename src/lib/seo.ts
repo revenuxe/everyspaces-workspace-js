@@ -3,15 +3,15 @@ import { allAreas } from "@/data/areas";
 import { cityContent } from "@/data/cityContent";
 import { servicePages } from "@/data/servicePages";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.everyspaces.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.numunix.com";
 
 export const defaultMetadata = {
   siteUrl,
-  siteName: "EverySpaces",
+  siteName: "Numunix",
   locale: "en_IN",
-  title: "EverySpaces - Office Space, Coworking & Managed Workspaces",
+  title: "Numunix - Office Space, Coworking & Managed Workspaces",
   description:
-    "EverySpaces helps businesses find office space, coworking desks, managed offices, private offices and flexible workspaces with expert consulting, faster shortlisting and smarter leasing support.",
+    "Numunix helps businesses find office space, coworking desks, managed offices, private offices and flexible workspaces with expert consulting, faster shortlisting and smarter leasing support.",
   ogImage: `${siteUrl}/opengraph-image`,
 };
 
@@ -85,10 +85,10 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${defaultMetadata.siteUrl}/#organization`,
-    name: "EverySpaces",
+    name: "Numunix",
     description: "Expert workspace consulting and office space solutions in Bangalore",
     url: defaultMetadata.siteUrl,
-    logo: absoluteUrl("/everyspaces-logo.webp"),
+    logo: absoluteUrl("/numes.webp"),
     image: absoluteUrl("/opengraph-image"),
     address: {
       "@type": "PostalAddress",
@@ -98,7 +98,7 @@ export function organizationSchema() {
       addressCountry: "IN",
     },
     telephone: "+919886285028",
-    email: "everyspaces.com@gmail.com",
+    email: "numunix@gmail.com",
     foundingDate: "2025",
     priceRange: "₹₹",
     areaServed: [
@@ -120,10 +120,6 @@ export function organizationSchema() {
       areaServed: "IN",
       availableLanguage: ["en", "hi", "kn"],
     },
-    sameAs: [
-      "https://www.linkedin.com/company/everyspaces",
-      "https://www.instagram.com/every.spaces/",
-    ],
   };
 }
 
@@ -132,9 +128,9 @@ export function brandSchema() {
     "@context": "https://schema.org",
     "@type": "Brand",
     "@id": `${defaultMetadata.siteUrl}/#brand`,
-    name: "EverySpaces",
+    name: "Numunix",
     url: defaultMetadata.siteUrl,
-    logo: absoluteUrl("/everyspaces-logo.webp"),
+    logo: absoluteUrl("/numes.webp"),
     slogan: "Find the right office space faster.",
   };
 }
@@ -280,7 +276,7 @@ export function articleSchema({
       url: defaultMetadata.siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/everyspaces-logo.webp"),
+        url: absoluteUrl("/numes.webp"),
       },
     },
   };

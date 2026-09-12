@@ -18,8 +18,8 @@ const AreasWeServePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Areas We Serve – Office Space & Coworking Locations | EverySpaces"
-        description="Explore all Bangalore locations where EverySpaces provides coworking spaces, office space for rent & managed workspaces."
+        title="Areas We Serve – Office Space & Coworking Locations | Numunix"
+        description="Explore all Bangalore locations where Numunix provides coworking spaces, office space for rent & managed workspaces."
         canonical="/areas-we-serve"
         keywords="coworking space locations Bangalore, office space for rent Bangalore, coworking near me Bangalore, Bengaluru office space, managed office locations Bangalore"
       />
@@ -120,7 +120,7 @@ const AreasWeServePage = () => {
             {
               href: "/contact",
               title: "Request Workspace Help",
-              description: "Talk to EverySpaces for shortlisting support based on location, size, and budget.",
+              description: "Talk to Numunix for shortlisting support based on location, size, and budget.",
             },
           ]}
         />

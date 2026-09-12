@@ -61,8 +61,8 @@ const WeHelp = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="We Help Startups and Businesses Find Office Spaces in Bengaluru | EverySpaces"
-        description="EverySpaces helps startups and businesses find coworking spaces, managed offices, plug-and-play offices, and independent commercial office properties across Bengaluru with expert shortlisting and leasing support."
+        title="We Help Startups and Businesses Find Office Spaces in Bengaluru | Numunix"
+        description="Numunix helps startups and businesses find coworking spaces, managed offices, plug-and-play offices, and independent commercial office properties across Bengaluru with expert shortlisting and leasing support."
         canonical="/we-help"
         keywords={keywords.join(", ")}
       />
@@ -84,7 +84,7 @@ const WeHelp = () => {
             <div className="relative z-10 mx-auto max-w-7xl">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-accent">We help</p>
               <h1 className="max-w-6xl font-serif text-3xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                EverySpaces helps startups and businesses find coworking spaces, managed offices, plug-and-play offices, and independent commercial office properties across Bengaluru.
+                Numunix helps startups and businesses find coworking spaces, managed offices, plug-and-play offices, and independent commercial office properties across Bengaluru.
               </h1>
             </div>
           </div>
@@ -125,7 +125,7 @@ const WeHelp = () => {
             </div>
             <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
               <p>
-                EverySpaces helps startups and businesses find coworking spaces, managed offices, plug-and-play offices,
+                Numunix helps startups and businesses find coworking spaces, managed offices, plug-and-play offices,
                 and independent commercial office properties across Bengaluru without wasting time on scattered listings.
                 We turn office space search into a clear shortlist built around budget, location, team size, amenities,
                 branding needs, and move-in timelines.
@@ -198,7 +198,7 @@ const WeHelp = () => {
             <div className="max-w-3xl">
               <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl">Searching for office space in Bengaluru?</h2>
               <p className="text-sm leading-relaxed text-primary-foreground/80 sm:text-base">
-                Tell us your preferred area, seat count, budget, and timeline. EverySpaces will help you compare
+                Tell us your preferred area, seat count, budget, and timeline. Numunix will help you compare
                 coworking spaces, managed offices, plug-and-play offices, and independent commercial office properties
                 that are actually relevant to your team.
               </p>
@@ -207,7 +207,7 @@ const WeHelp = () => {
               to="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:scale-105"
             >
-              Talk to EverySpaces
+              Talk to Numunix
               <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -251,12 +251,12 @@ const WeHelp = () => {
             {
               href: "/services/space-search-acquisition",
               title: "Space Search and Acquisition",
-              description: "Learn how EverySpaces helps growing businesses secure ready-to-run private workspaces.",
+              description: "Learn how Numunix helps growing businesses secure ready-to-run private workspaces.",
             },
             {
               href: "/contact",
               title: "Get Workspace Help",
-              description: "Share your office requirement and get a curated shortlist from the EverySpaces team.",
+              description: "Share your office requirement and get a curated shortlist from the Numunix team.",
             },
           ]}
         />
@@ -268,10 +268,10 @@ const WeHelp = () => {
             <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
               <CheckCircle2 size={22} />
             </div>
-            <h2 className="mb-4 font-serif text-2xl sm:text-3xl md:text-4xl">EverySpaces helps you choose with clarity.</h2>
+            <h2 className="mb-4 font-serif text-2xl sm:text-3xl md:text-4xl">Numunix helps you choose with clarity.</h2>
             <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
               For startups and businesses, the best office space is not just a location. It is the right mix of commute,
-              culture, cost, flexibility, privacy, amenities, and lease confidence. EverySpaces helps you find that mix
+              culture, cost, flexibility, privacy, amenities, and lease confidence. Numunix helps you find that mix
               across coworking spaces, managed offices, plug-and-play offices, and independent commercial office
               properties across Bengaluru.
             </p>

@@ -5,9 +5,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { absoluteUrl, breadcrumbSchema, buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Areas We Serve - Office Space & Coworking Locations | EverySpaces",
+  title: "Areas We Serve - Office Space & Coworking Locations | Numunix",
   description:
-    "Explore all Bangalore locations where EverySpaces provides coworking spaces, office space for rent and managed workspaces.",
+    "Explore all Bangalore locations where Numunix provides coworking spaces, office space for rent and managed workspaces.",
   path: "/areas-we-serve",
   keywords:
     "coworking space locations Bangalore, office space for rent Bangalore, coworking near me Bangalore, Bengaluru office space, managed office locations Bangalore",

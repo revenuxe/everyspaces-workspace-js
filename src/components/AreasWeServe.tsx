@@ -1,98 +1,31 @@
-"use client";
-
-import { useRef, useEffect } from "react";
 import { Link } from "@/compat/react-router-dom";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowUpRight } from "lucide-react";
 import { allAreas } from "@/data/areas";
 
-const AreasWeServe = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    let raf: number;
-    let speed = 0.5;
-    let paused = false;
-
-    const scroll = () => {
-      if (!paused && el) {
-        el.scrollLeft += speed;
-        if (el.scrollLeft >= el.scrollWidth - el.clientWidth) {
-          el.scrollLeft = 0;
-        }
-      }
-      raf = requestAnimationFrame(scroll);
-    };
-
-    raf = requestAnimationFrame(scroll);
-    const pause = () => { paused = true; };
-    const resume = () => { paused = false; };
-    el.addEventListener("mouseenter", pause);
-    el.addEventListener("mouseleave", resume);
-    el.addEventListener("touchstart", pause);
-    el.addEventListener("touchend", resume);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      el.removeEventListener("mouseenter", pause);
-      el.removeEventListener("mouseleave", resume);
-      el.removeEventListener("touchstart", pause);
-      el.removeEventListener("touchend", resume);
-    };
-  }, []);
-
-  return (
-    <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-8 md:mb-10">
-          <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-2">
-              <span className="font-bold italic">Areas</span> We Serve
-            </h2>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-lg">
-              Premium coworking &amp; office space for rent across India's top tech cities and business hubs.
-            </p>
-          </div>
-          <Link
-            to="/areas-we-serve"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline shrink-0"
-          >
-            View All Areas
-            <ArrowRight size={14} />
-          </Link>
+const AreasWeServe = () => (
+  <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-12 border-t border-border">
+    <div className="max-w-7xl mx-auto">
+      <div className="mb-10 md:mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-2xl">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Find your location</p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">Workspace in the right neighborhood</h2>
+          <p className="text-base leading-7 text-muted-foreground">Explore office space and coworking across Bangalore's business hubs, close to your team and your customers.</p>
         </div>
-
-        {/* Single-row auto-scroll carousel */}
-        <div
-          ref={scrollRef}
-          className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-2"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {allAreas.map((area) => (
-            <Link
-              key={`${area.citySlug}-${area.slug}`}
-              to={`/office-space/${area.citySlug}/${area.slug}`}
-              className="group flex-shrink-0 w-[160px] sm:w-[180px] bg-card border border-border rounded-2xl p-4 hover:border-accent hover:shadow-md transition-all"
-            >
-              <MapPin size={14} className="text-accent mb-2" />
-              <h3 className="text-sm font-bold font-sans mb-0.5 truncate">{area.name}</h3>
-              <p className="text-[11px] text-muted-foreground">{area.city}</p>
-            </Link>
-          ))}
-        </div>
-
-        <Link
-          to="/areas-we-serve"
-          className="sm:hidden flex items-center justify-center gap-1.5 text-sm font-semibold text-accent mt-4"
-        >
-          View All Areas
-          <ArrowRight size={14} />
-        </Link>
+        <Link to="/areas-we-serve" className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold underline underline-offset-4">View all areas <ArrowUpRight size={18} /></Link>
       </div>
-    </section>
-  );
-};
-
+      <div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {allAreas.slice(0, 8).map((area) => (
+          <Link key={area.slug} to={`/office-space/${area.citySlug}/${area.slug}`} className="group flex items-center gap-3 rounded-2xl border border-border bg-card p-5 hover:border-accent transition-colors">
+            <MapPin size={20} className="shrink-0 text-accent" />
+            <div className="min-w-0 flex-1">
+              <h3 className="font-sans font-semibold text-sm sm:text-base">{area.name}</h3>
+              <p className="mt-1 text-xs text-muted-foreground">{area.city}</p>
+            </div>
+            <ArrowUpRight size={16} className="shrink-0 text-muted-foreground" />
+          </Link>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 export default AreasWeServe;
-

@@ -2,7 +2,7 @@
 
 import NextLink from "next/link";
 import { useParams as useNextParams, usePathname, useRouter } from "next/navigation";
-import { createContext, forwardRef, useContext, type AnchorHTMLAttributes, type ReactNode } from "react";
+import { createContext, forwardRef, useCallback, useContext, type AnchorHTMLAttributes, type ReactNode } from "react";
 import { useNavigationProgress } from "@/components/NavigationProgress";
 
 interface RouteContextValue {
@@ -72,10 +72,10 @@ export function useNavigate() {
   const router = useRouter();
   const { startNavigation } = useNavigationProgress();
 
-  return (to: string) => {
+  return useCallback((to: string) => {
     startNavigation(to);
     router.push(to);
-  };
+  }, [router, startNavigation]);
 }
 
 export function useParams<T extends Record<string, string | undefined>>() {

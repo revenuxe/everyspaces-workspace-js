@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ citySlug:
   const area = getAreaBySlug(citySlug, areaSlug);
 
   if (!area) {
-    return buildMetadata({ title: "Area Not Found | EverySpaces", description: "The requested area page could not be found.", path: `/office-space/${citySlug}/${areaSlug}`, noIndex: true });
+    return buildMetadata({ title: "Area Not Found | Numunix", description: "The requested area page could not be found.", path: `/office-space/${citySlug}/${areaSlug}`, noIndex: true });
   }
 
   return buildMetadata({

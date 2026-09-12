@@ -8,8 +8,8 @@ const CertificationContact = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Book Workspace Certification | EverySpaces"
-        description="Book an EverySpaces workspace certification review and submit your office or coworking space details for evaluation."
+        title="Book Workspace Certification | Numunix"
+        description="Book an Numunix workspace certification review and submit your office or coworking space details for evaluation."
         canonical="/certification/contact-us"
         keywords="workspace certification booking, certification contact, verified workspace evaluation, coworking space certification"
       />
