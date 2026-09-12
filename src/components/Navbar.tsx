@@ -19,9 +19,9 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="w-full bg-primary py-4 px-6 lg:px-12 relative z-50">
+    <header className="w-full bg-primary py-4 px-4 sm:px-6 lg:px-12 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 -ml-0.5 sm:ml-0">
           <Image src={logo} alt="Numunix Workspaces Consulting logo" priority sizes="(max-width: 640px) 229px, 267px" className="h-12 w-auto sm:h-14" />
         </Link>
 
@@ -56,7 +56,9 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-primary-foreground"
+          className="lg:hidden shrink-0 text-primary-foreground"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -100,5 +102,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
 
